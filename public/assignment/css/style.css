@@ -1,7 +1,14 @@
-input .form-control{
+input.form-control{
 margin-bottom: 5px;
 }
 
 body{
-    padding-top: 36px;
+    padding-top: 60px;
+}
+
+ul{
+    list-style-type: none;
+}
+.glyphicon{
+    margin-right: 4px;
 }
