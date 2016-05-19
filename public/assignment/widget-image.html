@@ -43,15 +43,31 @@
                    placeholder="Text">
         </div>
         <div class="form-group">
-            <label for="size">Size</label>
-            <input type="number"
-                   min="1"
-                   max="6"
+            <label for="url">URL</label>
+            <input type="text"
                    class="form-control"
-                   id="size"
-                   placeholder="Size">
+                   id="url"
+                   placeholder="http://www.gettyimages.pt/image.jpg">
+        </div>
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input type="text"
+                   class="form-control"
+                   id="width"
+                   placeholder="100%">
+        </div>
+        <div class="form-group">
+            <label for="width">Upload</label>
+            <label class="btn btn-primary" for="my-file-selector">
+                <input id="my-file-selector" type="file" style="display:none;">
+                Button Text Here
+            </label>
         </div>
     </form>
+    <a class="btn btn-primary btn-block"
+       href="widget-choose.html">
+        Upload Image
+    </a>
     <a class="btn btn-danger btn-block"
        href="widget-choose.html">
         Delete
