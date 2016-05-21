@@ -25,3 +25,6 @@ p.navbar-text.pull-left{
     border-bottom-left-radius: 8px;
     opacity: 0.9;
 }
+.glyphicon.glyphicon-eye-open{
+    margin-left: 7px;
+}
