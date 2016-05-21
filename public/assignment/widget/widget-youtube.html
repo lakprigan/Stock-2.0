@@ -2,28 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.25, user-scalable=no">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-          rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <title>Web App Maker</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/assignment/css/style.css" rel="stylesheet"/>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-inner">
-            <a class="navbar-brand" href="widget-choose.html">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="/assignment/widget/widget-chooser.html" class="navbar-link">
+                      <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                </a>
+            </p>
             <a class="navbar-brand" href="#">
                 Widget Edit
             </a>
-            <div class="navbar-text pull-right">
-                <a href="widget-choose.html.html" class="navbar-link">
-                    <span class="glyphicon glyphicon-ok">
-                    </span>
+            <p class="navbar-text pull-right">
+                <a href="/assignment/widget/widget-chooser.html" class="navbar-link">
+                      <span class="glyphicon glyphicon-ok">
+                      </span>
                 </a>
-            </div>
+            </p>
         </div>
     </div>
 </nav>
@@ -48,7 +52,7 @@
             <input type="text"
                    class="form-control"
                    id="url"
-                   placeholder="http://www.gettyimages.pt/image.jpg">
+                   placeholder="https://www.youtube.com/watch?v=SvvVecTK21U&spfreload=9">
         </div>
         <div class="form-group">
             <label for="width">Width</label>
@@ -57,33 +61,22 @@
                    id="width"
                    placeholder="100%">
         </div>
-        <div class="form-group">
-            <label for="width">Upload</label>
-            <label class="btn btn-primary" for="my-file-selector">
-                <input id="my-file-selector" type="file" style="display:none;">
-                Button Text Here
-            </label>
-        </div>
     </form>
-    <a class="btn btn-primary btn-block"
-       href="widget-choose.html">
-        Upload Image
-    </a>
+
     <a class="btn btn-danger btn-block"
-       href="widget-choose.html">
+       href="widget-chooser.html">
         Delete
     </a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
-        <div class="navbar-text navbar-link">
-            <a href="profile.html">
-          <span class="glyphicon glyphicon-user pull-right">
+        <div class="navbar-text navbar-link pull-right">
+            <a href="/assignment/user/profile.html">
+          <span class="glyphicon glyphicon-user">
           </span>
             </a>
         </div>
     </div>
 </nav>
-
 </body>
 </html>
