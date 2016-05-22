@@ -1,67 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-
-    <title>Web</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="/css/dashboard.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
-    <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
-    <!--<![endif]&ndash;&gt;-->
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Priya Iyer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Raleway:300,400' rel='stylesheet' type='text/css'>
+    <link href="css/foundation.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <meta name="description" content="Priya Iyer Personal Homepage.">
+    <meta name="keywords" content="SoftwareDeveloper, Javascript, Angular, Node, MongoDB, Java, Hibernate, C#, ElasticSearch, Express, Priya, Boston, Healthcare">
+    <meta name="author" content="Priya Iyer">
 </head>
-
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Priya Arun</a>
+<div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" id="offCanvasWrapper" data-off-canvas-wrapper>
+        <div class="title-bar" data-responsive-toggle="widemenu" data-hide-for="medium">
+            <div class="title-bar-left">
+                <button id="closeOffCanvas" class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+                <span class="title-bar-title"></span>
+            </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
+        <div class="off-canvas sticky position-left" id="offCanvasLeft" data-off-canvas>
+            <ul class="vertical dropdown menu" id="ocMenu" data-dropdown-menu>
                 <li><a href="project/index.html">Project</a></li>
                 <li><a href="assignment/index.html">Assignment</a></li>
                 <li><a href="test/index.html">Test MongoDB</a></li>
                 <li><a href="https://github.com/lakprigan/iyer-laxmipriya-web-dev">Code</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
+        </div>
+        <div id="widemenu" class="top-bar" data-magellan-target="intro">
+            <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li class="menu-text">Priya Iyer</li>
+                </ul>
+            </div>
+            <div class="top-bar-right">
+                <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
+                    <li><a href="project/index.html">Project</a></li>
+                    <li><a href="assignment/index.html">Assignment</a></li>
+                    <li><a href="test/index.html">Test MongoDB</a></li>
+                    <li><a href="https://github.com/lakprigan/iyer-laxmipriya-web-dev">Code</a></li>
+                </ul>
+            </div></div>
+
+        <div data-off-canvas-content>
+            <div id="main-container">
+                <div class="parallax-window" data-parallax="scroll" data-ios-fix="true" data-bleed="50" data-image-src="images/me.jpg">
+                    <div id="intro" class="row column">
+
+                    </div>
+                </div>
+                <footer>&copy; Priya Iyer 2016.
+                </footer>
+            </div>
         </div>
     </div>
-</nav>
-
-<div class="main-container">
-    <img src="/images/me.jpg" width="100%" class="img-responsive">
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/theaterjs/latest/theater.min.js"></script>
+<script src="https://cdn.jsdelivr.net/scrollreveal.js/3.0.9/scrollreveal.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.4.2/parallax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/10.0.0/js/smooth-scroll.js"></script>
+
+<script>
+    (function(){
+        window.sr = ScrollReveal({reset: true});
+        sr.reveal('#intro', {duration: 500});
+        sr.reveal('#education', {duration: 500});
+        sr.reveal('#experience', {duration: 1000});
+        sr.reveal('#projects', {duration: 500});
+        sr.reveal('#image-thumb-1', {duration: 100});
+        sr.reveal('#image-thumb-2', {duration: 300});
+        sr.reveal('#image-thumb-3', {duration: 500});
+        sr.reveal('#image-thumb-4', {duration: 700});
+    })();
+    $(document).foundation();
+    $('#offCanvasLeft').click(function(){
+        $('#offCanvasLeft').removeClass('is-open');
+        $('#offCanvasLeft').attr('aria-hidden',true);
+        $('#offCanvasWrapper').removeClass('is-off-canvas-open').removeClass('is-open-left');
+    });
+
+</script>
 </body>
 </html>
+
