@@ -12,7 +12,8 @@
                 templateUrl: "views/home.view.client.html"
             })
             .when("/login", {
-                templateUrl: "views/user/login.view.client.html"
+                templateUrl: "views/user/login.view.client.html",
+                controller: "LoginController"
             })
             .when("/register", {
                 templateUrl: "views/user/register.view.client.html"
