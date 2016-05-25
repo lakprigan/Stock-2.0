@@ -8,9 +8,6 @@
     
     function ConfigureRoute($routeProvider) {
         $routeProvider
-            .when("/home", {
-                templateUrl: "views/home.view.client.html"
-            })
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
                 controller: "LoginController",
@@ -58,6 +55,6 @@
                 templateUrl: "views/widget/widget-youtube.view.client.html"
             })
             .otherwise({
-                redirectTo : "/home"
+                redirectTo : "/login"
             });
             }})();
