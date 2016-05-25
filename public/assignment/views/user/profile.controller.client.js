@@ -4,27 +4,22 @@
 (function () {
     angular
         .module("WebAppMaker")
-        .controller("LoginController", LoginController);
-    
-    function LoginController($location) {
-        var ViewModel = this;
+        .controller("ProfileController", ProfileController);
+
+    function ProfileController($routeParams) {
         var Users = [
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
             {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
             {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
             {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
         ]
-        ViewModel.login = function (username, password) {
-            for(var key in Users)
-            {
-                if(Users[key].username===username
-                    && Users[key].password ===password){
-                    $location.url("/profile/"+ Users[key]._id);
-
-                }
-                else
-                    ViewModel.Error = "Username or Password does not match.";
+        var ViewModel = this;
+        var id = $routeParams.id;
+        for (var key in Users){
+            if(Users[key]._id===id){
+                ViewModel.User = Users[key];
             }
         }
+
     }
 })();

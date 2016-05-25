@@ -20,31 +20,36 @@
             <span aria-hidden="true">&times;</span></button>
         <strong>Success!</strong> Your Profile is saved.
     </div>
+    {{Profile.User}}
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="email"
+            <input ng-model="Profile.User.username"
+                    type="text"
                    class="form-control"
                    id="username"
                    placeholder="Alice">
         </div>
         <div class="form-group">
             <label for="emailaddress">Email address</label>
-            <input type="email"
+            <input
+                    type="email"
                    class="form-control"
                    id="emailaddress"
                    placeholder="alice@gmail.com">
         </div>
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="email"
+            <input ng-model="Profile.User.firstname"
+                    type="text"
                    class="form-control"
                    id="firstName"
                    placeholder="Alice">
         </div>
         <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input type="email"
+            <input ng-model="Profile.User.lastname"
+                    type="text"
                    class="form-control"
                    id="lastName"
                    placeholder="Wonderland">

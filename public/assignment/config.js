@@ -19,8 +19,10 @@
             .when("/register", {
                 templateUrl: "views/user/register.view.client.html"
             })
-            .when("/profile", {
-                templateUrl: "views/user/profile.view.client.html"
+            .when("/profile/:id", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "Profile"
             })
             .when("/website-edit", {
                 templateUrl: "views/website/website-edit.view.client.html"
