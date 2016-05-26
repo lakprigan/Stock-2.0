@@ -1,0 +1,81 @@
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                Profile
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="Profile.UpdateUser(Profile.User)" class="navbar-link">
+                      <span class="glyphicon glyphicon-ok">
+                      </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <strong>Success!</strong> Your Profile is saved.
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="Profile.User.username"
+                   type="text"
+                   class="form-control"
+                   id="username"
+                   placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="emailaddress">Email address</label>
+            <input type="email"
+                   class="form-control"
+                   id="emailaddress"
+                   placeholder="alice@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input ng-model="Profile.User.firstName"
+                    type="text"
+                   class="form-control"
+                   id="firstName"
+                   placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input ng-model="Profile.User.lastName"
+                    type="text"
+                   class="form-control"
+                   id="lastName"
+                   placeholder="Wonderland">
+        </div>
+        <div class="form-group">
+            <label>User Type</label>
+                <div class="row">
+                    <div class="col-lg-6"><a class="btn btn-block btn-primary">Investor</a></div>
+                    <div class="col-lg-6"> <a class="btn btn-block btn-primary">Expert</a></div>
+                </div>
+        </div>
+    </form>
+    <a class="btn btn-primary btn-block"
+       href="#/website-list">
+        Websites
+    </a>
+    <a class="btn btn-danger btn-block"
+       href="#/login">
+        Logout
+    </a>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text navbar-link pull-right">
+            <a href="#/profile">
+          <span class="glyphicon glyphicon-user">
+          </span>
+            </a>
+        </div>
+    </div>
+</nav>
