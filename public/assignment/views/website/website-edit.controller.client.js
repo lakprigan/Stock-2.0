@@ -20,6 +20,5 @@
                 ViewModel.error = "Unable to delete a new Website";
             }
         }
-        
     }
 })();
