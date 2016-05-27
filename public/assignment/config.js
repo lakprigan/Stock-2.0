@@ -27,7 +27,7 @@
             .when("/user/:uid/website", {
                 templateUrl: "views/website/website-list.view.client.html",
                 controller: "WebsiteListController",
-                controllerAs: "WebsiteList"
+                controllerAs: "Websites"
             })
             .when("/website-new", {
                 templateUrl: "views/website/website-new.view.client.html"
