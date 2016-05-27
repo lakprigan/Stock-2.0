@@ -38,8 +38,8 @@
             })
             .when("/user/:uid/website/:wid/page/:pid/widget", {
                 templateUrl: "views/widget/widget-list.view.client.html",
-                controller: WidgetListController,
-                controllerAs: "model"
+                 controller: "WidgetListController",
+                 controllerAs: "model"
             })
             .when("/page-edit", {
                 templateUrl: "views/page/page-edit.view.client.html"

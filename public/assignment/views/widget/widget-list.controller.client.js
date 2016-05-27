@@ -13,6 +13,6 @@
             ViewModel.PageId = $routeParams.pid;
             ViewModel.UserId = $routeParams.uid;
             ViewModel.Widgets = WidgetService.FindWidgtesForPageId(ViewModel.PageId);
-        }
+       }
     }
 })();
