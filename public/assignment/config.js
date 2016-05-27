@@ -21,17 +21,22 @@
                 controller: "ProfileController",
                 controllerAs: "Profile"
             })
-            .when("/website-edit", {
-                templateUrl: "views/website/website-edit.view.client.html"
+            .when("/user/:id/website/new", {
+                templateUrl: "views/website/website-new.view.client.html",
+                controller: "WebsiteNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:id/website/:wid", {
+                templateUrl: "views/website/website-edit.view.client.html",
+                controller: "WebsiteEditController",
+                controllerAs: "model"
             })
             .when("/user/:uid/website", {
                 templateUrl: "views/website/website-list.view.client.html",
                 controller: "WebsiteListController",
-                controllerAs: "Websites"
+                controllerAs: "model"
             })
-            .when("/website-new", {
-                templateUrl: "views/website/website-new.view.client.html"
-            })
+
             .when("/page-edit", {
                 templateUrl: "views/page/page-edit.view.client.html"
             })

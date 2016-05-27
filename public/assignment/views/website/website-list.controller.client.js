@@ -3,16 +3,17 @@
  */
 (function () {
     angular
-        .modolule("WebAppMaker")
+        .module("WebAppMaker")
         .controller("WebsiteListController", WebsiteListController);
 
     function WebsiteListController($routeParams, WebsiteService) {
         var ViewModel = this;
         Initialize();
-    }
-    
-    function Initialize() {
-       ViewModel.Websites = WebsiteService.FindWebsitesByUserId($routeParams.uid)
-    }
 
+
+        function Initialize() {
+            ViewModel.UserId = $routeParams.uid;
+            ViewModel.Websites = WebsiteService.FindWebsitesByUserId(ViewModel.UserId);
+        }
+    }
 })();

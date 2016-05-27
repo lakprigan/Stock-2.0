@@ -4,7 +4,7 @@
 (function () {
     angular
         .module("WebAppMaker")
-        .factor("WebsiteService",WebsiteService);
+        .factory("WebsiteService",WebsiteService);
 
     var Websites = [
         { "_id": "123", "name": "Facebook",    "developerId": "456" },
@@ -17,7 +17,9 @@
 
     function WebsiteService() {
         var api = {
-            FindWebsitesByUserId : FindWebsitesByUserId
+            FindWebsitesByUserId : FindWebsitesByUserId,
+            CreateNewWebsite: CreateNewWebsite,
+            DeleteWebsite: DeleteWebsite
         };
         return api;
 function FindWebsitesByUserId(userId) {
@@ -29,5 +31,26 @@ var resultSet = [];
     }
     return resultSet;
 }
+
+        function CreateNewWebsite(developerId, name, description) {
+            var newWebsite = {
+                _id: (new Date()).getTime()+"",
+                name: name,
+                description: description,
+                developerId: developerId
+            }
+            Websites.push(newWebsite);
+            return newWebsite;
+        }
+
+        function DeleteWebsite(webisteid) {
+            for(var i in Websites){
+                if(Websites[i]._id === webisteid){
+                    Websites.splice(i);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
-})
+})();
