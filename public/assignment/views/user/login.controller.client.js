@@ -12,7 +12,7 @@
         ViewModel.login = function (username, password) {
            var user = UserService.FindUserByUsernamePassword(username, password);
             if(user){
-                $location.url("/profile/"+ user._id);
+                $location.url("/user/"+ user._id);
             } else {
                 ViewModel.error = "User not found";
             }
