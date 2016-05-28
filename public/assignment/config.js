@@ -59,7 +59,6 @@
             .when("/widget-image", {
                 templateUrl: "views/widget/widget-image.view.client.html"
             })
-
             .when("/widget-youtube", {
                 templateUrl: "views/widget/widget-youtube.view.client.html"
             })

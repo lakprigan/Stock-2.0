@@ -46,7 +46,7 @@ var resultSet = [];
         function DeleteWebsite(webisteid) {
             for(var i in Websites){
                 if(Websites[i]._id === webisteid){
-                    Websites.splice(i);
+                    Websites.splice(i,1);
                     return true;
                 }
             }
