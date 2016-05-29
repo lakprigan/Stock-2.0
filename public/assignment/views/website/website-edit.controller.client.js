@@ -15,6 +15,7 @@
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.DeleteWebsite = deleteWebsite;
             ViewModel.UpdateWebsiteById = updateWebsiteById;
+            ViewModel.Website = WebsiteService.FindWebsiteById(ViewModel.WebsiteId);
         }
         
         function deleteWebsite() {
@@ -25,6 +26,8 @@
                 ViewModel.error = "Unable to delete a new Website";
             }
         }
+
+
 
         function updateWebsiteById(name, description) {
             var updatedWebsite =  { "name": name, "developerId": ViewModel.UserId };

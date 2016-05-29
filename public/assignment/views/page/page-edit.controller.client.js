@@ -16,6 +16,7 @@
             ViewModel.PageId= $routeParams.pid;
             ViewModel.DeletePage = deletePage;
             ViewModel.UpdatePage = updatePage;
+            ViewModel.Page = PageService.FindPageById(ViewModel.PageId);
         }
 
         function deletePage() {

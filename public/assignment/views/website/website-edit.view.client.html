@@ -11,7 +11,7 @@
                 Edit Website
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="model.UpdateWebsiteById(name, title)" class="navbar-link">
+                <a ng-click="model.UpdateWebsiteById(model.Website.name, model.Website.description)" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                 </a>
@@ -24,7 +24,7 @@
         <div class="form-group">
             <label for="name">Application Name</label>
             <input type="text"
-                   ng-model = "name"
+                   ng-model = "model.Website.name"
                    class="form-control"
                    id="name"
                    value = "Apple"
@@ -34,7 +34,7 @@
             <label for="description">Application Description</label>
             <textarea rows="4"
                       type="description"
-                      ng-model = "description"
+                      ng-model = "model.Website.description"
                       class="form-control"
                       id="description"
                       placeholder="Website Description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standarddummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimenbook. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentiallyunchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
