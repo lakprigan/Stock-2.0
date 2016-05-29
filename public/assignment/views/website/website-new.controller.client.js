@@ -8,8 +8,14 @@
 
     function WebsiteNewController($location, $routeParams, WebsiteService) {
         var ViewModel = this;
-         ViewModel.UserId = $routeParams.id;
-         ViewModel.CreateNewWebsite = CreateNewWebsite;
+        Initialize();
+
+
+        function Initialize() {
+            ViewModel.UserId = $routeParams.id;
+            ViewModel.WebsiteId = $routeParams.wid;
+            ViewModel.CreateNewWebsite = CreateNewWebsite;
+        }
 
         function CreateNewWebsite(name, description) {
            var newWebsite = WebsiteService.CreateNewWebsite(ViewModel.UserId, name, description);

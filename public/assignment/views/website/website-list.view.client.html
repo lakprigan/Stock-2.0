@@ -16,11 +16,11 @@
 <div class="container">
     <ul class="list-group">
         <li ng-repeat="website in model.Websites" class="list-group-item">
-            <a href="#/user/{{website.developerId}}/website/:wid/page">{{website.name}}</a>
+            <a href="#/user/{{model.UserId}}/website/:wid/page">{{website.name}}</a>
             <a href="#" class="pull-right">
                 <span class="glyphicon glyphicon-play"></span>
             </a>
-            <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right WebsiteEditCog">
+            <a href="#/user/{{model.UserId}}/website/{{model.WebsiteId}}" class="pull-right WebsiteEditCog">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </li>

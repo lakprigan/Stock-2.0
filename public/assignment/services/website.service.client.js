@@ -33,7 +33,7 @@ var resultSet = [];
     }
     return resultSet;
 }
-        function FindWebsitesById(websiteId) {
+        function FindWebsiteById(websiteId) {
             var resultSet = [];
             for(var i in Websites){
                 if(Websites[i]._id == websiteId){
