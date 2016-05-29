@@ -11,6 +11,7 @@
          ViewModel.UserId = $routeParams.id;
         ViewModel.WebsiteId = $routeParams.wid;
         ViewModel.DeleteWebsite = deleteWebsite;
+        ViewModel.UpdateWebsiteById = updateWebsiteById;
         
         function deleteWebsite() {
             var isDeleted = WebsiteService.DeleteWebsite(ViewModel.WebsiteId);
@@ -18,6 +19,16 @@
                 $location.url("/user/"+ViewModel.UserId+"/website");
             }else{
                 ViewModel.error = "Unable to delete a new Website";
+            }
+        }
+
+        function updateWebsiteById(name, description) {
+            var updatedWebsite =  { "name": name, "developerId": ViewModel.UserId };
+            var isUpdated = WebsiteService.UpdateWebsite(ViewModel.WebsiteId, updatedWebsite);
+            if(isUpdated){
+                $location.url("/user/"+ViewModel.UserId+"/website");
+            }else{
+                ViewModel.error = "Unable to update the Website";
             }
         }
     }

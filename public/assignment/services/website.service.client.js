@@ -45,8 +45,8 @@ var resultSet = [];
 
         function UpdateWebsite(websiteId, updatedWebsite) {
             for(var i in Websites){
-                if(Users[i]._id === websiteId){
-                    Users[i].name = updatedWebsite.name;
+                if(Websites[i]._id === websiteId && Websites[i].developerId === updatedWebsite.developerId){
+                    Websites[i].name = updatedWebsite.name;
                     return true
                 }
             }
