@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Web App Maker</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assignment/css/style.css" rel="stylesheet"/>
-</head>
-<body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -23,7 +11,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="#/widget-list" class="navbar-link">
+                <a href="model.CreateWidget(model.Widget.widgetType)" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                 </a>
@@ -36,6 +24,7 @@
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text"
+                   ng-model="model.Widget.name"
                    class="form-control"
                    id="name"
                    placeholder="Widget Name"
@@ -44,6 +33,7 @@
         <div class="form-group">
             <label for="text">Text</label>
             <input type="text"
+                   ng-model="model.Widget.text"
                    class="form-control"
                    id="text"
                    placeholder="Text in the header"
@@ -51,18 +41,18 @@
         </div>
         <div class="form-group">
             <label for="size">Size</label>
-            <select  class="form-control"  class="form-control" id="size">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3" selected>3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
+            <select  class="form-control" id="size" ng-model="model.Widget.size">
+                <option>1</option>
+                <option value=2>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
             </select>
         </div>
     </form>
     <a class="btn btn-danger btn-block"
-       href="#/widget-list">
+       ng-click="model.DeleteWidget()">
         Delete
     </a>
 </div>
@@ -76,5 +66,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>

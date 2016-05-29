@@ -2,16 +2,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-left">
-                <a href="#/page-list" class="navbar-link">
+                <a href="#/user/{{model.UserId}}/website/{{model.WebsiteId}}/page/{{model.PageId}}" class="navbar-link">
                       <span class="glyphicon glyphicon-chevron-left">
                       </span>
                 </a>
             </p>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand">
                 Widgets
             </a>
             <p class="navbar-text pull-right">
-                <a href="#/widget-chooser" class="navbar-link">
+                <a href="#/user/{{model.UserId}}/website/{{model.WebsiteId}}/page/{{model.PageId}}/widget/new" class="navbar-link">
                       <span class="glyphicon glyphicon-plus">
                       </span>
                 </a>
@@ -22,7 +22,7 @@
 <div class="container">
     <div ng-repeat="widget in model.Widgets" class="jga-widget">
         <div class="jga-widget-tool">
-            <a href="#/widget-heading">
+            <a href = "#/user/{{model.UserId}}/website/{{model.WebsiteId}}/page/{{model.PageId}}/widget/{{widget._id}}">
           <span class="glyphicon glyphicon-cog">
           </span>
             </a>
@@ -37,7 +37,6 @@
                     <div ng-switch-when="4"><h4>{{widget.text}}</h4></div>
                     <div ng-switch-when="5"><h5>{{widget.text}}</h5></div>
                     <div ng-switch-when="6"><h6>{{widget.text}}</h6></div>
-
                 <h1>{{widget.text}}</h1>
             </div>
             <div ng-switch-when="HTML">
@@ -50,7 +49,7 @@
             <div ng-switch-when="IMAGE">
                 <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
             </div>
-            <div ng-switch-default></div>
+            <div ng-switch-default>INVALID WIDGET</div>
         </div>
     </div>
 </div>

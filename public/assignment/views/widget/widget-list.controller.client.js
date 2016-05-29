@@ -12,6 +12,7 @@
         function Initialize() {
             ViewModel.PageId = $routeParams.pid;
             ViewModel.UserId = $routeParams.uid;
+            ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.Widgets = WidgetService.FindWidgetsByPageId(ViewModel.PageId);
             ViewModel.GetSafeHtml = getSafeHtml;
             ViewModel.GetSafeUrl = getSafeUrl;
