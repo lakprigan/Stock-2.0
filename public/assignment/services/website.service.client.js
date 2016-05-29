@@ -34,13 +34,13 @@ var resultSet = [];
     return resultSet;
 }
         function FindWebsiteById(websiteId) {
-            var resultSet = [];
+
             for(var i in Websites){
                 if(Websites[i]._id == websiteId){
-                    resultSet.push(Websites[i]);
+                    return Websites[i];
                 }
             }
-            return resultSet;
+            return null;
         }
 
         function UpdateWebsite(websiteId, updatedWebsite) {

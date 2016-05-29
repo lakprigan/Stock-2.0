@@ -41,26 +41,23 @@
                  controller: "WidgetListController",
                  controllerAs: "model"
             })
-            .when("/page-edit", {
-                templateUrl: "views/page/page-edit.view.client.html"
-            })
             .when("/page-list", {
-                templateUrl: "views/page/page-list.view.client.html"
+                templateUrl: "/user/:uid/website/:wid/page",
+                controller: "PageListController",
+                controllerAs: "model"
             })
             .when("/page-new", {
-                templateUrl: "views/page/page-new.view.client.html"
+                templateUrl: "/user/:uid/website/:wid/page/new",
+                controller: "PageNewController",
+                controllerAs: "model"
+            })
+            .when("/page-edit", {
+                templateUrl: "/user/:uid/website/:wid/page/:pid",
+                controller: "PageEditController",
+                controllerAs: "model"
             })
             .when("/widget-chooser", {
                 templateUrl: "views/widget/widget-chooser.view.client.html"
-            })
-            .when("/widget-heading", {
-                templateUrl: "views/widget/widget-heading.view.client.html"
-            })
-            .when("/widget-image", {
-                templateUrl: "views/widget/widget-image.view.client.html"
-            })
-            .when("/widget-youtube", {
-                templateUrl: "views/widget/widget-youtube.view.client.html"
             })
             .otherwise({
                 redirectTo : "/login"
