@@ -19,9 +19,21 @@
             FindUserByUsernamePassword : FindUserByUsernamePassword,
             UpdateUser: UpdateUser,
             FindUserById: FindUserById,
-            DeleteUser: DeleteUser
+            DeleteUser: DeleteUser,
+            UpdateUserByUsername: UpdateUserByUsername
         };
         return api;
+
+        function UpdateUserByUsername(username, updatedUser){
+            for(var i in Users){
+                if(Users[i].username === username){
+                    Users[i].firstName = updatedUser.firstName;
+                    Users[i].lastName = updatedUser.lastName;
+                    return true
+                }
+            }
+            return false;
+        }
 
         function FindUserByUsernamePassword(username, password) {
             for(var key in Users)
@@ -33,6 +45,7 @@
             }
             return null;
         }
+        
         //TBD: return can be shown to end user
         function UpdateUser(id, updatedUser) {
             for(var i in Users){
