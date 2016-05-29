@@ -15,6 +15,9 @@
     </div>
 </nav>
 <div class="container">
+    <div ng-if="Profile.Success" class="alert alert-success" role="alert">
+        <a href="#" class="alert-link">{{Profile.Success}}</a>
+    </div>
     <form>
         <div class="form-group">
             <label for="username">Username</label>

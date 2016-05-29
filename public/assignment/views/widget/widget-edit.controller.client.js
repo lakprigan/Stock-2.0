@@ -15,12 +15,18 @@
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.WidgetId = $routeParams.wgid;
             ViewModel.Widget  = WidgetService.FindWidgetById(ViewModel.WidgetId);
+            ViewModel.WidgetSizes = [1, 2, 3, 4, 5, 6];
             ViewModel.UpdateWidget = UpdateWidget;
             ViewModel.DeleteWidget = DeleteWidget;
         }
         
-        function UpdateWidget() {
-            
+        function UpdateWidget(Widget) {
+            var isUpdated = WidgetService.UpdateWidget(ViewModel.WidgetId, Widget);
+            if(isUpdated){
+                $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
+            }else{
+                ViewModel.Error = "Unable to update the Website";
+            }
         }
         
         function DeleteWidget(){
@@ -28,7 +34,7 @@
             if(isDeleted){
                 $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget");
             }else{
-                ViewModel.error = "Unable to delete a new Widget";
+                ViewModel.Error = "Unable to delete a new Widget";
             }
         }
     }

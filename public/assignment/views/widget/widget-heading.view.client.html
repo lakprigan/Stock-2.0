@@ -11,7 +11,7 @@
                 Widget Edit
             </a>
             <p class="navbar-text pull-right">
-                <a href="model.CreateWidget(model.Widget.widgetType)" class="navbar-link">
+                <a ng-click="model.UpdateWidget(model.Widget)" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                 </a>
@@ -41,13 +41,7 @@
         </div>
         <div class="form-group">
             <label for="size">Size</label>
-            <select  class="form-control" id="size" ng-model="model.Widget.size">
-                <option>1</option>
-                <option value=2>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
+            <select  class="form-control" id="size" ng-init=1 ng-model="model.Widget.size" ng-options="m for m in model.WidgetSizes">
             </select>
         </div>
     </form>

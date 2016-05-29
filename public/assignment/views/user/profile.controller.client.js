@@ -12,12 +12,15 @@
         Initialize();
 
         function Initialize() {
-            var id = $routeParams.id;
-            ViewModel.User = UserService.FindUserById(id);
+             ViewModel.id = $routeParams.id;
+            ViewModel.User = UserService.FindUserById(ViewModel.id);
+            ViewModel.UpdateUser = UpdateUser;
         }
 
         function UpdateUser(updatedUser) {
-           UserService.UpdateUser(id, updatedUser);
+           if(UserService.UpdateUser(ViewModel.id, updatedUser)){
+               ViewModel.Success = "Profile of "+ updatedUser.username + " successfully updated!"
+           }
         }
 
     }
