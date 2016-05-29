@@ -45,6 +45,7 @@
             for(var i in Pages){
                 if(Pages[i]._id === pageId){
                     Pages[i].name = newPage.name;
+                    Pages[i].title = newPage.title;
                     return true
                 }
             }
