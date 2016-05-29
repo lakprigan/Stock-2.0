@@ -8,10 +8,14 @@
 
     function WebsiteEditController($location, $routeParams, WebsiteService) {
         var ViewModel = this;
-         ViewModel.UserId = $routeParams.id;
-        ViewModel.WebsiteId = $routeParams.wid;
-        ViewModel.DeleteWebsite = deleteWebsite;
-        ViewModel.UpdateWebsiteById = updateWebsiteById;
+        Initialize();
+        
+        function Initialize() {
+            ViewModel.UserId = $routeParams.id;
+            ViewModel.WebsiteId = $routeParams.wid;
+            ViewModel.DeleteWebsite = deleteWebsite;
+            ViewModel.UpdateWebsiteById = updateWebsiteById;
+        }
         
         function deleteWebsite() {
             var isDeleted = WebsiteService.DeleteWebsite(ViewModel.WebsiteId);

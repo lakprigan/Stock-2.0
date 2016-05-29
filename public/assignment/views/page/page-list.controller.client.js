@@ -9,10 +9,11 @@
     function PageListController($routeParams, PageService) {
         var ViewModel = this;
         Initialize();
-
-
+        
         function Initialize() {
-           
+            ViewModel.UserId = $routeParams.uid;
+            ViewModel.WebsiteId = $routeParams.wid;
+            ViewModel.Pages = PageService.FindPageByWebsiteId(ViewModel.WebsiteId);
         }
     }
 })();

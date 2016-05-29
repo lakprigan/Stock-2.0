@@ -51,10 +51,10 @@
             return false;
         }
 
-        function CreateNewPage(websiteId, page) {
+        function CreatePage(websiteId, name, description) {
             var newPage = {
                 _id: (new Date()).getTime()+"",
-                name: page.name,
+                name: name,
                 websiteId: websiteId
             }
             Pages.push(newPage);
