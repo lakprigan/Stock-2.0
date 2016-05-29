@@ -17,6 +17,7 @@
         var api = {
             CreateUser: CreateUser,
             FindUserByUsernamePassword : FindUserByUsernamePassword,
+            FindUserByUsername : FindUserByUsername,
             UpdateUser: UpdateUser,
             FindUserById: FindUserById,
             DeleteUser: DeleteUser,
@@ -65,6 +66,15 @@
                 }
             }
             return null;
+        }
+
+        function FindUserByUsername(username) {
+            for (var key in Users){
+                if(Users[key].username===username){
+                    return Users[key];
+                }
+            }
+            return -1;
         }
 
         function CreateUser(newUser) {

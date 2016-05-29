@@ -13,17 +13,24 @@
 <body>
 <div class="container">
     <h1>Register</h1>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
+    </div>
+
     <input type="text"
+           ng-model = "user.username"
            class="form-control"
            placeholder="username"/>
     <input type="password"
+           ng-model = "user.password"
            class="form-control"
            placeholder="password"/>
     <input type="password"
+           ng-model="user.verifyPassword"
            class="form-control"
            placeholder="verify password"/>
-    <a class="btn btn-primary btn-block" href="#/profile">Register</a>
-    <a class="btn btn-danger btn-block" href="#/login">Cancel</a>
+    <a class="btn btn-primary btn-block" ng-click="model.CreateUser(user)">Register</a>
+    <a class="btn btn-danger btn-block" href="#/user">Cancel</a>
 </div>
 </body>
 </html>
