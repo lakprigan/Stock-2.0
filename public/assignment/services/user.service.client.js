@@ -23,6 +23,7 @@
             DeleteUser: DeleteUser,
             UpdateUserByUsername: UpdateUserByUsername
         };
+
         return api;
 
         function UpdateUserByUsername(username, updatedUser){
@@ -46,8 +47,7 @@
             }
             return null;
         }
-        
-        //TBD: return can be shown to end user
+
         function UpdateUser(id, updatedUser) {
             for(var i in Users){
                 if(Users[i]._id === id){

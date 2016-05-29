@@ -14,7 +14,7 @@
             if(user){
                 $location.url("/user/"+ user._id);
             } else {
-                ViewModel.error = "User not found";
+                ViewModel.Error = "User not found!";
             }
         }
     }
