@@ -23,7 +23,7 @@
         function UpdateWidget(Widget) {
             var isUpdated = WidgetService.UpdateWidget(ViewModel.WidgetId, Widget);
             if(isUpdated){
-                $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
+                $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget");
             }else{
                 ViewModel.Error = "Unable to update the Website";
             }
