@@ -24,17 +24,18 @@
             FindWebsiteById: FindWebsiteById
         };
         return api;
-function FindWebsitesByUserId(userId) {
-var resultSet = [];
-    for(var i in Websites){
-        if(Websites[i].developerId == userId){
-            resultSet.push(Websites[i]);
-        }
-    }
-    return resultSet;
-}
-        function FindWebsiteById(websiteId) {
 
+        function FindWebsitesByUserId(userId) {
+            var resultSet = [];
+            for(var i in Websites){
+                if(Websites[i].developerId == userId){
+                    resultSet.push(Websites[i]);
+                }
+            }
+            return resultSet;
+        }
+
+        function FindWebsiteById(websiteId) {
             for(var i in Websites){
                 if(Websites[i]._id == websiteId){
                     return Websites[i];

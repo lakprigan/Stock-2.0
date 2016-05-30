@@ -56,6 +56,7 @@
             var newPage = {
                 _id: (new Date()).getTime()+"",
                 name: name,
+                description: description,
                 websiteId: websiteId
             }
             Pages.push(newPage);

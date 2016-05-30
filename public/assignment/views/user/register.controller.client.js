@@ -19,11 +19,11 @@
                 }
                 else
                 {
-                    ViewModel.Error = "Passwords don't match!"
+                    ViewModel.Error = "Passwords don't match!";
                 }
             }
             else{
-                ViewModel.Error = "Username exists, please choose a different username"
+                ViewModel.Error = "Username exists, please choose a different username";
             }
         }
 

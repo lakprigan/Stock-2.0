@@ -23,8 +23,11 @@
             var Widget = {
                 _id : (new Date()).getTime() + "",
             widgetType : widgetType,
-            pageID : ViewModel.PageId
+            pageId : ViewModel.PageId
         }
+            if(widgetType === 'HEADER'){
+                Widget.size = 3;
+            }
             var newWidget = WidgetService.CreateWidget(Widget);
             $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget/"+Widget._id);
 
