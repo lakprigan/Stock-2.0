@@ -18,6 +18,9 @@
     <div ng-if="Profile.Success" class="alert alert-success" role="alert">
         <a class="alert-link">{{Profile.Success}}</a>
     </div>
+    <div ng-if="Profile.Error" class="alert alert-danger" role="alert">
+        <a class="alert-link">{{Profile.Error}}</a>
+    </div>
     <form>
         <div class="form-group">
             <label for="username">Username</label>
@@ -58,6 +61,10 @@
     <a class="btn btn-danger btn-block"
        href="#/login">
         Logout
+    </a>
+    <a class="btn btn-danger btn-block"
+       ng-click="Profile.Unregister()">
+        Unregister
     </a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

@@ -19,16 +19,10 @@
 
         return api;
 
-        function UpdateUserByUsername(username, updatedUser){
-            for(var i in Users){
-                if(Users[i].username === username){
-                    Users[i].firstName = updatedUser.firstName;
-                    Users[i].lastName = updatedUser.lastName;
-                    return true
-                }
-            }
-            return false;
-        }
+         function UpdateUserByUsername(username, updatedUser){
+        //    var url = "/api/user/"+updatedUser._id;
+        //     return $http.put(url, updatedUser);
+         }
 
         function FindUserByUsernamePassword(username, password) {
             var url = "/api/user?username="+username+"&&password="+password;
@@ -36,14 +30,8 @@
         }
 
         function UpdateUser(id, updatedUser) {
-            for(var i in Users){
-                if(Users[i]._id === id){
-                    Users[i].firstName = updatedUser.firstName;
-                    Users[i].lastName = updatedUser.lastName;
-                    return true
-                }
-            }
-            return false;
+            var url = "/api/user/"+ id;
+            return $http.put(url, updatedUser);
         }
         
         function FindUserById(id) {
@@ -62,13 +50,8 @@
         }
 
         function DeleteUser(id) {
-            for(var i in Users){
-                if(Users[i]._id === id){
-                   Users.splice(i);
-                    return true;
-                }
-            }
-            return false;
+            var url = "/api/user/"+id;
+            return $http.delete(url);
         }
     }
 })();

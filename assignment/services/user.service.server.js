@@ -2,9 +2,6 @@
  * Created by PriyaArun on 5/31/16.
  */
 module.exports = function(app){
-
-
-
     var Users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
         {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
@@ -15,11 +12,24 @@ module.exports = function(app){
     app.post("/api/user",createUser);
     app.get("/api/user", GetUsers);
     app.get("/api/user/:userId", FindUserById);
-    
+    app.put("/api/user/:userId", UpdateUser);
+    app.delete("/api/user/:userId", DeleteUser);
+
+    function DeleteUser(req, res) {
+        var id = req.params.userId;
+        for(var i in Users){
+            if(Users[i]._id === id){
+                Users.splice(i);
+                res.send(200);
+                return;
+            }
+        }
+        res.send(400);
+    }
+
     function createUser(req, res) {
         var user = req.body;
         Users.push(user);
-        console.log(user);
         res.send(user);
     }
     
@@ -67,5 +77,19 @@ module.exports = function(app){
             }
         }
         res.send({});
+    }
+
+    function UpdateUser(req, res) {
+        var id = req.params.userId;
+        var updatedUser = req.body;
+        for(var i in Users){
+            if(Users[i]._id === id){
+                Users[i].firstName = updatedUser.firstName;
+                Users[i].lastName = updatedUser.lastName;
+                res.send(200);
+                return
+            }
+        }
+        res.send(400);
     }
 };

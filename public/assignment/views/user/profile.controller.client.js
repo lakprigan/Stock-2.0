@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($routeParams, UserService) {
+    function ProfileController($location, $routeParams, UserService) {
 
         var ViewModel = this;
         Initialize();
@@ -19,12 +19,29 @@
                     ViewModel.User = response. data;
                 });
             ViewModel.UpdateUser = UpdateUser;
+            ViewModel.Unregister = Unregister;
         }
 
         function UpdateUser(updatedUser) {
-           if(UserService.UpdateUser(ViewModel.id, updatedUser)){
-               ViewModel.Success = "Profile of "+ updatedUser.username + " successfully updated!"
-           }
+           UserService.UpdateUser(ViewModel.id, updatedUser)
+               .then(function (response) {
+               ViewModel.Success = "Profile of "+ updatedUser.username + " successfully updated!";
+                   ViewModel.Error = null;
+           },
+               function (error) {
+                   ViewModel.Error = "Unable to update user!";
+                   ViewModel.Success = null;
+               });
+        }
+
+        function Unregister() {
+            UserService.DeleteUser(ViewModel.id)
+                .then(function (response) {
+                    $location.url("/login");
+                },
+                function (error){
+                    ViewModel.Error = "Unable to remove user";
+                });
         }
 
     }
