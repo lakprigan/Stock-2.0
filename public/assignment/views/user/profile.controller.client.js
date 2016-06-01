@@ -13,7 +13,11 @@
 
         function Initialize() {
             ViewModel.id = $routeParams.id;
-            ViewModel.User = UserService.FindUserById(ViewModel.id);
+            UserService
+                .FindUserById(ViewModel.id)
+                .then(function (response) {
+                    ViewModel.User = response. data;
+                });
             ViewModel.UpdateUser = UpdateUser;
         }
 

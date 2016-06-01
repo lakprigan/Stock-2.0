@@ -12,8 +12,16 @@ module.exports = function(app){
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
     ];
 
+    app.post("/api/user",createUser);
     app.get("/api/user", GetUsers);
     app.get("/api/user/:userId", FindUserById);
+    
+    function createUser(req, res) {
+        var user = req.body;
+        Users.push(user);
+        console.log(user);
+        res.send(user);
+    }
     
     function GetUsers(req, res) {
         var username = req.query['username'];

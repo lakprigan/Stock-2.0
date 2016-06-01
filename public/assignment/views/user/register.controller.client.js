@@ -6,25 +6,39 @@
         .module("WebAppMaker")
         .controller("RegisterController", RegisterController);
 
-    function RegisterController($routeParams, UserService) {
+    function RegisterController($location, $routeParams, UserService) {
 
         var ViewModel = this;
         ViewModel.CreateUser = CreateUser;
 
         function CreateUser(user) {
-            if(UserService.FindUserByUsername(user.username) === -1)
-            {
-                if(user.password === user.verifyPassword){
-                    var newUser = {_id: (new Date()).getTime()+"", username: user.username, password : user.password}
-                }
-                else
-                {
-                    ViewModel.Error = "Passwords don't match!";
-                }
-            }
-            else{
-                ViewModel.Error = "Username exists, please choose a different username";
-            }
+            UserService
+                .FindUserByUsername(user.username)
+                .then(function (response) {
+                    var retrievedUser = response.data;
+                    if(retrievedUser.username == null)
+                    {
+                        if(user.password === user.verifyPassword){
+                            var newUser = {_id: (new Date()).getTime()+"", username: user.username, password : user.password};
+                            UserService
+                                .CreateUser(newUser)
+                                .then(function (response) {
+                                    var retrievedUser = response.data;
+                                    if(retrievedUser){
+                                        $location.url("/user/"+user._id);
+                                    }
+                                })
+                        }
+                        else
+                        {
+                            ViewModel.Error = "Passwords don't match!";
+                        }
+                    }
+                    else{
+                        ViewModel.Error = "Username exists, please choose a different username";
+                    }
+                })
+
         }
 
     }

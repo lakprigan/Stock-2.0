@@ -47,25 +47,18 @@
         }
         
         function FindUserById(id) {
-            for (var key in Users){
-                if(Users[key]._id==id){
-                   return Users[key];
-                }
-            }
-            return null;
+            var url = "/api/user/" + id;
+            return $http.get(url);
         }
 
         function FindUserByUsername(username) {
-            for (var key in Users){
-                if(Users[key].username===username){
-                    return Users[key];
-                }
-            }
-            return -1;
+            var url = "/api/user?username=" + username;
+            return $http.get(url);
         }
 
         function CreateUser(newUser) {
-            Users.push(newUser);
+            var url = "/api/user/"
+            return $http.post(url,newUser);
         }
 
         function DeleteUser(id) {
