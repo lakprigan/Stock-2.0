@@ -5,10 +5,8 @@
     angular
         .module("WebAppMaker")
         .factory("UserService", UserService);
-
     
-    
-    function UserService() {
+    function UserService($http) {
         var api = {
             CreateUser: CreateUser,
             FindUserByUsernamePassword : FindUserByUsernamePassword,
@@ -33,14 +31,8 @@
         }
 
         function FindUserByUsernamePassword(username, password) {
-            for(var key in Users)
-            {
-                if(Users[key].username===username
-                    && Users[key].password ===password){
-                  return Users[key];
-                }
-            }
-            return null;
+            var url = "/api/user?username="+username+"&&password="+password;
+            return $http.get(url);
         }
 
         function UpdateUser(id, updatedUser) {

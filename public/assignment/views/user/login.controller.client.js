@@ -10,12 +10,18 @@
         var ViewModel = this;
         
         ViewModel.login = function (username, password) {
-           var user = UserService.FindUserByUsernamePassword(username, password);
-            if(user){
-                $location.url("/user/"+ user._id);
-            } else {
-                ViewModel.Error = "User not found!";
-            }
+
+           UserService
+               .FindUserByUsernamePassword(username, password)
+               .then(function (response) {
+                var user = response.data;
+                if(user){
+                    $location.url("/user/"+ user._id);
+                } else {
+                    ViewModel.Error = "User not found!";
+                }
+            });
+
         }
     }
 })();
