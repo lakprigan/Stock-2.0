@@ -44,6 +44,7 @@ module.exports = function (app) {
     function UpdatePage(req, res) {
         var id = req.params.pageId
         var newPage = req.body;
+        
         for(var p in Pages){
             if(Pages[p]._id===id){
                 Pages[p].name = newPage.name;

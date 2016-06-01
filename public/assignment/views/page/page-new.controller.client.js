@@ -17,12 +17,13 @@
             ViewModel.CreateNewPage = CreateNewPage;
         }
         function CreateNewPage(name, description) {
-            var newPage = PageService.CreatePage(ViewModel.WebsiteId, name, description);
-            if(newPage){
-                $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
-            }else{
-                ViewModel.error = "Unable to create a new Page";
-            }
+           PageService
+               .CreatePage(ViewModel.WebsiteId, name, description)
+               .then(function (res) {
+                   $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
+               },function (err) {
+                   ViewModel.error = "Unable to create a new Page";
+               });
         }
     }
 })();

@@ -13,7 +13,11 @@
         function Initialize() {
             ViewModel.UserId = $routeParams.uid;
             ViewModel.WebsiteId = $routeParams.wid;
-            ViewModel.Pages = PageService.FindPageByWebsiteId(ViewModel.WebsiteId);
+            PageService
+                .FindPageByWebsiteId(ViewModel.WebsiteId)
+                .then(function (res) {
+                    ViewModel.Pages = res.data;
+                })
         }
     }
 })();

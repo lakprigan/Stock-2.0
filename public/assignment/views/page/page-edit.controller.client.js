@@ -16,26 +16,33 @@
             ViewModel.PageId= $routeParams.pid;
             ViewModel.DeletePage = deletePage;
             ViewModel.UpdatePage = updatePage;
-            ViewModel.Page = PageService.FindPageById(ViewModel.PageId);
+             PageService
+                 .FindPageById(ViewModel.PageId)
+                 .then(function (res) {
+                     ViewModel.Page = res.data;
+                 })
         }
 
         function deletePage() {
-            var isDeleted = PageService.DeletePage(ViewModel.PageId);
-            if(isDeleted){
-                $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
-            }else{
-                ViewModel.error = "Unable to delete the Page";
-            }
+           PageService
+               .DeletePage(ViewModel.PageId)
+               .then(function (res) {
+                   $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
+               },
+               function (err) {
+                   ViewModel.error = "Unable to delete the Page";
+               });
         }
 
         function updatePage(name, title) {
-            var updatedPage =  { "name": name };
-            var isUpdated = PageService.UpdatePage(ViewModel.PageId, updatedPage);
-            if(isUpdated){
-                $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
-            }else{
-                ViewModel.error = "Unable to update the Page";
-            }
+            var updatedPage =  { "name": name, "title" : title };
+            PageService
+                .UpdatePage(ViewModel.PageId, updatedPage)
+                .then(function (res) {
+                    $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
+                },function (err) {
+                    ViewModel.error = "Unable to update the Page";
+                });
         }
     }
 })();
