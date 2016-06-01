@@ -87,7 +87,7 @@ module.exports = function(app){
                 Users[i].firstName = updatedUser.firstName;
                 Users[i].lastName = updatedUser.lastName;
                 res.send(200);
-                return
+                return;
             }
         }
         res.send(400);

@@ -18,13 +18,13 @@
         }
 
         function CreateNewWebsite(name, description) {
-           var newWebsite = WebsiteService.CreateNewWebsite(ViewModel.UserId, name, description);
-            if(newWebsite){
-                $location.url("/user/"+ViewModel.UserId+"/website");
-            }else{
-                ViewModel.error = "Unable to create a new Website";
-            }
+           WebsiteService
+               .CreateNewWebsite(ViewModel.UserId, name, description)
+               .then(function (res) {
+                   $location.url("/user/"+ViewModel.UserId+"/website");
+               },function (err) {
+                   ViewModel.error = "Unable to create a new Website";
+               });
         }
-
     }
 })();

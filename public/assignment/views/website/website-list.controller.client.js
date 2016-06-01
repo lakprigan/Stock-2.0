@@ -13,7 +13,11 @@
 
         function Initialize() {
             ViewModel.UserId = $routeParams.uid;
-            ViewModel.Websites = WebsiteService.FindWebsitesByUserId(ViewModel.UserId);
+             WebsiteService
+                 .FindWebsitesByUserId(ViewModel.UserId)
+                 .then(function (response) {
+                     ViewModel.Websites = response.data;
+                 })
         }
     }
 })();

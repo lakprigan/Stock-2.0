@@ -13,16 +13,10 @@
             FindUserByUsername : FindUserByUsername,
             UpdateUser: UpdateUser,
             FindUserById: FindUserById,
-            DeleteUser: DeleteUser,
-            UpdateUserByUsername: UpdateUserByUsername
+            DeleteUser: DeleteUser
         };
 
         return api;
-
-         function UpdateUserByUsername(username, updatedUser){
-        //    var url = "/api/user/"+updatedUser._id;
-        //     return $http.put(url, updatedUser);
-         }
 
         function FindUserByUsernamePassword(username, password) {
             var url = "/api/user?username="+username+"&&password="+password;

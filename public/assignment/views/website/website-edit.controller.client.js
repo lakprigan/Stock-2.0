@@ -15,28 +15,32 @@
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.DeleteWebsite = deleteWebsite;
             ViewModel.UpdateWebsiteById = updateWebsiteById;
-            ViewModel.Website = WebsiteService.FindWebsiteById(ViewModel.WebsiteId);
+            WebsiteService
+                .FindWebsiteById(ViewModel.WebsiteId)
+                .then(function (res) {
+                    ViewModel.Website = res.data;
+                })
         }
         
         function deleteWebsite() {
-            var isDeleted = WebsiteService.DeleteWebsite(ViewModel.WebsiteId);
-            if(isDeleted){
-                $location.url("/user/"+ViewModel.UserId+"/website");
-            }else{
-                ViewModel.error = "Unable to delete a new Website";
-            }
+          WebsiteService
+                .DeleteWebsite(ViewModel.WebsiteId)
+              .then(function () {
+                  $location.url("/user/"+ViewModel.UserId+"/website");   
+              },function (error) {
+                  ViewModel.error = "Unable to delete a new Website";   
+              });
         }
-
-
 
         function updateWebsiteById(name, description) {
             var updatedWebsite =  { "name": name, "developerId": ViewModel.UserId };
-            var isUpdated = WebsiteService.UpdateWebsite(ViewModel.WebsiteId, updatedWebsite);
-            if(isUpdated){
-                $location.url("/user/"+ViewModel.UserId+"/website");
-            }else{
-                ViewModel.error = "Unable to update the Website";
-            }
+            WebsiteService
+                .UpdateWebsite(ViewModel.WebsiteId, updatedWebsite)
+                .then(function (res) {
+                    $location.url("/user/"+ViewModel.UserId+"/website");
+                },function (err) {
+                    ViewModel.error = "Unable to update the Website";
+                });
         }
     }
 })();
