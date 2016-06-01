@@ -14,28 +14,34 @@
             ViewModel.UserId = $routeParams.uid;
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.WidgetId = $routeParams.wgid;
-            ViewModel.Widget  = WidgetService.FindWidgetById(ViewModel.WidgetId);
+            WidgetService
+                .FindWidgetById(ViewModel.WidgetId)
+                .then(function (res) {
+                    ViewModel.Widget  = res.data;
+                });
             ViewModel.WidgetSizes = [1, 2, 3, 4, 5, 6];
             ViewModel.UpdateWidget = UpdateWidget;
             ViewModel.DeleteWidget = DeleteWidget;
         }
         
         function UpdateWidget(Widget) {
-            var isUpdated = WidgetService.UpdateWidget(ViewModel.WidgetId, Widget);
-            if(isUpdated){
-                $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget");
-            }else{
-                ViewModel.Error = "Unable to update the Website";
-            }
+           WidgetService
+               .UpdateWidget(ViewModel.WidgetId, Widget)
+               .then(function (res) {
+                   $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget");
+               },function (err) {
+                   ViewModel.Error = "Unable to update the Website";
+               });
         }
         
         function DeleteWidget(){
-            var isDeleted = WidgetService.DeleteWidget(ViewModel.WidgetId);
-            if(isDeleted){
-                $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget");
-            }else{
-                ViewModel.Error = "Unable to delete a new Widget";
-            }
+            WidgetService
+                .DeleteWidget(ViewModel.WidgetId)
+                .then(function (res) {
+                    $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget");
+                },function (error) {
+                    ViewModel.Error = "Unable to delete a new Widget";
+                });
         }
     }
 })();

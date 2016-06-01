@@ -14,7 +14,11 @@
             ViewModel.UserId = $routeParams.uid;
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.WidgetId = $routeParams.wgid;
-            ViewModel.Widget = WidgetService.FindWidgetById(ViewModel.WidgetId);
+            // WidgetService
+            //     .FindWidgetById(ViewModel.WidgetId)
+            //     .then(function (res) {
+            //         ViewModel.Widget = res.data;
+            //     });
             ViewModel.CreateWidget = CreateWidget;
         }
 
@@ -23,14 +27,20 @@
             var Widget = {
                 _id : (new Date()).getTime() + "",
             widgetType : widgetType,
-            pageId : ViewModel.PageId
-        }
+            pageId : ViewModel.PageId};
+
             if(widgetType === 'HEADER'){
                 Widget.size = 3;
             }
-            var newWidget = WidgetService.CreateWidget(Widget);
-            $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget/"+Widget._id);
 
+             WidgetService
+                 .CreateWidget(Widget)
+                 .then(function (res) {
+                     $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget/"+Widget._id);
+                 },
+                 function (err) {
+                     console.log("err");
+                 });
         }
     }
 })();

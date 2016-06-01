@@ -50,10 +50,10 @@ module.exports = function (app) {
         var widgetId = req.params.widgetId;
         var updatedWidget = req.body;
         for(var i in Widgets){
-            if(Widgets[i]._id===id){
-                Widgets[i].widgetType = updatedWidget.widgetType;
-                Widgets[i].text = updatedWidget.text;
-                Widgets[i].size = updatedWidget.size;
+            if(Widgets[i]._id===widgetId){
+                // Widgets[i].widgetType = updatedWidget.widgetType;
+                // Widgets[i].text = updatedWidget.text;
+                // Widgets[i].size = updatedWidget.size;
                 res.send(200);
                 return;
             }

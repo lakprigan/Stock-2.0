@@ -45,7 +45,8 @@
                    ng-model="model.Widget.url"
                    class="form-control"
                    id="url"
-                   placeholder="http://www.getimg.com/cat.jpg">
+                   placeholder="http://www.getimg.com/cat.jpg"
+                   value="http://www.getimg.com/cat.jpg">
         </div>
         <div class="form-group">
             <label for="width">Width</label>
@@ -61,7 +62,12 @@
             <input class="form-control btn btn-file" type="file" id="file"/>
         </div>
     </form>
-    <a class="btn btn-primary btn-block" href="#"> Upload Image</a>
+    <a class="btn btn-primary btn-block"> Upload Image</a>
+    <a class="btn btn-primary btn-block"
+       href="#/user/{{model.UserId}}">
+       <!--href="#/user/{{model.UserId}}/website/{{model.WebsiteId}}/page/{{model.PageId}}/widget/{{model.WidgetId}}/flickr">-->
+        SearchImage
+    </a>
     <a class="btn btn-danger btn-block"
        ng-click="model.DeleteWidget()">
         Delete

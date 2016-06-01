@@ -13,9 +13,13 @@
             ViewModel.PageId = $routeParams.pid;
             ViewModel.UserId = $routeParams.uid;
             ViewModel.WebsiteId = $routeParams.wid;
-            ViewModel.Widgets = WidgetService.FindWidgetsByPageId(ViewModel.PageId);
             ViewModel.GetSafeHtml = getSafeHtml;
             ViewModel.GetSafeUrl = getSafeUrl;
+            WidgetService
+                .FindWidgetsByPageId(ViewModel.PageId)
+                .then(function (res) {
+                    ViewModel.Widgets = res.data;
+                });
        }
         function getSafeHtml(widget) {
             return $sce.trustAsHtml(widget.text);
