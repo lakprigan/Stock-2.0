@@ -3,21 +3,26 @@
  */
 (function(){
     angular
-        .module("stockWatch")
+        .module("StockWatch")
         .config(ConfigureRoute);
 
     function ConfigureRoute($routeProvider) {
         $routeProvider
             .when("/login", {
-                templateUrl: "client/views/user/login.view.client.html",
+                templateUrl: "views/user/login.view.client.html",
+            })
+            .when("/home", {
+                templateUrl: "views/home/home.view.client.html",
+                controller: "HomeController",
+                controllerAs: "model"
             })
             .when("/register", {
-                templateUrl: "client/views/user/register.view.client.html"
+                templateUrl: "views/user/register.view.client.html"
             })
             .when("/profile", {
-                templateUrl: "client/views/user/profile.view.client.html",
+                templateUrl: "views/user/profile.view.client.html",
             })
             .otherwise({
-                redirectTo : "/login"
+                redirectTo : "/home"
             });
     }})();

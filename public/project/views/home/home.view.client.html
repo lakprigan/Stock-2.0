@@ -1,0 +1,16 @@
+<div class="container">
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">STOCK WATCH</h1>
+    </div>
+</div>
+    <slick settings="model.slickConfig" ng-if="model.numberLoaded">
+    </slick>
+
+    <slick ng-if="model.numberLoaded">
+        <div ng-repeat="i in model.number">
+            <div>{{model.number}}</div>
+        </div>
+    </slick>
+
+</div>
