@@ -20,7 +20,7 @@
     </div>
 </nav>
 <div class="container">
-    <form>
+    <form action="/api/uploads"  method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text"
@@ -59,10 +59,12 @@
         </div>
         <div class="form-group">
             <label for="file">Upload</label>
-            <input class="form-control btn btn-file" type="file" id="file"/>
+            <input  id="file" name="myFile"   type="file" class="form-control"/>
+            <input  name="width"    value="{{model.Widget.width}}" style="display: none"/>
+            <input  name="widgetId" value="{{model.Widget._id}}"   style="display: none"/>
+            <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
         </div>
     </form>
-    <a class="btn btn-primary btn-block"> Upload Image</a>
     <a class="btn btn-primary btn-block"
        href="#/user/{{model.UserId}}">
        <!--href="#/user/{{model.UserId}}/website/{{model.WebsiteId}}/page/{{model.PageId}}/widget/{{model.WidgetId}}/flickr">-->

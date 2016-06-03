@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+//Before you use any routes, so that parsing will be available for all the routes
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
