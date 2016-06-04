@@ -19,11 +19,15 @@
                 .FindWidgetsByPageId(ViewModel.PageId)
                 .then(function (res) {
                     ViewModel.Widgets = res.data;
+                    // $(".container")
+                    //     .sortable({
+                    //         axis: "y",
+                    //         handle: ".glyphicon-align-justify"
+                    //     });
                 });
        }
         function getSafeHtml(widget) {
             return $sce.trustAsHtml(widget.text);
-
         }
 
         function getSafeUrl(widget) {

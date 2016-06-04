@@ -19,8 +19,11 @@
         </div>
     </div>
 </nav>
-<div class="container">
-    <div ng-repeat="widget in model.Widgets" class="jga-widget">
+<div class="container"
+     jga-sortable axis="y"
+     handle=".glyphicon-align-justify">
+    <div ng-repeat="widget in model.Widgets"
+         class="jga-widget">
         <div class="jga-widget-tool">
             <a href = "#/user/{{model.UserId}}/website/{{model.WebsiteId}}/page/{{model.PageId}}/widget/{{widget._id}}">
           <span class="glyphicon glyphicon-cog">
@@ -43,7 +46,10 @@
                 <div ng-bind-html="model.GetSafeHtml(widget)"> </div>
             </div>
             <div ng-switch-when="YOUTUBE">
-                <iframe width="{{widget.width}}" ng-src="{{model.GetSafeUrl(widget)}}" frameborder="0" allowfullscreen></iframe>
+                <iframe width="{{widget.width}}"
+                        ng-src="{{model.GetSafeUrl(widget)}}"
+                        frameborder="0"
+                        allowfullscreen></iframe>
                 {{widget.url}}
             </div>
             <div ng-switch-when="IMAGE">

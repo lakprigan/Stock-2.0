@@ -25,7 +25,8 @@
     <div class="row">
         <div ng-repeat="photo in model.Photos.photo" class="col-xs-4">
             <img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"
-                 width="100%">
+                 width="100%"
+                 ng-click="model.selectPhoto(photo)">
         </div>
     </div>
 </div>
