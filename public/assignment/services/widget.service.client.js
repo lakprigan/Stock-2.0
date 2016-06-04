@@ -21,6 +21,7 @@
             return $http.get(url);
         }
 
+
         function FindWidgetById(widgetId) {
             var url = "/api/widget/"+widgetId;
             return $http.get(url);

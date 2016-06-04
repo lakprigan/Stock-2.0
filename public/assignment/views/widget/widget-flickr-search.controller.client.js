@@ -37,12 +37,11 @@
             WidgetService
                 .UpdateWidget(ViewModel.WidgetId, ViewModel.Widget)
                 .then(function (res) {
-                    $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget");
+                    $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget/"+ViewModel.Widget._id);
                 },function (err) {
                     ViewModel.Error = "Unable to update the Website";
                 });
         }
-
     }
 })();
 

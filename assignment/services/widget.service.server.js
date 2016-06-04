@@ -24,6 +24,9 @@ module.exports = function (app) {
     function uploadImage(req, res) {
         var widgetId      = req.body.widgetId;
         var width         = req.body.width;
+        var pageId        = req.body.pageId;
+        var userId        = req.body.userId;
+        var websiteId     = req.body.websiteId;
         var myFile        = req.file;
         var originalname  = myFile.originalname; // file name on user's computer
         var filename      = myFile.filename;     // new file name in upload folder
@@ -37,7 +40,7 @@ module.exports = function (app) {
                 Widgets[i].url = "/uploads/"+ filename;
             }
         }
-        res.redirect("/assignment/index.html#/user/:uid/website/:wid/page/:pid/widget/"+widgetId);
+        res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
     }
 
     function CreateWidget(req, res) {
