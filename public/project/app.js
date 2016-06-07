@@ -3,5 +3,5 @@
  */
 (function () {
     angular
-        .module("StockWatch",['ngRoute','slickCarousel']);
+        .module("StockWatch",['ngRoute','ngMaterial']);
 })();

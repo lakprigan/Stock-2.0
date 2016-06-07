@@ -2,6 +2,8 @@
  * Created by PriyaArun on 5/31/16.
  */
 module.exports = function(app){
+
+    
     var Users = [
         {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
         {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },

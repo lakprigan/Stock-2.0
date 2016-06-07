@@ -35,3 +35,11 @@ p.navbar-text.pull-left{
 .WebsiteEditCog{
     margin-right: 7px;
 }
+
+.navbar-header{
+    width: 100%;
+}
+
+.navbar-footer{
+    width: 100%;
+}
