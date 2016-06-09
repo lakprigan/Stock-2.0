@@ -26,8 +26,6 @@ module.exports = function (app, models) {
             },function (err) {
                 res.statusCode(400).send(err);
             });
-        // Pages.push(page);
-        // res.send(page);
     }
 
     function FindAllPageForWebsite(req, res) {
@@ -39,13 +37,6 @@ module.exports = function (app, models) {
             },function (err) {
                 res.statusCode(404).send(err);
             });
-        // var result = [];
-        // for(var p in Pages){
-        //     if(Pages[p].websiteId === websiteId){
-        //         result.push(Pages[p]);
-        //     }
-        // }
-        // res.send(result);
     }
 
     function FindPageById(req, res) {
@@ -57,13 +48,6 @@ module.exports = function (app, models) {
                 res.statusCode(400).send(err);
             });
         
-        // for(var p in Pages){
-        //     if(Pages[p]._id===pageId){
-        //         res.send(Pages[p]);
-        //         return;
-        //     }
-        // }
-        // res.send(400);
     }
 
     function UpdatePage(req, res) {
@@ -76,16 +60,7 @@ module.exports = function (app, models) {
             },function (err) {
                 res.statusCode(404).send(err);
             });
-        // for(var p in Pages){
-        //     if(Pages[p]._id===id){
-        //         Pages[p].name = newPage.name;
-        //         Pages[p].title = newPage.title;
-        //         res.send(200);
-        //         return;
-        //     }
-        // }
-        // res.send(400);
-    }
+       }
 
     function DeletePage(req, res) {
         var id = req.params.pageId;
@@ -95,14 +70,6 @@ module.exports = function (app, models) {
             },function (err) {
                 res.statusCode(404).send(err);
             });
-        // for(var p in Pages){
-        //     if(Pages[p]._id === id){
-        //         Pages.splice(p,1);
-        //         res.send(200);
-        //         return;
-        //     }
-        // }
-        // res.send(400);
-    }
+     }
 
 };
