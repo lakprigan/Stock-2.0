@@ -9,7 +9,9 @@ module.exports = function () {
     var api = {
         FindAllWidgetsForPage:FindAllWidgetsForPage,
         CreateWidget: CreateWidget,
-        FindWidgetById: FindWidgetById
+        FindWidgetById: FindWidgetById,
+        UpdateWidget: UpdateWidget,
+        DeleteWidget: DeleteWidget
 
     }
     return api;
@@ -19,7 +21,18 @@ module.exports = function () {
     }
     function CreateWidget(pageId, widget) {
         widget._page = pageId;
+        delete widget._id;
         return Widget.create(widget);
+    }
+    function FindWidgetById(widgetId) {
+        return Widget.findById({"_id": widgetId});
+    }
+    function UpdateWidget(widgetId, widget) {
+        delete widget._id;
+        return Widget.update({"_id": widgetId},widget);
+    }
+    function DeleteWidget(widgetId) {
+        return Widget.remove({"_id": widgetId});
     }
 
 }

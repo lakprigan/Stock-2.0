@@ -2,7 +2,7 @@
  * Created by PriyaArun on 6/1/16.
  */
 module.exports = function (app, models) {
-    var widgetModel = models.WebsiteModel;
+    var widgetModel = models.WidgetModel;
     var Widgets = [
         { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
         { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -103,25 +103,39 @@ module.exports = function (app, models) {
     function UpdateWidget(req, res) {
         var widgetId = req.params.widgetId;
         var updatedWidget = req.body;
-        for(var i in Widgets){
-            if(Widgets[i]._id===widgetId){
-                 Widgets[i] = updatedWidget;
+        widgetModel
+            .UpdateWidget(widgetId,updatedWidget)
+            .then(function (widget) {
                 res.send(200);
-                return;
-            }
-        }
-        res.send(400);
+            },function (err) {
+                res.statusCode(400).send(err);
+            });
+        // for(var i in Widgets){
+        //     if(Widgets[i]._id===widgetId){
+        //          Widgets[i] = updatedWidget;
+        //         res.send(200);
+        //         return;
+        //     }
+        // }
+        // res.send(400);
     }
     
     function DeleteWidget(req, res) {
         var widgetId = req.params.widgetId;
-        for(var w in Widgets){
-            if(Widgets[w]._id === widgetId){
-                Widgets.splice(w,1);
+        widgetModel
+            .DeleteWidget(widgetId)
+            .then(function (widget) {
                 res.send(200);
-                return;
-            }
-        }
-        res.send(400);
+            },function (err) {
+                res.statusCode(400).send(err);
+            });
+        // for(var w in Widgets){
+        //     if(Widgets[w]._id === widgetId){
+        //         Widgets.splice(w,1);
+        //         res.send(200);
+        //         return;
+        //     }
+        // }
+        // res.send(400);
     }
 };
