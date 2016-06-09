@@ -34,16 +34,14 @@
         function CreatePage(websiteId, name, title) {
             var url = "/api/website/"+websiteId+"/page";
             var newPage = {
-                _id: (new Date()).getTime()+"",
-               name: name,
-               title: title,
-                websiteId: websiteId
+                name: name,
+                title: title
             }
             return $http.post(url, newPage);
         }
 
         function DeletePage(pageId) {
-            var url = "/api/page/:pageId";
+            var url = "/api/page/"+pageId;
             return $http.delete(url);
         }
     }

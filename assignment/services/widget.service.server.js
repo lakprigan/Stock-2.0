@@ -1,7 +1,8 @@
 /**
  * Created by PriyaArun on 6/1/16.
  */
-module.exports = function (app) {
+module.exports = function (app, models) {
+    var widgetModel = models.WebsiteModel;
     var Widgets = [
         { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
         { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
@@ -51,30 +52,52 @@ module.exports = function (app) {
 
     function CreateWidget(req, res) {
         var widget = req.body;
-        Widgets.push(widget);
-        res.send(widget);
+        var pageId = req.params.pageId;
+        // Widgets.push(widget);
+        // res.send(widget);
+        widgetModel
+            .CreateWidget(pageId, widget)
+            .then(function (stat) {
+                res.send(200);
+            },function (err) {
+                res.statusCode(404).send(err);
+            });
     }
     
     function FindAllWidgetsForPage(req, res) {
         var pageId = req.params.pageId;
-        var result = [];
-        for(var w in Widgets){
-            if(Widgets[w].pageId === pageId){
-                result.push(Widgets[w]);
-            }
-        }
-        res.send(result);
+        widgetModel
+            .FindAllWidgetsForPage(pageId)
+            .then(function (widgets) {
+                res.json(widgets);
+            },function (err) {
+                res.statusCode(404).send(err);
+            })
+        // var result = [];
+        // for(var w in Widgets){
+        //     if(Widgets[w].pageId === pageId){
+        //         result.push(Widgets[w]);
+        //     }
+        // }
+        // res.send(result);
     }
     
     function FindWidgetById(req, res) {
         var widgetId = req.params.widgetId;
-        for(var i in Widgets){
-            if(Widgets[i]._id===widgetId){
-                res.send(Widgets[i]);
-                return;
-            }
-        }
-        res.send(404).send("unable to find the widget");
+        widgetModel
+            .FindWidgetById(widgetId)
+            .then(function (widget) {
+                res.json(widget);
+            },function (err) {
+                res.statusCode(400).send(err);
+            });
+        // for(var i in Widgets){
+        //     if(Widgets[i]._id===widgetId){
+        //         res.send(Widgets[i]);
+        //         return;
+        //     }
+        // }
+        // res.send(404).send("unable to find the widget");
     }
     
     function UpdateWidget(req, res) {
