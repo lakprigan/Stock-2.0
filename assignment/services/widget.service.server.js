@@ -53,12 +53,10 @@ module.exports = function (app, models) {
     function CreateWidget(req, res) {
         var widget = req.body;
         var pageId = req.params.pageId;
-        // Widgets.push(widget);
-        // res.send(widget);
-        widgetModel
+       widgetModel
             .CreateWidget(pageId, widget)
             .then(function (stat) {
-                res.send(200);
+                res.send(stat._id);
             },function (err) {
                 res.statusCode(404).send(err);
             });
@@ -72,15 +70,8 @@ module.exports = function (app, models) {
                 res.json(widgets);
             },function (err) {
                 res.statusCode(404).send(err);
-            })
-        // var result = [];
-        // for(var w in Widgets){
-        //     if(Widgets[w].pageId === pageId){
-        //         result.push(Widgets[w]);
-        //     }
-        // }
-        // res.send(result);
-    }
+            });
+     }
     
     function FindWidgetById(req, res) {
         var widgetId = req.params.widgetId;
@@ -91,13 +82,6 @@ module.exports = function (app, models) {
             },function (err) {
                 res.statusCode(400).send(err);
             });
-        // for(var i in Widgets){
-        //     if(Widgets[i]._id===widgetId){
-        //         res.send(Widgets[i]);
-        //         return;
-        //     }
-        // }
-        // res.send(404).send("unable to find the widget");
     }
     
     function UpdateWidget(req, res) {
@@ -110,14 +94,6 @@ module.exports = function (app, models) {
             },function (err) {
                 res.statusCode(400).send(err);
             });
-        // for(var i in Widgets){
-        //     if(Widgets[i]._id===widgetId){
-        //          Widgets[i] = updatedWidget;
-        //         res.send(200);
-        //         return;
-        //     }
-        // }
-        // res.send(400);
     }
     
     function DeleteWidget(req, res) {
@@ -129,13 +105,5 @@ module.exports = function (app, models) {
             },function (err) {
                 res.statusCode(400).send(err);
             });
-        // for(var w in Widgets){
-        //     if(Widgets[w]._id === widgetId){
-        //         Widgets.splice(w,1);
-        //         res.send(200);
-        //         return;
-        //     }
-        // }
-        // res.send(400);
     }
 };

@@ -17,11 +17,10 @@ module.exports = function () {
     return api;
 
     function FindAllWidgetsForPage(pageId) {
-        return Widget.find({"_id" : pageId});
+        return Widget.find({"_page" : pageId});
     }
     function CreateWidget(pageId, widget) {
         widget._page = pageId;
-        delete widget._id;
         return Widget.create(widget);
     }
     function FindWidgetById(widgetId) {
@@ -34,5 +33,4 @@ module.exports = function () {
     function DeleteWidget(widgetId) {
         return Widget.remove({"_id": widgetId});
     }
-
 }

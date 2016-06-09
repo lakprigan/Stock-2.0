@@ -25,7 +25,6 @@
 
         function CreateWidget(widgetType){
             var Widget = {
-                _id : (new Date()).getTime() + "",
             widgetType : widgetType,
             pageId : ViewModel.PageId};
 
@@ -36,7 +35,7 @@
              WidgetService
                  .CreateWidget(Widget)
                  .then(function (res) {
-                     $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget/"+Widget._id);
+                     $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page/"+ViewModel.PageId+"/widget/"+res.data);
                  },
                  function (err) {
                      console.log("err");

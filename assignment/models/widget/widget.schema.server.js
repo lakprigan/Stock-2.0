@@ -5,7 +5,7 @@ module.exports = function () {
     var moongose = require('mongoose');
     var WidgetSchema = moongose.Schema({
         _page: {type: moongose.Schema.ObjectId, ref: "Page"},
-        type: {type: String, enum: ['HEADING', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT']},
+        widgetType: {type: String, enum: ['HEADER', 'IMAGE', 'YOUTUBE', 'HTML', 'INPUT']},
         name : String,
         text: String,
         placeholder: String,
