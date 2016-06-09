@@ -17,6 +17,8 @@
                 .FindUserById(ViewModel.id)
                 .then(function (response) {
                     ViewModel.User = response. data;
+                },function (err) {
+                    ViewModel.Error = "unable to retrieve the user"
                 });
             ViewModel.UpdateUser = UpdateUser;
             ViewModel.Unregister = Unregister;
@@ -29,7 +31,7 @@
                    ViewModel.Error = null;
            },
                function (error) {
-                   ViewModel.Error = "Unable to update user!";
+                   ViewModel.Error = "unable to update user";
                    ViewModel.Success = null;
                });
         }
@@ -40,7 +42,7 @@
                     $location.url("/login");
                 },
                 function (error){
-                    ViewModel.Error = "Unable to remove user";
+                    ViewModel.Error = "unable to remove user";
                 });
         }
 

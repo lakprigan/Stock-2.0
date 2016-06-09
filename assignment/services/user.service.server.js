@@ -17,7 +17,7 @@ module.exports = function(app, models){
     app.delete("/api/user/:userId", DeleteUser);
 
     function DeleteUser(req, res) {
-        var id = req.params.userId;
+        var userId = req.params.userId;
         userModel
             .DeleteUser(userId)
             .then(function (stats) {
@@ -25,29 +25,17 @@ module.exports = function(app, models){
             },function (err) {
                 res.statusCode(404).send(err);
             });
-        // for(var i in Users){
-        //     if(Users[i]._id === id){
-        //         Users.splice(i);
-        //         res.send(200);
-        //         return;
-        //     }
-        // }
-        // res.send(400);
     }
 
     function createUser(req, res) {
         var user = req.body;
-        
         userModel
-            .createUser(user)
+            .CreateUser(user)
             .then(function (user) {
                 res.json(user);
             },function (err) {
                 res.statusCode(400).send(err);
             });
-        
-        //Users.push(user);
-        //res.send(user);
     }
     
     function GetUsers(req, res) {
@@ -73,13 +61,6 @@ module.exports = function(app, models){
             },function (err) {
                 res.statusCode(400).send(err);
             });
-        // for(var i in Users){
-        //     if(Users[i].username===username && Users[i].password===password){
-        //         res.send(Users[i]);
-        //         return
-        //     }
-        // }
-        // res.send({});
     }
 
     function FindUserByUserName(username,res){
@@ -90,14 +71,6 @@ module.exports = function(app, models){
             },function (err) {
                 res.statusCode(404).send(err);
             });
-        
-        // for(var i in Users){
-        //     if(Users[i].username===username){
-        //         res.send(Users[i]);
-        //         return
-        //     }
-        // }
-        // res.send({});
     }
     
     function  FindUserById(req, res) {
@@ -109,13 +82,6 @@ module.exports = function(app, models){
             },function (err) {
                 res.statusCode(404).send(err);
             });
-        // for(var i in Users){
-        //     if(Users[i]._id===id){
-        //         res.send(Users[i]);
-        //         return
-        //     }
-        // }
-        // res.send({});
     }
 
     function UpdateUser(req, res) {
@@ -129,14 +95,6 @@ module.exports = function(app, models){
             },function (err) {
                 res.statusCode(404).send(err);
             });
-        // for(var i in Users){
-        //     if(Users[i]._id === id){
-        //         Users[i].firstName = updatedUser.firstName;
-        //         Users[i].lastName = updatedUser.lastName;
-        //         res.send(200);
-        //         return;
-        //     }
-        // }
-        // res.send(400);
+        
     }
 };

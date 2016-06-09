@@ -3,7 +3,7 @@
  */
 module.exports = function () {
     var mongoose = require("mongoose");
-    var UserSchema = require("./user.schema.server");
+    var UserSchema = require("./user.schema.server")();
     var User = mongoose.model("User", UserSchema);
 
     var api = {
@@ -16,29 +16,28 @@ module.exports = function () {
     }
     return api;
 
-    function FindUserByUserName(userName) {
-        return User.findOne({userName: username});
+    function FindUserByUserName(username) {
+        return User.findOne({username: username});
     }
 
     function UpdateUser(userId, updatedUser) {
         return User
             .update({_id: userId},
                 {$set:{
-                    firstName : firstName,
-                    lastName: lastName
+                    firstName : updatedUser.firstName,
+                    lastName: updatedUser.lastName
                 }});
     }
 
     function CreateUser(user) {
-        console.log("createUser" + user);
-        User.create(user);
+        return User.create(user);
     }
 
     function FindUserById(userId) {
        return User.findById({_id: userId});
     }
     
-    function FindUserByCredentials() {
+    function FindUserByCredentials(username, password) {
         return User.findOne({username: username, password: password});
     }
     

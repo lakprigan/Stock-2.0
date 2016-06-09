@@ -17,7 +17,7 @@
                  .FindWebsitesByUserId(ViewModel.UserId)
                  .then(function (response) {
                      ViewModel.Websites = response.data;
-                 })
+                 });
         }
     }
 })();

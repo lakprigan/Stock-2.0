@@ -7,7 +7,8 @@ module.exports = function () {
     mongoose.connect('mongodb://localhost/wam');
 
     var models = {
-       UserModel: require("./user/user.model.server.js") ()
+        UserModel: require("./user/user.model.server") (),
+        WebsiteModel: require("./website/website.model.server")()
     }
     return models;
 };

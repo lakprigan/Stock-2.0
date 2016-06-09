@@ -19,13 +19,13 @@
                     if(retrievedUser.username == null)
                     {
                         if(user.password === user.verifyPassword){
-                            var newUser = {_id: (new Date()).getTime()+"", username: user.username, password : user.password};
+                            var newUser = {username: user.username, password : user.password};
                             UserService
                                 .CreateUser(newUser)
                                 .then(function (response) {
                                     var retrievedUser = response.data;
                                     if(retrievedUser){
-                                        $location.url("/user/"+user._id);
+                                        $location.url("/user/"+retrievedUser._id);
                                     }
                                 })
                         }

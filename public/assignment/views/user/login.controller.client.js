@@ -14,7 +14,8 @@
                .FindUserByUsernamePassword(username, password)
                .then(function (response) {
                 var user = response.data;
-                if(user._id){
+                if(user){
+                    if(user._id)
                     $location.url("/user/"+ user._id);
                 } else {
                     ViewModel.Error = "User not found!";
