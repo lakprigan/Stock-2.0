@@ -26,12 +26,12 @@
         //     console.log(res);
         // })
 
-        $http.get("http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json?input=a")
-            .then(function (data) {
-                console.log(data);
-            },function (err) {
-                console.log("err");
-            });
+        // $http.get("http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json?input=a")
+        //     .then(function (data) {
+        //         console.log(data);
+        //     },function (err) {
+        //         console.log("err");
+        //     });
 
         self.querySearch   = querySearch;
 
