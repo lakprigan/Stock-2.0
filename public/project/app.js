@@ -3,5 +3,5 @@
  */
 (function () {
     angular
-        .module("StockWatch",['ngRoute','ngMaterial']);
+        .module("StockWatch",['ngRoute']);
 })();

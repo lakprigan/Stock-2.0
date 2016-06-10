@@ -1,11 +1,11 @@
 /**
  * Created by PriyaArun on 5/24/16.
  */
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
         .config(ConfigureRoute);
-    
+
     function ConfigureRoute($routeProvider) {
         $routeProvider
             .when("/login", {
@@ -74,6 +74,7 @@
                 controllerAs: "model"
             })
             .otherwise({
-                redirectTo : "/login"
+                redirectTo: "/login"
             });
-            }})();
+    }
+})();
