@@ -9,12 +9,30 @@
     function HomeController($http) {
 
         var self = this;
-        $http.get("http://chstocksearch.herokuapp.com/api/a").then(function (res) {
-            self.states = res.data;
-        },
-        function (err) {
-            console.log("error");
-        });
+        // $http.get("http://d.yimg.com/aq/autoc?query=y&region=US&lang=en-US").then(function (res) {
+        //     self.states = res.data;
+        // },
+        // function (err) {
+        //     console.log("error");
+        // });
+
+        // $http({
+        //     method: 'GET',
+        //     url: 'http://d.yimg.com/aq/autoc?query=y&region=US&lang=en-US',
+        //     jsonpCallback: 'jsonCallback',
+        //     contentType: "application/json",
+        //     dataType: 'jsonp'
+        // }).then(function (res) {
+        //     console.log(res);
+        // })
+
+        $http.get("http://dev.markitondemand.com/MODApis/Api/v2/Lookup/json?input=a")
+            .then(function (data) {
+                console.log(data);
+            },function (err) {
+                console.log("err");
+            });
+
         self.querySearch   = querySearch;
 
         function querySearch (query) {
