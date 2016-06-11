@@ -12,13 +12,19 @@
             CreateWidget: CreateWidget,
             FindWidgetById: FindWidgetById,
             UpdateWidget: UpdateWidget,
-            DeleteWidget: DeleteWidget
+            DeleteWidget: DeleteWidget,
+            ReorderWidgets: ReorderWidgets
         };
         return api;
 
         function FindWidgetsByPageId(pageId) {
            var url = "/api/page/"+pageId+"/widget";
             return $http.get(url);
+        }
+
+        function ReorderWidgets(pageId, start, end) {
+            var url = "/api/page/"+pageId+"/widget?start="+start+"&end="+end;
+            return $http.put(url);
         }
 
 

@@ -19,6 +19,7 @@ module.exports = function () {
         icon: String,
         deletable: Boolean,
         formatted: Boolean,
+        order: String,
         dateCreated: {type: Date, default: Date.Now}
     }, {collection: "wam.widget"});
     return WidgetSchema;

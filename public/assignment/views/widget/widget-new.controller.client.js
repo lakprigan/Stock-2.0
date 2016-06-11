@@ -14,11 +14,11 @@
             ViewModel.UserId = $routeParams.uid;
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.WidgetId = $routeParams.wgid;
-            // WidgetService
-            //     .FindWidgetById(ViewModel.WidgetId)
-            //     .then(function (res) {
-            //         ViewModel.Widget = res.data;
-            //     });
+            WidgetService
+                .FindWidgetsByPageId(ViewModel.PageId)
+                .then(function (res) {
+                    ViewModel.Widgets = res.data;
+                });
             ViewModel.CreateWidget = CreateWidget;
         }
 
@@ -26,7 +26,9 @@
         function CreateWidget(widgetType){
             var Widget = {
             widgetType : widgetType,
-            pageId : ViewModel.PageId};
+            pageId : ViewModel.PageId,
+            order: ViewModel.Widgets.length
+            };
 
             if(widgetType === 'HEADER'){
                 Widget.size = 3;

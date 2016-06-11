@@ -15,12 +15,19 @@
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.GetSafeHtml = getSafeHtml;
             ViewModel.GetSafeUrl = getSafeUrl;
+            ViewModel.ReorderWidgets = ReorderWidgets;
+            init();
+
+       }
+
+        function init() {
             WidgetService
                 .FindWidgetsByPageId(ViewModel.PageId)
                 .then(function (res) {
                     ViewModel.Widgets = res.data;
                 });
-       }
+        }
+
         function getSafeHtml(widget) {
             return $sce.trustAsHtml(widget.text);
         }
@@ -30,6 +37,14 @@
             var id = urlParts[urlParts.length - 1];
             var url = "https://www.youtube.com/embed/"+id;
             return $sce.trustAsResourceUrl(url);
+        }
+
+        function ReorderWidgets(map) {
+            console.log("here");
+            WidgetService
+                .ReorderWidgets(ViewModel.PageId, map.start, map.end)
+                .then(init);
+
         }
     }
 })();

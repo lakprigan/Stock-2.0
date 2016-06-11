@@ -7,8 +7,8 @@
         .directive("jgaSortable",jgaSortable);
 
     function jgaSortable() {
-        var start;
-        var end;
+        var start = 0;
+        var end = 0;
         function link(scope, element, attributes) {
             var jgaAxis = attributes.axis;
             var jgaHandle = attributes.handle;
@@ -20,10 +20,8 @@
                 },
                 stop:function (event,ui) {
                     end = ui.item.index();
-                    var temp = scope.model.Widgets[start];
-                    scope.model.Widgets[start] = scope.model.Widgets[end];
-                    scope.model.Widgets[end] = temp;
-                    scope.$apply();
+                    scope.model.ReorderWidgets({start: start, end: end});
+                    //scope.$apply();
                 }
             });
 

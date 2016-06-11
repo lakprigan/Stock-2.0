@@ -20,9 +20,12 @@
     </div>
 </nav>
 <div class="container"
-     jga-sortable axis="y"
-     handle=".glyphicon-align-justify">
-    <div ng-repeat="widget in model.Widgets"
+     jga-sortable
+     axis="y"
+     handle=".glyphicon-align-justify"
+     callback="model.ReorderWidgets(start, end)">
+
+    <div ng-repeat="widget in model.Widgets | orderBy:'order'"
          class="jga-widget">
         <div class="jga-widget-tool">
             <a href = "#/user/{{model.UserId}}/website/{{model.WebsiteId}}/page/{{model.PageId}}/widget/{{widget._id}}">
