@@ -58,6 +58,14 @@
             <div ng-switch-when="IMAGE">
                 <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
             </div>
+            <div ng-switch-when="HTML">
+              <div ng-bind-html="widget.text"></div>
+            </div>
+            <div ng-switch-when="TEXT">
+                <div ng-if="widget.formatted">
+
+                </div>
+            </div>
             <div ng-switch-default>INVALID WIDGET</div>
         </div>
     </div>
