@@ -3,7 +3,7 @@
  */
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("jgaDirectives",[])
         .directive("jgaSortable",jgaSortable);
 
     function jgaSortable() {
