@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -6,7 +5,7 @@
                 Profile
             </a>
             <p class="navbar-text pull-right">
-                <a ng-click="Profile.UpdateUser(Profile.User)" class="navbar-link">
+                <a ng-click="model.UpdateUser(model.User)" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
                 </a>
@@ -15,16 +14,16 @@
     </div>
 </nav>
 <div class="container">
-    <div ng-if="Profile.Success" class="alert alert-success" role="alert">
-        <a class="alert-link">{{Profile.Success}}</a>
+    <div ng-if="model.Success" class="alert alert-success" role="alert">
+        <a class="alert-link">{{model.Success}}</a>
     </div>
-    <div ng-if="Profile.Error" class="alert alert-danger" role="alert">
-        <a class="alert-link">{{Profile.Error}}</a>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        <a class="alert-link">{{model.Error}}</a>
     </div>
     <form>
         <div class="form-group">
             <label for="username">Username</label>
-            <input ng-model="Profile.User.username"
+            <input ng-model="model.User.username"
                    type="text"
                    class="form-control"
                    id="username"
@@ -39,7 +38,7 @@
         </div>
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input ng-model="Profile.User.firstName"
+            <input ng-model="model.User.firstName"
                     type="text"
                    class="form-control"
                    id="firstName"
@@ -47,7 +46,7 @@
         </div>
         <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input ng-model="Profile.User.lastName"
+            <input ng-model="model.User.lastName"
                     type="text"
                    class="form-control"
                    id="lastName"
@@ -55,7 +54,7 @@
         </div>
     </form>
     <a class="btn btn-primary btn-block"
-       href="#/user/{{Profile.User._id}}/website">
+       href="#/user/{{model.User._id}}/website">
         Websites
     </a>
     <a class="btn btn-danger btn-block"
@@ -63,17 +62,7 @@
         Logout
     </a>
     <a class="btn btn-danger btn-block"
-       ng-click="Profile.Unregister()">
+       ng-click="model.Unregister()">
         Unregister
     </a>
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text navbar-link pull-right">
-            <a href="#/user/{{Profile.User._id}}">
-          <span class="glyphicon glyphicon-user">
-          </span>
-            </a>
-        </div>
-    </div>
-</nav>
