@@ -43,3 +43,9 @@ p.navbar-text.pull-left{
 .navbar-footer{
     width: 100%;
 }
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}

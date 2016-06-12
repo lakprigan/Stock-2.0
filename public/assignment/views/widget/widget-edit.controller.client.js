@@ -25,6 +25,7 @@
         }
         
         function UpdateWidget(Widget) {
+            console.log(Widget);
            WidgetService
                .UpdateWidget(ViewModel.WidgetId, Widget)
                .then(function (res) {
