@@ -3,8 +3,8 @@
  */
 (function () {
     angular
-        .module("jgaDirectives",[])
-        .directive("jgaSortable",jgaSortable);
+        .module("wamDirectives",[])
+        .directive("wamSortable",jgaSortable);
 
     function jgaSortable() {
         var start = 0;
