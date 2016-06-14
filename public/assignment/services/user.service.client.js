@@ -15,10 +15,16 @@
             FindUserById: FindUserById,
             DeleteUser: DeleteUser,
             Login: Login,
-            Logout: Logout
+            Logout: Logout,
+            LoggedIn: LoggedIn
         };
 
         return api;
+
+        function LoggedIn() {
+            var url = "/api/loggedIn";
+            return $http.get(url);
+        }
 
         function FindUserByUsernamePassword(username, password) {
             var url = "/api/user?username="+username+"&&password="+password;

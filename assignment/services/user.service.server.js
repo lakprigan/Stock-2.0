@@ -5,8 +5,8 @@ module.exports = function(app, models){
 
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
+   // passport.serializeUser(serializeUser);
+   // passport.deserializeUser(deserializeUser);
 
     var userModel = models.UserModel;
 
@@ -20,11 +20,22 @@ module.exports = function(app, models){
     app.get("/api/user/:userId", FindUserById);
     app.put("/api/user/:userId", UpdateUser);
     app.delete("/api/user/:userId", DeleteUser);
+    app.get("/api/loggedIn", LoggedIn);
 
     function logout(req, res) {
         req.logout();
         res.send(200);
     }
+
+    function LoggedIn() {
+        if(req.isAuthenticated()){
+            res.json(req.user);
+        }
+        else{
+            res.send('0');
+        }
+    }
+
     function DeleteUser(req, res) {
         var userId = req.params.userId;
         userModel
