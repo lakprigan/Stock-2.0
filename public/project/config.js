@@ -37,6 +37,9 @@
             .when("/user/:id/portfolio/:pid",{
                 templateUrl: "views/portfolio/portfolio-edit.view.client.html"
             })
+            .when("/user/:id/portfolio/:pid/stock",{
+                templateUrl: "views/stock/stock-list.view.client.html"
+            })
             .otherwise({
                 redirectTo: "/home"
             });

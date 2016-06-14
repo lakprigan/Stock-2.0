@@ -13,7 +13,9 @@
             FindUserByUsername : FindUserByUsername,
             UpdateUser: UpdateUser,
             FindUserById: FindUserById,
-            DeleteUser: DeleteUser
+            DeleteUser: DeleteUser,
+            Login: Login,
+            Logout: Logout
         };
 
         return api;
@@ -23,6 +25,16 @@
             return $http.get(url);
         }
 
+        function Logout() {
+            var url = "/api/logout";
+            return $http.post(url);
+        }
+        function Login(username, password) {
+            //var url = "/api/user?username="+username+"&&password="+password;
+            var url = "/api/login";
+            return $http.post(url,{username : username, password: password});
+        }
+        
         function UpdateUser(id, updatedUser) {
             var url = "/api/user/"+ id;
             return $http.put(url, updatedUser);

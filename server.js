@@ -1,14 +1,21 @@
 var express = require('express');
 var app = express();
+var cookieParser = require('cookie-parser');
+var session      = require('express-session');
 
 //Before you use any routes, so that parsing will be available for all the routes
 var bodyParser = require('body-parser');
+var passport = require('passport');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
-
+app.use(cookieParser());
+//encrypt the user.  As the cookies are sent back and forth. Encrpts and decrypts environment
+// put a environment variable in mac bash-profile and rhc in openshift
+//process.env.SESSION_SECRET
+app.use(session({ secret: "abc" }));
 //require ("./test/app.js")(app);
 
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
@@ -30,5 +37,9 @@ assignment(app);
 
 var project = require("./project/app.js");
 project(app);
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.listen(port, ipaddress);

@@ -11,7 +11,7 @@
         
         ViewModel.login = function (username, password) {
            UserService
-               .FindUserByUsernamePassword(username, password)
+               .Login(username, password)
                .then(function (response) {
                 var user = response.data;
                 if(user){

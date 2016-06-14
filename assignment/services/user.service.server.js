@@ -2,20 +2,29 @@
  * Created by PriyaArun on 5/31/16.
  */
 module.exports = function(app, models){
-    var Users = [
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];
+
+    var passport = require('passport');
+    var LocalStrategy = require('passport-local').Strategy;
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
     var userModel = models.UserModel;
 
+    //encrypt entire request to the body using ssl - openshift paid version supports this
     app.post("/api/user",createUser);
+    //intercept login, filter or middle tier that can take a look into the request
+    //local is the standard name for the local strategy
+    app.post("/api/login",passport.authenticate('wam'), login);
+    app.post("/api/logout", logout);
     app.get("/api/user", GetUsers);
     app.get("/api/user/:userId", FindUserById);
     app.put("/api/user/:userId", UpdateUser);
     app.delete("/api/user/:userId", DeleteUser);
 
+    function logout(req, res) {
+        req.logout();
+        res.send(200);
+    }
     function DeleteUser(req, res) {
         var userId = req.params.userId;
         userModel
@@ -43,7 +52,7 @@ module.exports = function(app, models){
         var password = req.query['password'];
 
         if(username && password){
-            FindUserByCredentials(username, password, res)
+            FindUserByCredentials(username, password, res, req)
         }
         else if(username){
             FindUserByUserName(username,res);
@@ -53,14 +62,49 @@ module.exports = function(app, models){
         }
     }
 
-    function FindUserByCredentials(username, password, res) {
+    //subsequent request headers cookies will be passed along to the server
+    //by default the session timeout is 30 mins
+    //restart server session goes away
+    //any falsey, abort the request 401/404 and abort the session
+    passport.use('wam', new LocalStrategy(localStrategy));
+    function localStrategy(username, password, done) {
         userModel
-            .FindUserByCredentials(username,password)
-            .then(function (user) {
-                res.json(user)
-            },function (err) {
-                res.statusCode(400).send(err);
-            });
+            .FindUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    if(user.username === username && user.password === password) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false);
+                    }
+                },
+                function(err) {
+                    return done(err);
+                }
+            );
+    }
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        userModel
+            .FindUserById(user._id)
+            .then(
+                function(user){
+                    done(null, user);
+                },
+                function(err){
+                    done(err, null);
+                }
+            );
+    }
+
+    function login(req, res) {
+        //passport has put the user in req
+        var user = req.user;
+        res.json(user);
     }
 
     function FindUserByUserName(username,res){
@@ -72,7 +116,10 @@ module.exports = function(app, models){
                 res.statusCode(404).send(err);
             });
     }
-    
+
+
+    //we want to stay as stateless as possible, session is only going to be used for identification
+    //stateless scales better
     function  FindUserById(req, res) {
      var id = req.params.userId;
         userModel
