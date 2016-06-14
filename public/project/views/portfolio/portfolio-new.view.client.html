@@ -1,0 +1,50 @@
+<div class="container">
+    <div ng-if="Profile.Success" class="alert alert-success" role="alert">
+        <a class="alert-link">{{Profile.Success}}</a>
+    </div>
+    <div ng-if="Profile.Error" class="alert alert-danger" role="alert">
+        <a class="alert-link">{{Profile.Error}}</a>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="stock">Stock</label>
+            <input type="text"
+                   class="form-control"
+                   id="stock"
+                   placeholder="NASDAQ">
+        </div>
+        <div class="form-group">
+            <label for="stockPrice">Stock Price</label>
+            <input type="number"
+                   class="form-control"
+                   id="stockPrice"
+                   placeholder="26.57">
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number"
+                   class="form-control"
+                   id="quantity"
+                   placeholder="50">
+        </div>
+        <div class="form-group">
+            <label for="date">Quantity</label>
+            <input type="date"
+                   class="form-control"
+                   id="date"
+                   placeholder="mm/dd/yyyy">
+        </div>
+    </form>
+    <a class="btn btn-primary btn-block"
+       href="#/user/{{Profile.User._id}}/website">
+        Websites
+    </a>
+    <a class="btn btn-danger btn-block"
+       href="#/login">
+        Logout
+    </a>
+    <a class="btn btn-danger btn-block"
+       ng-click="Profile.Unregister()">
+        Unregister
+    </a>
+</div>

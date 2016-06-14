@@ -28,6 +28,15 @@
                 controller: "ProfileController",
                 controllerAs: "model"
             })
+            .when("/user/:id/portfolio",{
+                templateUrl: "views/portfolio/portfolio-list.view.client.html"
+            })
+            .when("/user/:id/portfolio/new",{
+                templateUrl: "views/portfolio/portfolio-new.view.client.html"
+            })
+            .when("/user/:id/portfolio/:pid",{
+                templateUrl: "views/portfolio/portfolio-edit.view.client.html"
+            })
             .otherwise({
                 redirectTo: "/home"
             });
