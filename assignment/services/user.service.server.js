@@ -5,13 +5,16 @@ module.exports = function(app, models){
 
     var passport = require('passport');
     var LocalStrategy = require('passport-local').Strategy;
-   // passport.serializeUser(serializeUser);
-   // passport.deserializeUser(deserializeUser);
+    var bcrypt = require("bcrypt-nodejs");
+
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
 
     var userModel = models.UserModel;
 
     //encrypt entire request to the body using ssl - openshift paid version supports this
     app.post("/api/user",createUser);
+
     //intercept login, filter or middle tier that can take a look into the request
     //local is the standard name for the local strategy
     app.post("/api/login",passport.authenticate('wam'), login);
@@ -21,10 +24,43 @@ module.exports = function(app, models){
     app.put("/api/user/:userId", UpdateUser);
     app.delete("/api/user/:userId", DeleteUser);
     app.get("/api/loggedIn", LoggedIn);
+    app.post("/api/register/", Register);
 
     function logout(req, res) {
         req.logout();
         res.send(200);
+    }
+
+    //callback hell
+    function Register(req, res) {
+        var username = req.body.username;
+        var password = req.body.password;
+
+        userModel.FindUserByUserName(username)
+            .then(function (user) {
+                if(user){
+                    res.statusCode(400).send("Username already in use");
+                    return;
+                }
+                else{
+                    return userModel
+                        .createUser(req.body);
+
+                }
+            },function (err) {
+                res.statusCode(400).send(err);
+            })
+            .then(function (user) {
+                if(user){
+                    req.login(user, function (err) {
+                        res.statusCode(400).send(err);
+                    },function (user) {
+                        res.json(user);
+                    });
+                }
+            }, function (err) {
+                res.statusCode(400).send(err);
+            });
     }
 
     function LoggedIn() {
@@ -52,6 +88,8 @@ module.exports = function(app, models){
         userModel
             .CreateUser(user)
             .then(function (user) {
+                user.password = bcrypt.hashSync(req.body.password);
+                return userModel.createUser(req.body);
                 res.json(user);
             },function (err) {
                 res.statusCode(400).send(err);
@@ -80,10 +118,10 @@ module.exports = function(app, models){
     passport.use('wam', new LocalStrategy(localStrategy));
     function localStrategy(username, password, done) {
         userModel
-            .FindUserByCredentials(username, password)
+            .FindUserByUsername(username)
             .then(
                 function(user) {
-                    if(user.username === username && user.password === password) {
+                    if(user && bcrypt.compareSync(password, user.password)) {
                         return done(null, user);
                     } else {
                         return done(null, false);

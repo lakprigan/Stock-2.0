@@ -16,7 +16,8 @@
             DeleteUser: DeleteUser,
             Login: Login,
             Logout: Logout,
-            LoggedIn: LoggedIn
+            LoggedIn: LoggedIn,
+            Register: Register
         };
 
         return api;
@@ -58,6 +59,11 @@
 
         function CreateUser(newUser) {
             var url = "/api/user/"
+            return $http.post(url,newUser);
+        }
+
+        function Register(newUser) {
+            var url = "/api/register/";
             return $http.post(url,newUser);
         }
 

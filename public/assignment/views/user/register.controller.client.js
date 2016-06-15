@@ -13,31 +13,41 @@
 
         function CreateUser(user) {
             UserService
-                .FindUserByUsername(user.username)
+                .Register(user)
                 .then(function (response) {
                     var retrievedUser = response.data;
-                    if(retrievedUser.username == null)
-                    {
-                        if(user.password === user.verifyPassword){
-                            var newUser = {username: user.username, password : user.password};
-                            UserService
-                                .CreateUser(newUser)
-                                .then(function (response) {
-                                    var retrievedUser = response.data;
-                                    if(retrievedUser){
-                                        $location.url("/user/"+retrievedUser._id);
-                                    }
-                                })
-                        }
-                        else
-                        {
-                            ViewModel.Error = "Passwords don't match!";
-                        }
+                    if(retrievedUser){
+                        $location.url("/user/"+retrievedUser._id);
                     }
-                    else{
-                        ViewModel.Error = "Username exists, please choose a different username";
-                    }
-                })
+                },function (err) {
+                    ViewModel.Error = err.data;
+                });
+            // UserService
+            //     .FindUserByUsername(user.username)
+            //     .then(function (response) {
+            //         var retrievedUser = response.data;
+            //         if(retrievedUser.username == null)
+            //         {
+            //             if(user.password === user.verifyPassword){
+            //                 var newUser = {username: user.username, password : user.password};
+            //                 UserService
+            //                     .Register(newUser)
+            //                     .then(function (response) {
+            //                         var retrievedUser = response.data;
+            //                         if(retrievedUser){
+            //                             $location.url("/user/"+retrievedUser._id);
+            //                         }
+            //                     });
+            //             }
+            //             else
+            //             {
+            //                 ViewModel.Error = "Passwords don't match!";
+            //             }
+            //         }
+            //         else{
+            //             ViewModel.Error = "Username exists, please choose a different username";
+            //         }
+            //     });
 
         }
 
