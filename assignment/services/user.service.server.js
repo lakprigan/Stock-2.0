@@ -36,7 +36,7 @@ module.exports = function(app, models){
         userModel.FindUserByUserName(username)
             .then(function (user) {
                 if(user){
-                    res.statusCode(400).send("Username already in use");
+                    res.status(400).send("Username already in use");
                     return;
                 }
                 else{
@@ -49,17 +49,14 @@ module.exports = function(app, models){
             .then(function (user) {
                 if(user){
                     req.login(user, function (err) {
-                        res.statusCode(400).send(err);
-                    },function (user) {
-                        res.json(user);
-                    });
-                }
-            }, function (err) {
-                res.statusCode(400).send(err);
-            });
-    }
+                        if(err){
+                            res.status(400).send(err);
+                        }else{
+                            res.json(user);
+                        }});
+    }});}
 
-    function LoggedIn() {
+    function LoggedIn(req, res) {
         if(req.isAuthenticated()){
             res.json(req.user);
         }

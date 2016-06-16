@@ -20,7 +20,9 @@
                 } else {
                     ViewModel.Error = "User not found!";
                 }
-            });
+            }, function (err) {
+                   ViewModel.Error = err.data;
+               });
         }
     }
 })();

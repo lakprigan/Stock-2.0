@@ -9,9 +9,9 @@
     function RegisterController($location, $routeParams, UserService) {
 
         var ViewModel = this;
-        ViewModel.CreateUser = CreateUser;
+        ViewModel.Register = Register;
 
-        function CreateUser(user) {
+        function Register(user) {
             UserService
                 .Register(user)
                 .then(function (response) {

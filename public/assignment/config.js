@@ -26,7 +26,10 @@
             .when("/user/:id", {
                 templateUrl: "views/user/profile.view.client.html",
                 controller: "ProfileController",
-                controllerAs: "Profile"
+                controllerAs: "Profile",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
             })
             .when("/user/:id/website/new", {
                 templateUrl: "views/website/website-new.view.client.html",
