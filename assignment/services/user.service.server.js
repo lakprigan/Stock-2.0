@@ -1,14 +1,11 @@
 /**
  * Created by PriyaArun on 5/31/16.
  */
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require("bcrypt-nodejs");
+
 module.exports = function(app, models){
-
-    var passport = require('passport');
-    var LocalStrategy = require('passport-local').Strategy;
-    var bcrypt = require("bcrypt-nodejs");
-
-    passport.serializeUser(serializeUser);
-    passport.deserializeUser(deserializeUser);
 
     var userModel = models.UserModel;
 
@@ -18,7 +15,7 @@ module.exports = function(app, models){
     //intercept login, filter or middle tier that can take a look into the request
     //local is the standard name for the local strategy
     app.post("/api/login",passport.authenticate('wam'), login);
-    app.post("/api/logout", logout);
+    app.post("/api/logout", Logout);
     app.get("/api/user", GetUsers);
     app.get("/api/user/:userId", FindUserById);
     app.put("/api/user/:userId", UpdateUser);
@@ -26,7 +23,7 @@ module.exports = function(app, models){
     app.get("/api/loggedIn", LoggedIn);
     app.post("/api/register/", Register);
 
-    function logout(req, res) {
+    function Logout(req, res) {
         req.logout();
         res.send(200);
     }
@@ -43,9 +40,8 @@ module.exports = function(app, models){
                     return;
                 }
                 else{
-                    return userModel
-                        .createUser(req.body);
-
+                    req.body.password = bcrypt.hashSync(req.body.password);
+                    return userModel.CreateUser(req.body);
                 }
             },function (err) {
                 res.statusCode(400).send(err);
@@ -116,19 +112,22 @@ module.exports = function(app, models){
     //restart server session goes away
     //any falsey, abort the request 401/404 and abort the session
     passport.use('wam', new LocalStrategy(localStrategy));
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
     function localStrategy(username, password, done) {
         userModel
-            .FindUserByUsername(username)
+            .FindUserByUserName(username)
             .then(
                 function(user) {
                     if(user && bcrypt.compareSync(password, user.password)) {
-                        return done(null, user);
+                         done(null, user);
                     } else {
-                        return done(null, false);
+                         done(null, false);
                     }
                 },
                 function(err) {
-                    return done(err);
+                     done(err);
                 }
             );
     }

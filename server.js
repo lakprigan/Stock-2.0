@@ -18,6 +18,9 @@ app.use(cookieParser());
 app.use(session({ secret: "abc" }));
 //require ("./test/app.js")(app);
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
@@ -37,9 +40,5 @@ assignment(app);
 
 var project = require("./project/app.js");
 project(app);
-
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.listen(port, ipaddress);
