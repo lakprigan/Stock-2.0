@@ -14,8 +14,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 //encrypt the user.  As the cookies are sent back and forth. Encrpts and decrypts environment
 // put a environment variable in mac bash-profile and rhc in openshift
-//process.env.SESSION_SECRET
-app.use(session({ secret: "abc" }));
+
+app.use(session({ secret: process.env.SESSION_SECRET,
+resave: true,
+saveUnitialized: true}));
+
 //require ("./test/app.js")(app);
 
 app.use(passport.initialize());
