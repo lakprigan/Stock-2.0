@@ -4,6 +4,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = function(app, models){
 
@@ -11,10 +12,15 @@ module.exports = function(app, models){
 
     //encrypt entire request to the body using ssl - openshift paid version supports this
     app.post("/api/user",createUser);
-
     //intercept login, filter or middle tier that can take a look into the request
     //local is the standard name for the local strategy
     app.post("/api/login",passport.authenticate('wam'), login);
+    app.get("/auth/facebook", passport.authenticate('facebook'));
+    app.get("/auth/facebook/callback",
+        passport.authenticate('facebook', {
+            successRedirect: '/#/assignment/user',
+            failureRedirect: '/#/assignment/login'
+        }));
     app.post("/api/logout", Logout);
     app.get("/api/user", GetUsers);
     app.get("/api/user/:userId", FindUserById);
@@ -23,11 +29,35 @@ module.exports = function(app, models){
     app.get("/api/loggedIn", LoggedIn);
     app.post("/api/register/", Register);
 
+    function facebookLogin(token, refreshToken, profile, done) {
+        userModel
+            .FindFacebookUser(profile.id)
+            .then(function (user) {
+                if(user) {
+                    return done(null, user);
+                }
+                else{
+                    facebookUser = {
+                        username: profile.displayName.replace(/ /g,''),
+                        facebook:{
+                            token: token,
+                            id:profile.id,
+                            displayName: profile.displayName
+
+                        }}
+                    userModel
+                        .CreateUser(facebookUser)
+                        .then(function (user) {
+                            done(null, user);
+                        });
+                }});
+    }
+
+
     function Logout(req, res) {
         req.logout();
         res.send(200);
     }
-
     //callback hell
     function Register(req, res) {
         var username = req.body.username;
@@ -104,11 +134,20 @@ module.exports = function(app, models){
         }
     }
 
+    var facebookConfig = {
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    };
+
     //subsequent request headers cookies will be passed along to the server
     //by default the session timeout is 30 mins
     //restart server session goes away
     //any falsey, abort the request 401/404 and abort the session
     passport.use('wam', new LocalStrategy(localStrategy));
+    passport.use('facebook', new FacebookStrategy(facebookConfig, facebookLogin));
+
+
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 

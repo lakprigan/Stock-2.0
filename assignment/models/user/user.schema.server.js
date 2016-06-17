@@ -10,6 +10,11 @@ module.exports = function () {
          firstName : String,
          lastName : String,
          email : String,
+         facebook:{
+             id: String,
+             token: String,
+             displayName: String
+         },
          websites : [{type:mongoose.Schema.Types.ObjectId, ref: 'Website'}],
          dob: Date,
          phone : String,
