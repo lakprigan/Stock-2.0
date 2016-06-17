@@ -49,3 +49,7 @@ p.navbar-text.pull-left{
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
 }
+
+.ng-invalid.submitted{
+    border-color: darkred;
+}

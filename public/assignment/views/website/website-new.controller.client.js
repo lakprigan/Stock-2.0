@@ -18,13 +18,19 @@
         }
 
         function CreateNewWebsite(name, description) {
+            ViewModel.SubmittedClass = "submitted";
+           if(name){
            WebsiteService
                .CreateNewWebsite(ViewModel.UserId, name, description)
                .then(function (res) {
                    $location.url("/user/"+ViewModel.UserId+"/website");
                },function (err) {
-                   ViewModel.error = "Unable to create a new Website";
+                   ViewModel.Error = "Unable to create a new Website";
                });
+               ViewModel.SubmittedClass = "";
         }
+        else{
+               ViewModel.Error="Please enter the highlighted fields"
+           }}
     }
 })();

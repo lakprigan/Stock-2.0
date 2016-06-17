@@ -9,7 +9,6 @@
     function WebsiteEditController($location, $routeParams, WebsiteService) {
         var ViewModel = this;
         Initialize();
-        
         function Initialize() {
             ViewModel.UserId = $routeParams.id;
             ViewModel.WebsiteId = $routeParams.wid;
@@ -33,14 +32,21 @@
         }
 
         function updateWebsiteById(name, description) {
-            var updatedWebsite =  { "name": name, "developerId": ViewModel.UserId };
+            ViewModel.SubmittedClass = "submitted";
+            if(name){
+                ViewModel.SubmittedClass = "";
+            var updatedWebsite =  { "name": name, "developerId": ViewModel.UserId, "description" : description };
             WebsiteService
                 .UpdateWebsite(ViewModel.WebsiteId, updatedWebsite)
                 .then(function (res) {
                     $location.url("/user/"+ViewModel.UserId+"/website");
                 },function (err) {
-                    ViewModel.error = "Unable to update the Website";
+                    ViewModel.Error = "Unable to update the Website";
                 });
+        }
+        else {
+                ViewModel.Error = "Please enter the highlighted field"
+            }
         }
     }
 })();

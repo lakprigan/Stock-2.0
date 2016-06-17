@@ -5,11 +5,13 @@
     angular
         .module("WebAppMaker")
         .controller("LoginController", LoginController);
-    
+
+
     function LoginController($location, UserService) {
         var ViewModel = this;
-        
         ViewModel.login = function (username, password) {
+            ViewModel.SubmittedClass = "submitted";
+            if(username && password){
            UserService
                .Login(username, password)
                .then(function (response) {
@@ -23,6 +25,11 @@
             }, function (err) {
                    ViewModel.Error = err.data;
                });
+                ViewModel.SubmittedClass = "";
+        }
+        else{
+                ViewModel.Error = "Please fill the highlighted Fields";
+            }
         }
     }
 })();

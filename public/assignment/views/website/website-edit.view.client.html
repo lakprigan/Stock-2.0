@@ -20,15 +20,18 @@
     </div>
 </nav>
 <div class="container">
-    <form>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
+    </div>
         <div class="form-group">
             <label for="name">Application Name</label>
             <input type="text"
                    ng-model = "model.Website.name"
-                   class="form-control"
+                   class="form-control {{model.SubmittedClass}}"
                    id="name"
                    value = "Apple"
-                   placeholder="Website Name">
+                   placeholder="Website Name"
+            required>
         </div>
         <div class="form-group">
             <label for="description">Application Description</label>
@@ -39,7 +42,6 @@
                       id="description"
                       placeholder="Website Description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standarddummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimenbook. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentiallyunchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
         </div>
-    </form>
     <a class="btn btn-danger btn-block"
        ng-click="model.DeleteWebsite()">
         Delete

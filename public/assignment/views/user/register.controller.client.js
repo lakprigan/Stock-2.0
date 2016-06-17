@@ -12,43 +12,29 @@
         ViewModel.Register = Register;
 
         function Register(user) {
-            UserService
-                .Register(user)
-                .then(function (response) {
-                    var retrievedUser = response.data;
-                    if(retrievedUser){
-                        $location.url("/user/"+retrievedUser._id);
-                    }
-                },function (err) {
-                    ViewModel.Error = err.data;
-                });
-            // UserService
-            //     .FindUserByUsername(user.username)
-            //     .then(function (response) {
-            //         var retrievedUser = response.data;
-            //         if(retrievedUser.username == null)
-            //         {
-            //             if(user.password === user.verifyPassword){
-            //                 var newUser = {username: user.username, password : user.password};
-            //                 UserService
-            //                     .Register(newUser)
-            //                     .then(function (response) {
-            //                         var retrievedUser = response.data;
-            //                         if(retrievedUser){
-            //                             $location.url("/user/"+retrievedUser._id);
-            //                         }
-            //                     });
-            //             }
-            //             else
-            //             {
-            //                 ViewModel.Error = "Passwords don't match!";
-            //             }
-            //         }
-            //         else{
-            //             ViewModel.Error = "Username exists, please choose a different username";
-            //         }
-            //     });
-
+            ViewModel.SubmittedClass = "submitted";
+            if (!user) {
+                ViewModel.Error = "Please enter the highlighted fields";
+            }
+            else if (!user.password || !user.username || !user.verifyPassword) {
+                ViewModel.Error = "Please enter the highlighted fields";
+            }
+            else if (user.password != user.verifyPassword) {
+                ViewModel.Error = "Passwords don't match";
+            }
+            else {
+                UserService
+                    .Register(user)
+                    .then(function (response) {
+                        var retrievedUser = response.data;
+                        if (retrievedUser) {
+                            $location.url("/user/" + retrievedUser._id);
+                        }
+                    }, function (err) {
+                        ViewModel.Error = err.data;
+                    });
+                ViewModel.SubmittedClass = "";
+            }
         }
 
     }

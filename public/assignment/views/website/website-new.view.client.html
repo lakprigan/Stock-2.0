@@ -20,14 +20,17 @@
     </div>
 </nav>
 <div class="container">
-    <form>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
+    </div>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text"
-                   class="form-control"
+                   class="form-control {{model.SubmittedClass}}"
                    ng-model = "name"
                    id="name"
-                   placeholder="Website Name">
+                   placeholder="Website Name"
+            required>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
@@ -36,7 +39,7 @@
                    id="description"
                    placeholder="Website Description"></textarea>
         </div>
-    </form>
+
 </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
