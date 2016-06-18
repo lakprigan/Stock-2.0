@@ -18,3 +18,6 @@ input.form-control{
     width: 100%;
 }
 
+.grey{
+    background-color: lightgrey;
+}

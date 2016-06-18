@@ -38,8 +38,8 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 }
 mongoose.connect(connectionString);
 
-var assignment = require("./assignment/app.js");
-assignment(app);
+// var assignment = require("./assignment/app.js");
+// assignment(app);
 
 var project = require("./project/app.js");
 project(app);

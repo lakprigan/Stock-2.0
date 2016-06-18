@@ -19,36 +19,46 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
+        <div class="col-lg-11 form-group">
+            <input type="text"
+                   placeholder="Search stock code"
+                   class="form-control"
+                   ng-model="model.code"
+                   ng-change="model.getStockData()">
+        </div>
+        <div class="col-lg-1">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-12 col-md-12 main">
             <div class="row placeholders">
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                <div class="col-xs-6 col-sm-3 placeholder grey">
+                    <h4>Low</h4>
+                    <span class="text-muted">{{model.low}}</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                <div class="col-xs-6 col-sm-3 placeholder grey">
+                    <h4>High</h4>
+                    <span class="text-muted">{{model.high}}</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                <div class="col-xs-6 col-sm-3 placeholder grey">
+                    <h4>Index</h4>
+                    <span class="text-muted">{{model.indexValue}}</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                    <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-                    <h4>Label</h4>
-                    <span class="text-muted">Something else</span>
+                <div class="col-xs-6 col-sm-3 placeholder grey">
+                    <h4>TotalMarket</h4>
+                    <span class="text-muted">{{model.totalMarketValue}}</span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading"> NASDAQ </div>
-            <div class="panel-body">
-                <div id="nasdaqContainer"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading"> NASDAQ</div>
+                <div class="panel-body">
+                    <div id="chartContainer"></div>
+                </div>
             </div>
         </div>
     </div>

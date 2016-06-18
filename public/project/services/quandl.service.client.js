@@ -15,7 +15,7 @@
 
     function QuandlService($http) {
         var api = {
-            getStockData : getStockData
+            getStockData : getStockData,
         };
         return api;
 

@@ -11,7 +11,7 @@
             .when("/home", {
                 templateUrl: "views/home/home.view.client.html",
                 controller: "HomeController",
-                controllerAs: "ctrl"
+                controllerAs: "model"
             })
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
