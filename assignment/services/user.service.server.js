@@ -50,16 +50,12 @@ module.exports = function(app, models){
                             token: token,
                             id:profile.id,
                             displayName: profile.displayName
-
                         }
                     };
-                    console.log(facebookUser);
                     userModel
                         .CreateUser(facebookUser)
                         .then(function (user) {
                            return done(null, user);
-                        },function (err) {
-                            console.log("cannot create user");
                         });
                 }});
     }

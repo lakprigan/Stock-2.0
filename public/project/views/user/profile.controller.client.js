@@ -10,6 +10,18 @@
 
         var ViewModel = this;
         Initialize();
+        ViewModel.Logout = Logout;
+
+        function Logout() {
+            UserService
+                .Logout()
+                .then(function (res) {
+                    $location.url("/login");
+                },
+                function (err) {
+                    $location.url("/login");
+                })
+        }
 
         function Initialize() {
             ViewModel.id = $rootScope.currentUser._id;

@@ -1,19 +1,15 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/home">Profile</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/login">Login</a></li>
-            </ul>
+            <a class="navbar-brand">
+                Profile
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.UpdateUser(model.User)" class="navbar-link">
+                      <span class="glyphicon glyphicon-ok">
+                      </span>
+                </a>
+            </p>
         </div>
     </div>
 </nav>
@@ -58,11 +54,11 @@
         </div>
     </form>
     <a class="btn btn-primary btn-block"
-       href="#/user/{{model.User._id}}/portfolio">
-        Portfolio
+       href="#/user/{{model.User._id}}/website">
+        Websites
     </a>
     <a class="btn btn-danger btn-block"
-       href="#/login">
+       ng-click = "model.Logout()">
         Logout
     </a>
     <a class="btn btn-danger btn-block"
@@ -73,7 +69,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text navbar-link pull-right">
-            <a href="#/user/{{model.UserId}}">
+            <a href="#/user/{{model.User._id}}">
           <span class="glyphicon glyphicon-user">
           </span>
             </a>

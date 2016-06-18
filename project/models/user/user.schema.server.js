@@ -10,6 +10,11 @@ module.exports=function () {
         firstName: String,
         lastName: String,
         email: String,
+        facebook:{
+            id: String,
+            token: String,
+            displayName: String
+        },
         type: {type: String, default: 'investor', enum:['investor','expert']},
         follows: [String]
     }, {collection: 'sw.user'});
