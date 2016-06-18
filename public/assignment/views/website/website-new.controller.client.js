@@ -14,6 +14,7 @@
         function Initialize() {
             ViewModel.UserId = $routeParams.id;
             ViewModel.WebsiteId = $routeParams.wid;
+            ViewModel.SubmittedClass = "";
             ViewModel.CreateNewWebsite = CreateNewWebsite;
         }
 
@@ -27,7 +28,6 @@
                },function (err) {
                    ViewModel.Error = "Unable to create a new Website";
                });
-               ViewModel.SubmittedClass = "";
         }
         else{
                ViewModel.Error="Please enter the highlighted fields"

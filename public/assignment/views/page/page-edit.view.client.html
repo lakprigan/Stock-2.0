@@ -20,12 +20,14 @@
     </div>
 </nav>
 <div class="container">
-    <form>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
+    </div>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text"
                    ng-model="model.Page.name"
-                   class="form-control"
+                   class="form-control {{model.SubmittedClass}}"
                    id="name"
                    placeholder="Page Name"
                    value="Bolg Post">
@@ -38,7 +40,6 @@
                    id="title"
                    placeholder="Page Title">
         </div>
-    </form>
     <a class="btn btn-danger btn-block"
        ng-click="model.DeletePage()">
         Delete

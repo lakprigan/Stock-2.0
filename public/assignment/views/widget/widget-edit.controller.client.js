@@ -22,10 +22,17 @@
             ViewModel.WidgetSizes = [1, 2, 3, 4, 5, 6];
             ViewModel.UpdateWidget = UpdateWidget;
             ViewModel.DeleteWidget = DeleteWidget;
+            ViewModel.SubmittedClass = "";
+
         }
         
         function UpdateWidget(Widget) {
-            console.log(Widget);
+            ViewModel.SubmittedClass = "submitted";
+            if((Widget.widgetType == "HEADER" || Widget.widgetType == "IMAGE" || Widget.widgetType == "YOUTUBE")
+                && (!Widget.name)){
+                ViewModel.Error = "Please fill the highlighted fields";
+            }
+            else{
            WidgetService
                .UpdateWidget(ViewModel.WidgetId, Widget)
                .then(function (res) {
@@ -33,7 +40,7 @@
                },function (err) {
                    ViewModel.Error = "Unable to update the Website";
                });
-        }
+        }}
         
         function DeleteWidget(){
             WidgetService

@@ -20,15 +20,18 @@
     </div>
 </nav>
 <div class="container">
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
+    </div>
     <form action="/api/uploads"  method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text"
                    ng-model="model.Widget.name"
-                   class="form-control"
+                   class="form-control {{model.SubmittedClass}}"
                    id="name"
                    placeholder="Widget Name"
-                   value="Image1">
+                   value="Image1" required>
         </div>
         <div class="form-group">
             <label for="text">Text</label>

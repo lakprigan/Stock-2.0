@@ -14,6 +14,7 @@
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.DeleteWebsite = deleteWebsite;
             ViewModel.UpdateWebsiteById = updateWebsiteById;
+            ViewModel.SubmittedClass = "";
             WebsiteService
                 .FindWebsiteById(ViewModel.WebsiteId)
                 .then(function (res) {
@@ -34,7 +35,6 @@
         function updateWebsiteById(name, description) {
             ViewModel.SubmittedClass = "submitted";
             if(name){
-                ViewModel.SubmittedClass = "";
             var updatedWebsite =  { "name": name, "developerId": ViewModel.UserId, "description" : description };
             WebsiteService
                 .UpdateWebsite(ViewModel.WebsiteId, updatedWebsite)

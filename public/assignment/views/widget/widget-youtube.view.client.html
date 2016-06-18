@@ -20,15 +20,17 @@
     </div>
 </nav>
 <div class="container">
-    <form>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
+    </div>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text"
                    ng-model="model.Widget.name"
-                   class="form-control"
+                   class="form-control {{model.SubmittedClass}}"
                    id="name"
                    placeholder="Widget Name"
-                   value="My Video">
+                   value="My Video" required>
         </div>
         <div class="form-group">
             <label for="text">Text</label>
@@ -57,7 +59,6 @@
                    placeholder="100%"
                    value="100%">
         </div>
-    </form>
     <a class="btn btn-danger btn-block"
        ng-click="model.DeleteWidget()">
         Delete

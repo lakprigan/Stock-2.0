@@ -13,17 +13,24 @@
             ViewModel.UserId = $routeParams.uid;
             ViewModel.WebsiteId = $routeParams.wid;
             ViewModel.PageId = $routeParams.pid;
-
+            ViewModel.SubmittedClass = "";
             ViewModel.CreateNewPage = CreateNewPage;
         }
         function CreateNewPage(name, description) {
-           PageService
+            ViewModel.SubmittedClass = "submitted";
+if(name){
+            PageService
                .CreatePage(ViewModel.WebsiteId, name, description)
                .then(function (res) {
                    $location.url("/user/"+ViewModel.UserId+"/website/"+ViewModel.WebsiteId+"/page");
                },function (err) {
-                   ViewModel.error = "Unable to create a new Page";
+                   ViewModel.Error = "Unable to create a new Page";
                });
+
+        }
+        else{
+    ViewModel.Error = "Please enter the highlighted fields"
+}
         }
     }
 })();

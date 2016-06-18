@@ -9,6 +9,7 @@
 
     function LoginController($location, UserService) {
         var ViewModel = this;
+        ViewModel.SubmittedClass = "";
         ViewModel.login = function (username, password) {
             ViewModel.SubmittedClass = "submitted";
             if(username && password){
@@ -25,7 +26,6 @@
             }, function (err) {
                    ViewModel.Error = err.data;
                });
-                ViewModel.SubmittedClass = "";
         }
         else{
                 ViewModel.Error = "Please fill the highlighted Fields";

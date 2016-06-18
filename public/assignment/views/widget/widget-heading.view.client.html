@@ -20,15 +20,17 @@
     </div>
 </nav>
 <div class="container">
-    <form>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
+    </div>
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text"
                    ng-model="model.Widget.name"
-                   class="form-control"
+                   class="form-control {{model.SubmittedClass}}"
                    id="name"
                    placeholder="Widget Name"
-                   value="Header">
+                   value="Header" required>
         </div>
         <div class="form-group">
             <label for="text">Text</label>
@@ -44,7 +46,6 @@
             <select  class="form-control" id="size" ng-init=1 ng-model="model.Widget.size" ng-options="m for m in model.WidgetSizes">
             </select>
         </div>
-    </form>
     <a class="btn btn-danger btn-block"
        ng-click="model.DeleteWidget()">
         Delete
