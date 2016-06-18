@@ -15,9 +15,6 @@
                 <li><a href="#/login" ng-if="!model.currentUser">Login</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/circle" ng-if="model.currentUser">Circle</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/login" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>
             </ul>
         </div>
@@ -29,9 +26,13 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Facebook</td>
+                    <tr ng-repeat="u in model.AvailableExperts">
+                        <td>
+                            <a href="">
+                            u.username
+                        </a>
+                        </td>
+                        <td><a class="btn btn-primary">Follow</a></td>
                         <td>100</td>
                     </tr>
                     </tbody>

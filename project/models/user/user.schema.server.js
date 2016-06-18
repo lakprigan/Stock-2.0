@@ -15,8 +15,8 @@ module.exports=function () {
             token: String,
             displayName: String
         },
-        type: {type: String, default: 'investor', enum:['investor','expert']},
-        follows: [String]
+        type: String,
+        circle: [String]
     }, {collection: 'sw.user'});
 
     return UserSchema;

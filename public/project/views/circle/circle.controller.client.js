@@ -33,8 +33,8 @@
                 .then(function (res) {
                         ViewModel.AvailableExperts = res.data;
                         angular.forEach(ViewModel.AvailableExperts, function (all) {
-                            angular.forEach(ViewModel.User, function (follow, index) {
-                                if(all.username === follow.username){
+                            angular.forEach(ViewModel.User.circle, function (follow, index) {
+                                if(all.username === follow){
                                     ViewModel.AvailableExperts.splice(index);
                                 }
                             })

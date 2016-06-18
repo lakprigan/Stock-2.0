@@ -18,7 +18,7 @@
                 <li><a href="#/login" ng-if="model.currentUser">Logout</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/members" ng-if="model.currentUser">Circle</a></li>
+                <li><a href="#/user/{{model.User._id}}/circle" ng-if="model.currentUser">Circle</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/login" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>
@@ -75,7 +75,7 @@
         </div>
     </form>
     <a class="btn btn-primary btn-block"
-       ng-click="model.UpdateUser()">
+       ng-click="model.UpdateUser(model.User)">
         Save
     </a>
     <a class="btn btn-primary btn-block"

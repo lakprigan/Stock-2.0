@@ -19,7 +19,7 @@ module.exports = function () {
     return api;
 
     function GetExperts() {
-    return User.find({"type" : expert})
+    return User.find({"type" : "expert"});
     }
 
     function FindFacebookUser(id) {
@@ -35,7 +35,8 @@ module.exports = function () {
             .update({_id: userId},
                 {$set:{
                     firstName : updatedUser.firstName,
-                    lastName: updatedUser.lastName
+                    lastName: updatedUser.lastName,
+                    type: updatedUser.type
                 }});
     }
 

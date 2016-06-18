@@ -39,6 +39,14 @@
                     loggedIn: checkLoggedIn
                 }
             })
+            .when("/user/:id/circle",{
+                templateUrl: "views/circle/circle.view.client.html",
+                controller: "CircleController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
             .when("/user/:id/portfolio",{
                 templateUrl: "views/portfolio/portfolio-list.view.client.html"
             })
