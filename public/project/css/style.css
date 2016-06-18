@@ -20,4 +20,6 @@ input.form-control{
 
 .grey{
     background-color: lightgrey;
+    padding-top: 5px;
+    padding-bottom: 15px;
 }

@@ -9,7 +9,8 @@
     function HomeController(QuandlService) {
         var vm = this;
         vm.code = "NASDAQOMX";
-        vm.getStockData = getStockData();
+        vm.getStockData = getStockData;
+        
         getStockData();
 
         function getStockData() {

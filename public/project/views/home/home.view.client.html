@@ -19,17 +19,16 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-11 form-group">
+        <div class="col-lg-12 form-group">
             <input type="text"
-                   placeholder="Search stock code"
-                   class="form-control"
                    ng-model="model.code"
-                   ng-change="model.getStockData()">
-        </div>
-        <div class="col-lg-1">
-            <i class="fa fa-search" aria-hidden="true"></i>
+                   placeholder="Search stock code"
+                   class="form-control">
         </div>
     </div>
+    <a ng-click="model.getStockData()" class="btn btn-primary btn-block">
+                     Search
+    </a>
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
             <div class="row placeholders">
@@ -65,11 +64,5 @@
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
-        <div class="navbar-text navbar-link pull-right">
-            <a href="#/user/{{model.UserId}}">
-          <span class="glyphicon glyphicon-user">
-          </span>
-            </a>
-        </div>
     </div>
 </nav>

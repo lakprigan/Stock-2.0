@@ -9,6 +9,7 @@
     function ProfileController($location, $routeParams, UserService, $rootScope) {
 
         var ViewModel = this;
+        ViewModel.currentUser = $rootScope.currentUser;
         Initialize();
         ViewModel.Logout = Logout;
 

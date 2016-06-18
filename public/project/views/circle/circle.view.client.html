@@ -18,7 +18,7 @@
                 <li><a href="#/login" ng-if="model.currentUser">Logout</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/members" ng-if="model.currentUser">Circle</a></li>
+                <li><a href="#/circle" ng-if="model.currentUser">Circle</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/login" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>
@@ -40,7 +40,7 @@
                    class="form-control"
                    id="username"
                    placeholder="Alice"
-            disabled>
+                   disabled>
         </div>
         <div class="form-group">
             <label for="emailaddress">Email address</label>
@@ -52,7 +52,7 @@
         <div class="form-group">
             <label for="firstName">First Name</label>
             <input ng-model="model.User.firstName"
-                    type="text"
+                   type="text"
                    class="form-control"
                    id="firstName"
                    placeholder="Alice">
@@ -60,7 +60,7 @@
         <div class="form-group">
             <label for="lastName">Last Name</label>
             <input ng-model="model.User.lastName"
-                    type="text"
+                   type="text"
                    class="form-control"
                    id="lastName"
                    placeholder="Wonderland">
