@@ -5,7 +5,7 @@ module.exports = function () {
   var mongoose = require("mongoose");
     //mongodb has no notion of schema ,, this is at the application level
      var UserSchema = mongoose.Schema({
-         username : {type : String, required : true, unique: true},
+         username : String,
          password : String,
          firstName : String,
          lastName : String,

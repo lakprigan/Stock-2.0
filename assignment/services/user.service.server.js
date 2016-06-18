@@ -1,6 +1,7 @@
 /**
  * Created by PriyaArun on 5/31/16.
  */
+
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
@@ -10,16 +11,22 @@ module.exports = function(app, models){
 
     var userModel = models.UserModel;
 
+    var facebookConfig = {
+        clientID     : process.env.FACEBOOK_CLIENT_ID,
+        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
+    };
+
     //encrypt entire request to the body using ssl - openshift paid version supports this
     app.post("/api/user",createUser);
     //intercept login, filter or middle tier that can take a look into the request
     //local is the standard name for the local strategy
     app.post("/api/login",passport.authenticate('wam'), login);
-    app.get("/auth/facebook", passport.authenticate('facebook'));
+    app.get("/auth/facebook", passport.authenticate('facebook', {scope : ['email'] }));
     app.get("/auth/facebook/callback",
         passport.authenticate('facebook', {
-            successRedirect: '/#/assignment/user',
-            failureRedirect: '/#/assignment/login'
+            successRedirect: '/assignment/#/user',
+            failureRedirect: '/assignment/#/login'
         }));
     app.post("/api/logout", Logout);
     app.get("/api/user", GetUsers);
@@ -37,18 +44,22 @@ module.exports = function(app, models){
                     return done(null, user);
                 }
                 else{
-                    facebookUser = {
+                    var facebookUser = {
                         username: profile.displayName.replace(/ /g,''),
                         facebook:{
                             token: token,
                             id:profile.id,
                             displayName: profile.displayName
 
-                        }}
+                        }
+                    };
+                    console.log(facebookUser);
                     userModel
                         .CreateUser(facebookUser)
                         .then(function (user) {
-                            done(null, user);
+                           return done(null, user);
+                        },function (err) {
+                            console.log("cannot create user");
                         });
                 }});
     }
@@ -134,11 +145,6 @@ module.exports = function(app, models){
         }
     }
 
-    var facebookConfig = {
-        clientID     : process.env.FACEBOOK_CLIENT_ID,
-        clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
-    };
 
     //subsequent request headers cookies will be passed along to the server
     //by default the session timeout is 30 mins

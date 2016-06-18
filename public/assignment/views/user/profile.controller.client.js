@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .controller("ProfileController", ProfileController);
 
-    function ProfileController($location, $routeParams, UserService) {
+    function ProfileController($location, $routeParams, UserService, $rootScope) {
 
         var ViewModel = this;
         Initialize();
@@ -24,7 +24,7 @@
         }
 
         function Initialize() {
-            ViewModel.id = $routeParams.id;
+            ViewModel.id = $rootScope.currentUser._id;
             UserService
                 .FindUserById(ViewModel.id)
                 .then(function (response) {
