@@ -65,7 +65,19 @@
                    id="lastName"
                    placeholder="Wonderland">
         </div>
+        <div class="form-group">
+            <div class="radio">
+                <label><input type="radio" ng-model="model.User.type" value="expert" name="optradio">Expert</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" ng-model="model.User.type" value="investor" name="optradio">Investor</label>
+            </div>
+        </div>
     </form>
+    <a class="btn btn-primary btn-block"
+       ng-click="model.UpdateUser()">
+        Save
+    </a>
     <a class="btn btn-primary btn-block"
        href="#/user/{{model.User._id}}/website">
         Portfolio
