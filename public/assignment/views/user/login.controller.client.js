@@ -7,7 +7,7 @@
         .controller("LoginController", LoginController);
 
 
-    function LoginController($location, UserService) {
+    function LoginController($location, UserService, $rootScope) {
         var ViewModel = this;
         ViewModel.SubmittedClass = "";
         ViewModel.login = function (username, password) {
