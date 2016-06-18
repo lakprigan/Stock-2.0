@@ -34,7 +34,7 @@ module.exports = function(app, models){
     app.put("/api/stockwatch/user/:userId", UpdateUser);
     app.delete("/api/stockwatch/user/:userId", DeleteUser);
     app.get("/api/stockwatch/loggedIn", LoggedIn);
-    app.post("/api/stockwatch/register", Register);
+    app.post("/api/stockwatch/register/", Register);
 
     function facebookLogin(token, refreshToken, profile, done) {
         userModel
@@ -50,16 +50,12 @@ module.exports = function(app, models){
                             token: token,
                             id:profile.id,
                             displayName: profile.displayName
-
                         }
                     };
-                    console.log(facebookUser);
                     userModel
                         .CreateUser(facebookUser)
                         .then(function (user) {
                             return done(null, user);
-                        },function (err) {
-                            console.log("cannot create user");
                         });
                 }});
     }

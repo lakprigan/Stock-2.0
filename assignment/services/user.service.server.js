@@ -1,7 +1,6 @@
 /**
  * Created by PriyaArun on 5/31/16.
  */
-
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");

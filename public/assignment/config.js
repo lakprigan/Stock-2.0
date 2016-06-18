@@ -87,27 +87,25 @@
             .otherwise({
                 redirectTo: "/login"
             });
-        
+
         function checkLoggedIn(UserService, $location, $q, $rootScope) {
             var deferred = $q.defer();
-
-         UserService
-             .LoggedIn()
-             .then(function (resposnse) {
-                 var user = resposnse.data;
-                 if(user === '0'){
-                     $rootScope.currentUser = null;
-                     deferred.reject();
-                     $location.url("/login");
-                 }else{
-                     $rootScope.currentUser = user;
-                     deferred.resolve();
-
-                 }
-             },
-             function (err) {
-                 $location.url("/login");
-             });
+            UserService
+                .LoggedIn()
+                .then(function (resposnse) {
+                        var user = resposnse.data;
+                        if (user === '0') {
+                            $rootScope.currentUser = null;
+                            deferred.reject();
+                            $location.url("/login");
+                        } else {
+                            $rootScope.currentUser = user;
+                            deferred.resolve();
+                        }
+                    },
+                    function (err) {
+                        $location.url("/login");
+                    });
 
             return deferred.promise;
         }
