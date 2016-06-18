@@ -13,9 +13,14 @@ module.exports = function () {
         DeleteUser: DeleteUser,
         UpdateUser: UpdateUser,
         FindUserByUserName: FindUserByUserName,
-        FindFacebookUser: FindFacebookUser
+        FindFacebookUser: FindFacebookUser,
+        GetExperts: GetExperts
     }
     return api;
+
+    function GetExperts() {
+    return User.find({"type" : expert})
+    }
 
     function FindFacebookUser(id) {
         return User.findOne({"facebook.id": id});

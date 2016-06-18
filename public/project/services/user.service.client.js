@@ -17,13 +17,19 @@
             Login: Login,
             Logout: Logout,
             LoggedIn: LoggedIn,
-            Register: Register
+            Register: Register,
+            GetExperts: GetExperts
         };
 
         return api;
 
         function LoggedIn() {
             var url = "/api/stockwatch/loggedIn";
+            return $http.get(url);
+        }
+
+        function GetExperts() {
+            var url = "/api/stockwatch/expert";
             return $http.get(url);
         }
 

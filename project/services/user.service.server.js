@@ -35,6 +35,7 @@ module.exports = function(app, models){
     app.delete("/api/stockwatch/user/:userId", DeleteUser);
     app.get("/api/stockwatch/loggedIn", LoggedIn);
     app.post("/api/stockwatch/register/", Register);
+    app.get("api/stockwatch/expert", GetExperts);
 
     function facebookLogin(token, refreshToken, profile, done) {
         userModel
@@ -60,6 +61,15 @@ module.exports = function(app, models){
                 }});
     }
 
+    function GetExperts(req, res) {
+        userModel
+            .GetExperts()
+            .then(function (experts) {
+                res.send(experts);
+            },function (err) {
+                res.statusCode(404).send(err);
+            });
+    }
 
     function Logout(req, res) {
         req.logout();
