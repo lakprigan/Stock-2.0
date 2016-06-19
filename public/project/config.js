@@ -48,13 +48,19 @@
                 }
             })
             .when("/user/:id/portfolio",{
-                templateUrl: "views/portfolio/portfolio-list.view.client.html"
+                templateUrl: "views/portfolio/portfolio-list.view.client.html",
+                controller: "PortfolioListController",
+                controllerAs: "model"
             })
             .when("/user/:id/portfolio/new",{
-                templateUrl: "views/portfolio/portfolio-new.view.client.html"
+                templateUrl: "views/portfolio/portfolio-new.view.client.html",
+                controller: "PortfolioNewController",
+                controllerAs: "model"
             })
             .when("/user/:id/portfolio/:pid",{
-                templateUrl: "views/portfolio/portfolio-edit.view.client.html"
+                templateUrl: "views/portfolio/portfolio-edit.view.client.html",
+                controller: "PortfolioEditController",
+                controllerAs: "model"
             })
             .when("/user/:id/portfolio/:pid/stock",{
                 templateUrl: "views/stock/stock-list.view.client.html"
