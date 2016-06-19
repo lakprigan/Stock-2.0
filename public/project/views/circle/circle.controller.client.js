@@ -33,11 +33,7 @@
                 .GetExperts()
                 .then(function (res) {
                         ViewModel.AvailableExperts = res.data;
-                        angular.forEach(ViewModel.AvailableExperts, function (all) {
-                            if (all.username === ViewModel.User.username) {
-                                console.log(all.username + " " + ViewModel.User.username)
-                                ViewModel.AvailableExperts.splice(all, 1);
-                            }
+                    angular.forEach(ViewModel.AvailableExperts, function (all) {
                             angular.forEach(ViewModel.User.circle, function (follow, index) {
                                 if (all.username === follow) {
                                     ViewModel.AvailableExperts.splice(all, 1);
@@ -52,9 +48,13 @@
 
         function ToggleFollow(user, action){
             if(action === 'follow')
-                ViewModel.User.circle.push(user.username);
-            else
-                ViewModel.User.circle.splice(user, 1);
+                ViewModel.User.circle.push(user);
+            else {
+                angular.forEach(ViewModel.User.circle, function (name) {
+                    if(name === user && name!=null)
+                        ViewModel.User.circle.splice(name, 1);
+                });
+            }
             UpdateUser(ViewModel.User);
             Initialize();
         }

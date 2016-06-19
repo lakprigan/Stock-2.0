@@ -23,7 +23,24 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4 col-md-4 main">
-            <div class="panel-heading">Experts Following</div>
+            <div class="table-responsive">
+                <div class="panel-heading">Experts in circle</div>
+                <div class="panel-body">
+                    <table class="table table-striped table-bordered">
+                        <tr ng-repeat="u in model.User.circle">
+                            <td>
+                                <a href="">
+                                    {{u}}
+                                </a>
+                            </td>
+                            <td><a class="btn btn-danger" ng-click="model.ToggleFollow(u,'unfollow')">UnFollow</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 col-md-4 main">
+            <div class="panel-heading">Public Experts</div>
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered">
@@ -33,34 +50,14 @@
                                     {{u.username}}
                                 </a>
                             </td>
-                            <td><a class="btn btn-primary" ng-click="model.ToggleFollow(u,'follow')">Follow</a></td>
+                            <td><a class="btn btn-primary" ng-click="model.ToggleFollow(u.username,'follow')">Follow</a></td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-sm-4 col-md-4 main">
-            <div class="table-responsive">
-                <div class="panel-heading">Experts Panel</div>
-                <div class="panel-body">
-                <table class="table table-striped table-bordered">
-                    <tr>
-                        <td>dample</td>
-                        <td>sample</td>
-                    </tr>
-                    <tr ng-repeat="u in model.User.circle">
-                        <td>
-                            <a href="">
-                                {{u}}
-                            </a>
-                        </td>
-                        <td><a class="btn btn-primary" ng-click="model.ToggleFollow(u,'unfollow')">UnFollow</a></td>
-                    </tr>
-                </table>
-                    </div></div>
-            </div>
-        </div>
     </div>
+</div>
 
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
