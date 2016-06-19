@@ -3,7 +3,9 @@
  */
 module.exports = function () {
     var mongoose = require("mongoose");
+
     var UserSchema = require("./user.schema.server")();
+
     var User = mongoose.model("swUser", UserSchema);
 
     var api = {
@@ -16,6 +18,7 @@ module.exports = function () {
         FindFacebookUser: FindFacebookUser,
         GetExperts: GetExperts
     }
+
     return api;
 
     function GetExperts() {
@@ -36,7 +39,8 @@ module.exports = function () {
                 {$set:{
                     firstName : updatedUser.firstName,
                     lastName: updatedUser.lastName,
-                    type: updatedUser.type
+                    type: updatedUser.type,
+                    circle: updatedUser.circle
                 }});
     }
 
