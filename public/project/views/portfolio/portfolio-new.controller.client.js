@@ -9,7 +9,7 @@
         .module("StockWatch")
         .controller("PortfolioNewController", PortfolioNewController);
 
-    function PortfolioNewController($location, $routeParams, WebsiteService) {
+    function PortfolioNewController($location, $routeParams, PortfolioService) {
         var ViewModel = this;
         Initialize();
         function Initialize() {
@@ -21,7 +21,7 @@
 
         function CreateNewPortfolio(portfolio) {
             ViewModel.SubmittedClass = "submitted";
-            if(name){
+            if(portfolio.name){
                 PortfolioService
                     .CreateNewPortfolio(ViewModel.UserId, portfolio)
                     .then(function (res) {

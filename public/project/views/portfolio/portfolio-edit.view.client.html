@@ -1,11 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-        <p class="navbar-text pull-left">
-            <a href="#/user/{{model.UserId}}/website" class="navbar-link">
-                      <span class="glyphicon glyphicon-chevron-left">
-                      </span>
-            </a>
-        </p>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                     aria-expanded="false" aria-controls="navbar">
@@ -20,34 +14,38 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/login">Login</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ng-click="model.UpdatePortfolioById(model.Portfolio)">Save</a></li>
+            </ul>
         </div>
     </div>
 </nav>
 <div class="container">
-    <div ng-if="Profile.Success" class="alert alert-success" role="alert">
-        <a class="alert-link">{{Profile.Success}}</a>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
     </div>
-    <div ng-if="Profile.Error" class="alert alert-danger" role="alert">
-        <a class="alert-link">{{Profile.Error}}</a>
+    <div class="form-group">
+        <label ng-if="model.Portfolio.dateCreated">Created on {{model.Portfolio.dateCreated | date:'MM-dd-yyyy'}}</label>
     </div>
-    <form>
-        <div class="form-group">
-            <label for="portfolio">Portfolio</label>
-            <input type="text"
-                   class="form-control"
-                   id="portfolio"
-                   placeholder="401k portfolio">
-        </div>
-        <a class="btn btn-primary btn-block">Save</a>
-    </form>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text"
+               class="form-control {{model.SubmittedClass}}"
+               ng-model = "model.Portfolio.name"
+               id="name"
+               placeholder="porfolio name by type/nature"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+            <textarea class="form-control" rows="3"
+                      ng-model="model.Portfolio.description"
+                      id="description"
+                      placeholder="portfolio description"></textarea>
+    </div>
+    <a class="btn btn-danger btn-block" ng-click="model.DeletePortfolio()">Delete</a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
-        <div class="navbar-text navbar-link pull-right">
-            <a href="#/user/{{model.UserId}}">
-          <span class="glyphicon glyphicon-user">
-          </span>
-            </a>
-        </div>
     </div>
 </nav>
