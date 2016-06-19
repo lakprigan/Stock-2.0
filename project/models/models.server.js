@@ -4,7 +4,8 @@
 module.exports = function () {
     
     var models = {
-        UserModel: require("./user/user.model.server") ()
+        UserModel: require("./user/user.model.server") (),
+        PortfolioModel: require("./portfolio/portfolio.model.server") ()
     }
     return models;
 };
