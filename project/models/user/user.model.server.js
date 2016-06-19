@@ -34,14 +34,10 @@ module.exports = function () {
     }
 
     function UpdateUser(userId, updatedUser) {
+        delete updatedUser._id;
         return User
             .update({_id: userId},
-                {$set:{
-                    firstName : updatedUser.firstName,
-                    lastName: updatedUser.lastName,
-                    type: updatedUser.type,
-                    circle: updatedUser.circle
-                }});
+                {$set: updatedUser});
     }
 
     function CreateUser(user) {
