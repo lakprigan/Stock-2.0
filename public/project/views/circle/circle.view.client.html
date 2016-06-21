@@ -22,43 +22,56 @@
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-sm-4 col-md-4 main">
-            <div class="table-responsive">
-                <div class="panel-heading">Experts in circle</div>
-                <div class="panel-body">
-                    <table class="table table-striped table-bordered">
-                        <tr ng-repeat="u in model.User.circle">
-                            <td>
-                                <a href="">
-                                    {{u}}
-                                </a>
-                            </td>
-                            <td><a class="btn btn-danger" ng-click="model.ToggleFollow(u,'unfollow')">UnFollow</a></td>
-                        </tr>
-                    </table>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-exchange fa-fw"></i> Experts In Circle
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" ng-repeat="u in model.User.circle">
+                                <tr>
+                                    <td width="80%">
+                                        <a href="#/user/{{u._id}}"><h4>{{u}}</h4></a>
+                                    </td>
+                                    <td width="20%">
+                                        <button class="btn btn-danger" ng-click="model.UnfollowUser($index)">
+                                            <i class="fa fa-user-times" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-4 col-md-4 main">
-            <div class="panel-heading">Public Experts</div>
-            <div class="panel-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered">
-                        <tr ng-repeat="u in model.AvailableExperts">
-                            <td>
-                                <a href="">
-                                    {{u.username}}
-                                </a>
-                            </td>
-                            <td><a class="btn btn-primary" ng-click="model.ToggleFollow(u.username,'follow')">Follow</a></td>
-                        </tr>
-                    </table>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-exchange fa-fw"></i> Available Experts
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" ng-repeat="u in model.AvailableExperts">
+                                <tr>
+                                    <td width="80%">
+                                        <a href="#/user/{{u._id}}"><h4>{{u.username}}</h4></a>
+                                    </td>
+                                    <td width="20%">
+                                        <button class="btn btn-success" ng-click="model.FollowUser($index)">
+                                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
