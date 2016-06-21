@@ -23,7 +23,7 @@
 <div class="container">
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="p in model.Portfolios">
-            <a href="#/user/:id/portfolio/:pid/stock">{{p.name}}</a>
+            <a href="#/user/{{model.UserId}}/portfolio/{{p._id}}/stock">{{p.name}}</a>
             <a href="#/user/{{model.UserId}}/portfolio/{{p._id}}" class="pull-right WebsiteEditCog">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
