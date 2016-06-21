@@ -47,7 +47,8 @@
             <input type="email"
                    class="form-control"
                    id="emailaddress"
-                   placeholder="alice@gmail.com">
+                   placeholder="alice@gmail.com"
+                   ng-disabled="model.isSelf == false">
         </div>
         <div class="form-group">
             <label for="firstName">First Name</label>
@@ -55,7 +56,7 @@
                     type="text"
                    class="form-control"
                    id="firstName"
-                   placeholder="Alice">
+                   placeholder="Alice" ng-disabled="model.isSelf == false">
         </div>
         <div class="form-group">
             <label for="lastName">Last Name</label>
@@ -63,27 +64,33 @@
                     type="text"
                    class="form-control"
                    id="lastName"
-                   placeholder="Wonderland">
+                   placeholder="Wonderland" ng-disabled="model.isSelf == false">
         </div>
         <div class="form-group">
             <div class="radio">
-                <label><input type="radio" ng-model="model.User.type" value="expert" name="optradio">Expert</label>
+                <label><input type="radio" ng-model="model.User.type" value="expert"
+                              name="optradio" ng-disabled="model.isSelf == false">Expert</label>
             </div>
             <div class="radio">
-                <label><input type="radio" ng-model="model.User.type" value="investor" name="optradio">Investor</label>
+                <label><input type="radio" ng-model="model.User.type"
+                              value="investor" name="optradio" ng-disabled="model.isSelf == false">
+                    Investor</label>
             </div>
         </div>
     </form>
     <a class="btn btn-primary btn-block"
-       ng-click="model.UpdateUser(model.User)">
+       ng-click="model.UpdateUser(model.User)"
+       ng-show="model.isSelf">
         Save
     </a>
     <a class="btn btn-danger btn-block"
-       ng-click = "model.Logout()">
+       ng-click = "model.Logout()"
+       ng-show="model.isSelf">
         Logout
     </a>
     <a class="btn btn-danger btn-block"
-       ng-click="Profile.Unregister()">
+       ng-click="Profile.Unregister()"
+       ng-show="model.isSelf">
         Unregister
     </a>
 </div>
