@@ -24,7 +24,6 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>#</th>
                         <th>Stock</th>
                         <th>Investment Price</th>
                         <th>Quantity</th>
@@ -35,19 +34,22 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Facebook</td>
-                        <td>100</td>
-                        <td>100</td>
-                        <td>10 June 2015</td>
-                        <td>22.32%</td>
-                        <td><a href="" class="navbar-link">
+                    <tr ng-repeat="s in model.UpdatedStocks">
+                        <td>
+                            <a href="#/user/{{model.UserId}}/portfolio/{{model.PortfolioId}}/stock/{{s._id}}">
+                                {{s.code}}
+                            </a>
+                        </td>
+                        <td>{{s.investmentPrice}}</td>
+                        <td>{{s.investmentQuantity}}</td>
+                        <td>{{s.investmentDate}}</td>
+                        <td ng-class="(s.presentValue > 0) ? 'green' : 'red'">{{s.presentValue}}</td>
+                        <td><a href="#/user/{{model.UserId}}/portfolio/{{model.PortfolioId}}/stock/{{s._id}}/edit" class="navbar-link">
                          <span class="glyphicon glyphicon-cog">
                          </span>
                         </a>
                         </td>
-                        <td><a href="#/user/:uid/portfolio/:pid" class="navbar-link">
+                        <td><a ng-click="model.DeleteStock(s._id)">
                          <span class="glyphicon glyphicon-remove">
                          </span>
                         </a>
@@ -62,7 +64,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text navbar-link pull-right">
-            <a href="#/user/:uid/portfolio/new" class="navbar-link">
+            <a href="#/user/{{model.UserId}}/portfolio/{{model.PortfolioId}}/stock/new" class="navbar-link">
                       <span class="glyphicon glyphicon-plus">
                       </span>
             </a>
