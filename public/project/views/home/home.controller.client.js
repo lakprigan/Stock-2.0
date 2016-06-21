@@ -8,10 +8,15 @@
 
     function HomeController(QuandlService) {
         var vm = this;
-        vm.code = "NASDAQOMX";
+        vm.code = "GOOG";
         vm.getStockData = getStockData;
-        
+        vm.selectedObject = selectedObject
         getStockData();
+
+        function selectedObject(code) {
+            vm.code = code.originalObject.code.replace("WIKI/","");
+            getStockData();
+        }
 
         function getStockData() {
             QuandlService.getStockData(vm.code)
