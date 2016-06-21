@@ -10,6 +10,7 @@
     <meta name="author" content="laxmipriya iyer">
     <link rel="icon" href="favicon.ico">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/angucomplete-alt.css" rel="stylesheet">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
@@ -17,6 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.5.1/lodash.min.js"></script>
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="js/angucomplete-alt.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <title>Stock Watch</title>
     <link href="css/dashboard.css" rel="stylesheet"/>
@@ -29,11 +31,18 @@
     <script src="views/home/home.controller.client.js"></script>
     <script src="views/portfolio/portfolio-new.controller.client.js"></script>
     <script src="views/portfolio/portfolio-list.controller.client.js"></script>
+    <script src="views/stock/stock-list.controller.client.js"></script>
+    <script src="views/comment/comment.controller.client.js"></script>
+    <script src="views/stock/stock-new.controller.client.js"></script>
+    <script src="views/stock/stock-details.controller.client.js"></script>
+    <script src="views/stock/stock-edit.controller.client.js"></script>
     <script src="views/portfolio/portfolio-edit.controller.client.js"></script>
     <script src="views/circle/circle.controller.client.js"></script>
     <script src="services/user.service.client.js"></script>
     <script src="services/quandl.service.client.js"></script>
     <script src="services/portfolio.service.client.js"></script>
+    <script src="services/stock.service.client.js"></script>
+    <script src="services/comment.service.client.js"></script>
 </head>
 <body>
 <div ng-view></div>
