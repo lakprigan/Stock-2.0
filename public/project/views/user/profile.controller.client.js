@@ -10,31 +10,42 @@
 
         var ViewModel = this;
         ViewModel.currentUser = $rootScope.currentUser;
+        ViewModel.isSelf = true;
+
         Initialize();
         ViewModel.Logout = Logout;
+        ViewModel.UpdateUser = UpdateUser;
+        ViewModel.Unregister = Unregister;
 
-        function Logout() {
-            UserService
-                .Logout()
-                .then(function (res) {
-                    $location.url("/login");
-                },
-                function (err) {
-                    $location.url("/login");
-                })
-        }
+
 
         function Initialize() {
+            ViewModel.toUser = $routeParams.id;
             ViewModel.id = $rootScope.currentUser._id;
+
+            if(ViewModel.toUser != ViewModel.id){
+                ViewModel.isSelf = false;
+            }
+            
             UserService
-                .FindUserById(ViewModel.id)
+                .FindUserById(ViewModel.toUser)
                 .then(function (response) {
                     ViewModel.User = response. data;
                 },function (err) {
                     ViewModel.Error = "unable to retrieve the user"
                 });
-            ViewModel.UpdateUser = UpdateUser;
-            ViewModel.Unregister = Unregister;
+
+        }
+
+        function Logout() {
+            UserService
+                .Logout()
+                .then(function (res) {
+                        $location.url("/login");
+                    },
+                    function (err) {
+                        $location.url("/login");
+                    })
         }
 
         function UpdateUser(updatedUser) {
