@@ -18,27 +18,40 @@
     </div>
 </nav>
 <div class="container-fluid">
+    <!--<div class="row">-->
+        <!--<div class="col-lg-12 form-group">-->
+            <!--<input type="text"-->
+                   <!--ng-model="model.code"-->
+                   <!--placeholder="Search stock code"-->
+                   <!--class="form-control">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<a ng-click="model.getStockData()" class="btn btn-primary btn-block">-->
+                     <!--Search-->
+    <!--</a>-->
     <div class="row">
-        <div class="col-lg-12 form-group">
-            <input type="text"
-                   ng-model="model.code"
-                   placeholder="Search stock code"
-                   class="form-control">
+        <div angucomplete-alt
+             placeholder="Search stock codes"
+             pause="500"
+             remote-url="/api/stockwatch/stockdata/"
+             title-field="companyName"
+             selected-object="model.selectedObject"
+             minlength="2"
+             input-class="form-control form-control-small"
+             match-class="highlight"
+             on-select="model.getStockData">
         </div>
     </div>
-    <a ng-click="model.getStockData()" class="btn btn-primary btn-block">
-                     Search
-    </a>
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-3 placeholder grey">
                     <h4>Low</h4>
-                    <span class="text-muted">{{model.low}}</span>
+                    <span class="text-muted red">{{model.low}}</span>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder grey">
                     <h4>High</h4>
-                    <span class="text-muted">{{model.high}}</span>
+                    <span class="text-muted green">{{model.high}}</span>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder grey">
                     <h4>Index</h4>
@@ -54,7 +67,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="panel panel-default">
-                <div class="panel-heading"> NASDAQ</div>
+                <div class="panel-heading"> {{model.code}}</div>
                 <div class="panel-body">
                     <div id="chartContainer"></div>
                 </div>
