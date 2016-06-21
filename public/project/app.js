@@ -3,5 +3,5 @@
  */
 (function () {
     angular
-        .module("StockWatch",['ngRoute']);
+        .module("StockWatch",['ngRoute','angucomplete-alt']);
 })();
