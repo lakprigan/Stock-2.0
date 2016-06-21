@@ -63,7 +63,32 @@
                 controllerAs: "model"
             })
             .when("/user/:id/portfolio/:pid/stock",{
-                templateUrl: "views/stock/stock-list.view.client.html"
+                templateUrl: "views/stock/stock-list.view.client.html",
+                controller: "StockListController",
+                controllerAs: "model"
+            })
+            .when("/user/:id/portfolio/:pid/stock/new",{
+                templateUrl: "views/stock/stock-new.view.client.html",
+                controller: "StockNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:id/portfolio/:pid/stock/:sid",{
+                templateUrl: "views/stock/stock-details.view.client.html",
+                controller: "StockDetailsController",
+                controllerAs: "model"
+            })
+            .when("/user/:id/portfolio/:pid/stock/:sid/comment",{
+                templateUrl: "views/comment/comment.view.client.html",
+                controller: "CommentController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+            .when("/user/:id/portfolio/:pid/stock/:sid/edit",{
+                templateUrl: "views/stock/stock-edit.view.client.html",
+                controller: "StockEditController",
+                controllerAs: "model"
             })
             .otherwise({
                 redirectTo: "/home"
