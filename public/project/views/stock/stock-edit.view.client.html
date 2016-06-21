@@ -1,8 +1,14 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.UserId}}/website" class="navbar-link">
+                      <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                </a>
+            </p>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -17,9 +23,53 @@
         </div>
     </div>
 </nav>
+<div class="container">
+    <div ng-if="Profile.Success" class="alert alert-success" role="alert">
+        <a class="alert-link">{{Profile.Success}}</a>
+    </div>
+    <div ng-if="Profile.Error" class="alert alert-danger" role="alert">
+        <a class="alert-link">{{Profile.Error}}</a>
+    </div>
+    <form>
+        <div class="form-group">
+            <div class="form-group">
+                <label>Date Created {{model.Stock.investmentDate}}</label>
+            </div>
+            <label for="stock">Stock</label>
+            <input type="text"
+                   class="form-control"
+                   id="stock"
+                   ng-model="model.Stock.code"
+                   placeholder="NASDAQ"
+            disabled>
+        </div>
+        <div class="form-group">
+            <label for="stockPrice">Stock Price</label>
+            <input type="text"
+                   class="form-control"
+                   id="stockPrice"
+                   ng-model="model.Stock.investmentPrice"
+                   placeholder="26.57">
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="text"
+                   class="form-control"
+                   id="quantity"
+                   ng-model="model.Stock.investmentQuantity"
+                   placeholder="50">
+        </div>
+    </form>
+</div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text navbar-link pull-right">
+            <a ng-click="model.UpdateStock()" class="navbar-link">
+                      <span class="glyphicon glyphicon-ok">
+                      </span>
+            </a>
+        </div>
+        <div class="navbar-text navbar-link pull-left">
             <a href="#/user/{{model.UserId}}">
           <span class="glyphicon glyphicon-user">
           </span>
