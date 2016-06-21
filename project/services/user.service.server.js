@@ -36,6 +36,7 @@ module.exports = function(app, models){
     app.get("/api/stockwatch/loggedIn", LoggedIn);
     app.post("/api/stockwatch/register/", Register);
     app.get("/api/stockwatch/expert", GetExperts);
+   
 
     function facebookLogin(token, refreshToken, profile, done) {
         userModel
