@@ -4,6 +4,7 @@
 module.exports=function () {
     var mongoose = require("mongoose");
     var CommentSchema = mongoose.Schema({
+        code: String,
         username : String,
         post : String,
         dateCreated : {type: Date, default: Date.Now}
