@@ -18,11 +18,17 @@ input.form-control{
     width: 100%;
 }
 
-.grey{
+.lightGrey{
     background-color: lightgrey;
     padding-top: 5px;
     padding-bottom: 15px;
     }
+
+.darkGrey{
+    background-color: darkgrey;
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
 
 .green{
     color: green;
@@ -30,4 +36,17 @@ input.form-control{
 
 .red{
     color: red;
+}
+
+li{
+    list-style: none;
+}
+
+.portfolioFooterHeight{
+    height: 41px;
+}
+
+.angucomplete-dropdown {
+overflow-y: auto;
+    max-height: 200px; // your preference
 }
