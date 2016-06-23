@@ -13,7 +13,6 @@
         function Initialize() {
             ViewModel.UserId = $routeParams.id;
             ViewModel.PortfolioId = $routeParams.pid;
-            ViewModel.DeletePortfolio = DeletePortfolio;
             ViewModel.UpdatePortfolioById = UpdatePortfolioById;
             ViewModel.SubmittedClass = "";
             PortfolioService
@@ -21,16 +20,6 @@
                 .then(function (res) {
                     ViewModel.Portfolio = res.data;
                 })
-        }
-
-        function DeletePortfolio() {
-            PortfolioService
-                .DeletePortfolio(ViewModel.PortfolioId)
-                .then(function () {
-                    $location.url("/user/"+ViewModel.UserId+"/portfolio");
-                },function (error) {
-                    ViewModel.error = "Unable to delete portfolio";
-                });
         }
 
         function UpdatePortfolioById(updatedPortfolio) {

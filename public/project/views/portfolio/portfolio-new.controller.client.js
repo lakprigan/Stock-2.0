@@ -1,9 +1,6 @@
 /**
  * Created by PriyaArun on 6/18/16.
  */
-/**
- * Created by PriyaArun on 5/26/16.
- */
 (function () {
     angular
         .module("StockWatch")
@@ -11,6 +8,8 @@
 
     function PortfolioNewController($location, $routeParams, PortfolioService) {
         var ViewModel = this;
+        ViewModel.DeletePortfolio = DeletePortfolio;
+        
         Initialize();
         function Initialize() {
             ViewModel.UserId = $routeParams.id;

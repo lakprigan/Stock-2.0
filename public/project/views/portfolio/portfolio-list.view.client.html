@@ -20,15 +20,56 @@
         </div>
     </div>
 </nav>
+
 <div class="container">
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="p in model.Portfolios">
-            <a href="#/user/{{model.UserId}}/portfolio/{{p._id}}/stock">{{p.name}}</a>
-            <a href="#/user/{{model.UserId}}/portfolio/{{p._id}}" class="pull-right WebsiteEditCog">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-lg-4" ng-repeat="p in model.Portfolios">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="#/user/{{model.UserId}}/portfolio/{{p._id}}/stock"><b>{{p.name}}</b></a>
+                    <div class="pull-right" ng-show="opinion.user._id===model.currentUser._id">
+                        <div class="btn-group">
+                            <button type="button"
+                                    class="btn btn-default btn-xs dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-expanded="true">Actions
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="#/user/{{model.UserId}}/portfolio/{{p._id}}">
+                                        <i class="fa fa-pencil fa-fw"></i> Edit</a>
+                                </li>
+                                <li>
+                                    <a href ng-click="model.DeletePortfolio(p)">
+                                        <i class="fa fa-remove fa-fw"></i> Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr>
+                                <td>Stock Count</td>
+                                <td>{{model.Portfolio_Stocks[p._id].length}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total Investment</td>
+                                <td>{{model.Portfolio_Stocks[p._id]|sumByKey : 'investmentPrice'}}</td>
+                            </tr>
+                        </table>
+                        <div/>
+                    </div>
+                </div>
+                <div class="panel-footer portfolioFooterHeight">
+                    <div class="pull-right">
+                        <i class="fa fa-calendar" aria-hidden="true"></i> {{p.dateCreated | date:'MM-dd-yyyy'}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
