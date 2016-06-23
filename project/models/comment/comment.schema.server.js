@@ -7,7 +7,7 @@ module.exports=function () {
         code: String,
         username : String,
         post : String,
-        dateCreated : {type: Date, default: Date.Now}
+        dateCreated : {type: Date, default: Date.now()}
     }, {collection: 'sw.comment'});
     return CommentSchema;
 }
