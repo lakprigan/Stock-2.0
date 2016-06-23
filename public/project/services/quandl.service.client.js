@@ -23,6 +23,5 @@
                 .replace("CODE", code);
             return $http.get(url);
         }
-
     }
 })();
