@@ -16,9 +16,11 @@
             ViewModel.SubmittedClass = "";
             ViewModel.CreateStock = CreateStock;
         }
-        function CreateStock(stock) {
+        function CreateStock(stock, code) {
             ViewModel.SubmittedClass = "submitted";
+            stock.code = code.originalObject.code;
             if(stock.code){
+                stock.code = stock.code.replace("WIKI/","");
                 StockService
                     .CreateStock(ViewModel.PortfolioId, stock)
                     .then(function (res) {

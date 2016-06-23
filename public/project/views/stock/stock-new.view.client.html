@@ -32,12 +32,19 @@
     </div>
     <form>
         <div class="form-group">
-            <label for="stock">Stock</label>
-            <input type="text"
-                   class="form-control"
-                   id="stock"
-                   ng-model="stock.code"
-                   placeholder="NASDAQ">
+            <label>Stock</label>
+            <div angucomplete-alt
+                 placeholder="Search stock codes"
+                 pause="500"
+                 remote-url="/api/stockwatch/stockdata/"
+                 title-field="companyName"
+                 selected-object="model.selectedObject"
+                 minlength="2"
+                 input-class="form-control form-control-small"
+                 match-class="highlight"
+                 ng-model="model.selectedObject"
+            placeholder="NASDAQ">
+            </div>
         </div>
         <div class="form-group">
             <label for="stockPrice">Stock Price</label>
@@ -68,7 +75,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text navbar-link pull-right">
-            <a ng-click="model.CreateStock(stock)" class="navbar-link">
+            <a ng-click="model.CreateStock(stock, model.selectedObject)" class="navbar-link">
                       <span class="glyphicon glyphicon-ok">
                       </span>
             </a>
