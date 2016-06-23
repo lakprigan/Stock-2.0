@@ -1,0 +1,46 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">New Opinions</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" ng-if="model.currentUser.type === 'expert'">Create Opinion</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <input ng-model="model.Opinion.title"
+           name="title"
+           type="text"
+           class="form-control {{model.SubmittedClass}}"
+           placeholder="opinion title"
+           autocorrect="off"
+           autocapitalize="off"
+           required/>
+    <div ng-model="model.Opinion.text"
+         text-angular
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+    </div>
+    <a class="btn btn-primary btn-block"
+       ng-click="model.CreateOpinion(model.Opinion)">
+        Create
+    </a>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+    </div>
+</nav>
