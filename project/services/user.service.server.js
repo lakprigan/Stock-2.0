@@ -15,7 +15,7 @@ module.exports = function(app, models){
     var facebookConfig = {
         clientID     : process.env.FACEBOOK_CLIENT_ID,
         clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL  : process.env.FACEBOOK_SW_CALLBACK_URL
+        callbackURL  : process.env.FACEBOOK_CALLBACK_URL
     };
     //856441532318-j7unfefmdfl4lhbu2d31a1oo9j1nbmkn.apps.googleusercontent.com
     // R64r4GcA1MKWmdwfRI5zlUK0
