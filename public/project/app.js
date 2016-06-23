@@ -3,5 +3,5 @@
  */
 (function () {
     angular
-        .module("StockWatch",['ngRoute','angucomplete-alt']);
+        .module("StockWatch",['ngRoute','angucomplete-alt','textAngular']);
 })();
