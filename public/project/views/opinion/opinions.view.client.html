@@ -1,0 +1,66 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">Experts Opinions</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/user/{{model.currentUser._id}}/newopinion" ng-if="model.currentUser.type === 'expert'">Create Opinion</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12" ng-repeat="opinion in model.Opinions">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href=""><b>{{opinion.title}}</b></a>
+                    <div class="pull-right" ng-show="opinion.user._id===model.currentUser._id">
+                        <div class="btn-group">
+                            <button type="button"
+                                    class="btn btn-default btn-xs dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-expanded="true">Actions
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li>
+                                    <a href="#/user/{{model.UserId}}/opinion/{{opinion._id}}">
+                                        <i class="fa fa-pencil fa-fw"></i> Edit</a>
+                                </li>
+                                <li>
+                                    <a href ng-click="model.DeleteOpinion(opinion)">
+                                        <i class="fa fa-remove fa-fw"></i> Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="blog-text" ng-bind-html="model.GetSafeHtml(opinion.text)"></div>
+                </div>
+                <div class="panel-footer">
+                    <a href="#/user/{opinion.user._id}}">{{opinion.user.firstName}} {{opinion.user.lastName}}</a>
+                    <div class="pull-right">
+                        <i class="fa fa-calendar" aria-hidden="true"></i> {{opinion.adviceDate | date:'MM-dd-yyyy'}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+    </div>
+</nav>
