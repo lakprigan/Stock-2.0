@@ -15,6 +15,11 @@ module.exports=function () {
             token: String,
             displayName: String
         },
+        google:{
+            id: String,
+            token: String,
+            displayName: String
+        },
         type: String,
         circle: [String]
     }, {collection: 'sw.user'});

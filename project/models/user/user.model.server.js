@@ -16,6 +16,7 @@ module.exports = function () {
         UpdateUser: UpdateUser,
         FindUserByUserName: FindUserByUserName,
         FindFacebookUser: FindFacebookUser,
+        FindGoogleUser: FindGoogleUser,
         GetExperts: GetExperts
     }
 
@@ -27,6 +28,9 @@ module.exports = function () {
 
     function FindFacebookUser(id) {
         return User.findOne({"facebook.id": id});
+    }
+    function FindGoogleUser(id) {
+        return User.findOne({"google.id": id});
     }
 
     function FindUserByUserName(username) {
