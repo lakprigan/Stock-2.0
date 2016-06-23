@@ -10,7 +10,6 @@
 
         var ViewModel = this;
         ViewModel.currentUser = $rootScope.currentUser;
-        ViewModel.isSelf = true;
 
         Initialize();
         ViewModel.Logout = Logout;
@@ -22,13 +21,9 @@
         function Initialize() {
             ViewModel.toUser = $routeParams.id;
             ViewModel.id = $rootScope.currentUser._id;
-
-            if(ViewModel.toUser != ViewModel.id){
-                ViewModel.isSelf = false;
-            }
             
             UserService
-                .FindUserById(ViewModel.toUser)
+                .FindUserById(ViewModel.id)
                 .then(function (response) {
                     ViewModel.User = response. data;
                 },function (err) {
