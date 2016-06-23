@@ -38,6 +38,7 @@
         function CreateComment(comment) {
             comment.username = ViewModel.currentUser.username;
             comment.code = ViewModel.Stock.code;
+            comment.dateCreated = Date.now();
             CommentService
                 .CreateComment(comment)
                 .then(function (res) {

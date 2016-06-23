@@ -28,9 +28,8 @@
                     <i class="fa fa-comments fa-fw"></i>Comments
                 </div>
                 <div class="panel-body">
-                    <ul class="chat">
-                        <li class="left clearfix" ng-repeat="comment in model.Comments">
-                            <div class="clearfix">
+                    <ul>
+                        <li ng-repeat="comment in model.Comments">
                                 <div class="header">
                                     <strong class="primary-font"><a href="">{{comment.username}}</a></strong>
                                     <small class="pull-right text-muted">
@@ -40,7 +39,7 @@
                                 <p>
                                     {{comment.post}}
                                 </p>
-                            </div>
+                            <div class="hline"></div>
                         </li>
                     </ul>
                 </div>
@@ -53,7 +52,8 @@
 
                         <span class="input-group-btn">
                             <button class="btn btn-warning btn-sm"
-                                    ng-click="model.CreateComment(NewComment)">Comment</button>
+                                    ng-click="model.CreateComment(NewComment)">Comment
+                            </button>
                         </span>
                     </div>
                 </div>
