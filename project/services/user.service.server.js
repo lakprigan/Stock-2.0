@@ -6,6 +6,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require("bcrypt-nodejs");
 var FacebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 module.exports = function(app, models){
 
@@ -16,6 +17,13 @@ module.exports = function(app, models){
         clientSecret : process.env.FACEBOOK_CLIENT_SECRET,
         callbackURL  : process.env.FACEBOOK_SW_CALLBACK_URL
     };
+    //856441532318-j7unfefmdfl4lhbu2d31a1oo9j1nbmkn.apps.googleusercontent.com
+    // R64r4GcA1MKWmdwfRI5zlUK0
+    var googleConfig = {
+        clientID     : process.env.GOOGLE_CLIENT_ID,
+        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL  : process.env.GOOGLE_SW_CALLBACK_URL
+    };
 
     //encrypt entire request to the body using ssl - openshift paid version supports this
     app.post("/api/stockwatch/user",createUser);
@@ -23,8 +31,16 @@ module.exports = function(app, models){
     //local is the standard name for the local strategy
     app.post("/api/stockwatch/login",passport.authenticate('sw'), login);
     app.get("/auth/stockwatch/facebook", passport.authenticate('facebook-sw', {scope : ['email'] }));
+    app.get("/auth/stockwatch/google", passport.authenticate('google-sw', {scope : ['email'] }));
+
     app.get("/auth/sw/facebook/callback",
         passport.authenticate('facebook-sw', {
+            successRedirect: '/project/#/user',
+            failureRedirect: '/project/#/login'
+        }));
+
+    app.get("/auth/sw/google/callback",
+        passport.authenticate('google-sw', {
             successRedirect: '/project/#/user',
             failureRedirect: '/project/#/login'
         }));
@@ -47,7 +63,7 @@ module.exports = function(app, models){
                 }
                 else{
                     var facebookUser = {
-                        username: profile.displayName.replace(/ /g,''),
+                        username: "f_"+profile.displayName.replace(/ /g,''),
                         facebook:{
                             token: token,
                             id:profile.id,
@@ -56,6 +72,30 @@ module.exports = function(app, models){
                     };
                     userModel
                         .CreateUser(facebookUser)
+                        .then(function (user) {
+                            return done(null, user);
+                        });
+                }});
+    }
+
+    function googleLogin(token, refreshToken, profile, done) {
+        userModel
+            .FindGoogleUser(profile.id)
+            .then(function (user) {
+                if(user) {
+                    return done(null, user);
+                }
+                else{
+                    var googleUser = {
+                        username: "g_"+profile.name.givenName,
+                        google:{
+                            token: token,
+                            id:profile.id,
+                            displayName: profile.name.givenName
+                        }
+                    };
+                    userModel
+                        .CreateUser(googleUser)
                         .then(function (user) {
                             return done(null, user);
                         });
@@ -159,7 +199,7 @@ module.exports = function(app, models){
     //any falsey, abort the request 401/404 and abort the session
     passport.use('sw', new LocalStrategy(localStrategy));
     passport.use('facebook-sw', new FacebookStrategy(facebookConfig, facebookLogin));
-
+    passport.use('google-sw', new GoogleStrategy(googleConfig, googleLogin));
 
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
