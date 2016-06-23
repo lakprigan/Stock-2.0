@@ -18,18 +18,8 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <!--<div class="row">-->
-        <!--<div class="col-lg-12 form-group">-->
-            <!--<input type="text"-->
-                   <!--ng-model="model.code"-->
-                   <!--placeholder="Search stock code"-->
-                   <!--class="form-control">-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<a ng-click="model.getStockData()" class="btn btn-primary btn-block">-->
-                     <!--Search-->
-    <!--</a>-->
     <div class="row">
+        <div class="col-lg-6">
         <div angucomplete-alt
              placeholder="Search stock codes"
              pause="500"
@@ -41,25 +31,31 @@
              match-class="highlight"
              on-select="model.getStockData">
         </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
             <div class="row placeholders">
-                <div class="col-xs-6 col-sm-3 placeholder grey">
+                <div class="col-xs-6 col-sm-3 placeholder lightGrey">
                     <h4>Low</h4>
-                    <span class="text-muted red">{{model.low}}</span>
+                    <span class="text-muted red" ng-show="model.low">{{model.low}}</span>
+                    <span class="text-muted red" ng-show="!model.low">N/A</span>
+
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder grey">
+                <div class="col-xs-6 col-sm-3 placeholder darkGrey">
                     <h4>High</h4>
-                    <span class="text-muted green">{{model.high}}</span>
+                    <span class="text-muted green" ng-show="model.high">{{model.high}}</span>
+                    <span class="text-muted red" ng-show="!model.low">N/A</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder grey">
+                <div class="col-xs-6 col-sm-3 placeholder lightGrey">
                     <h4>Index</h4>
-                    <span class="text-muted">{{model.indexValue}}</span>
+                    <span class="text-muted" ng-show="model.indexValue">{{model.indexValue}}</span>
+                    <span class="text-muted red" ng-show="!model.indexValue">N/A</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder grey">
+                <div class="col-xs-6 col-sm-3 placeholder darkGrey">
                     <h4>TotalMarket</h4>
-                    <span class="text-muted">{{model.totalMarketValue}}</span>
+                    <span class="text-muted" ng-show="model.totalMarketValue">{{model.totalMarketValue}}</span>
+                    <span class="text-muted red" ng-show="!model.totalMarketValue">N/A</span>
                 </div>
             </div>
         </div>

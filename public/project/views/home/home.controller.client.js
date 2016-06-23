@@ -14,8 +14,10 @@
         getStockData();
 
         function selectedObject(code) {
-            vm.code = code.originalObject.code.replace("WIKI/","");
-            getStockData();
+            if(code!=undefined) {
+                vm.code = code.originalObject.code.replace("WIKI/", "");
+                getStockData();
+            }
         }
 
         function getStockData() {
