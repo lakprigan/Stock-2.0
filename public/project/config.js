@@ -52,6 +52,30 @@
                 controller: "PortfolioListController",
                 controllerAs: "model"
             })
+            .when("/user/:id/opinion",{
+                templateUrl: "views/opinion/opinions.view.client.html",
+                controller: "OpinionListController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+            .when("/user/:id/opinion/:oid",{
+                templateUrl: "views/opinion/edit-opinion.view.client.html",
+                controller: "EditOpinionController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
+            .when("/user/:id/newopinion",{
+                templateUrl: "views/opinion/new-opinion.view.client.html",
+                controller: "NewOpinionController",
+                controllerAs: "model",
+                resolve: {
+                    loggedIn: checkLoggedIn
+                }
+            })
             .when("/user/:id/portfolio/new",{
                 templateUrl: "views/portfolio/portfolio-new.view.client.html",
                 controller: "PortfolioNewController",
