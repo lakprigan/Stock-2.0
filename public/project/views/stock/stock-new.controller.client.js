@@ -6,11 +6,11 @@
         .module("StockWatch")
         .controller("StockNewController", StockNewController);
 
-    function StockNewController($location, $routeParams, StockService) {
+    function StockNewController($location, $routeParams, StockService, $rootScope) {
         var ViewModel = this;
         Initialize();
         function Initialize() {
-            ViewModel.UserId = $routeParams.id;
+            ViewModel.UserId = $rootScope.currentUser._id;;
             ViewModel.PortfolioId = $routeParams.pid;
             ViewModel.StockId = $routeParams.sid;
             ViewModel.SubmittedClass = "";
