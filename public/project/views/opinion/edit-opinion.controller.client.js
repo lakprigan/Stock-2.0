@@ -6,12 +6,12 @@
         .module("StockWatch")
         .controller("EditOpinionController", EditOpinionController);
 
-    function EditOpinionController($location, $routeParams, OpinionService) {
+    function EditOpinionController($location, $routeParams, OpinionService, $rootScope) {
         var ViewModel = this;
         Initialize();
 
         function Initialize() {
-            ViewModel.UserId = $routeParams.id;
+            ViewModel.UserId = $rootScope.currentUser._id;
             ViewModel.OpinionId = $routeParams.oid;
             ViewModel.UpdateOpinion = UpdateOpinion;
             ViewModel.SubmittedClass = "";

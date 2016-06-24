@@ -6,11 +6,11 @@
         .module("StockWatch")
         .controller("NewOpinionController", NewOpinionController);
 
-    function NewOpinionController($location, $routeParams, OpinionService, UserService) {
+    function NewOpinionController($location, $routeParams, OpinionService, UserService, $rootScope) {
         var ViewModel = this;
         Initialize();
         function Initialize() {
-            ViewModel.UserId = $routeParams.id;
+            ViewModel.UserId = $rootScope.currentUser._id;;
             ViewModel.SubmittedClass = "";
             ViewModel.CreateOpinion = CreateOpinion;
             UserService.FindUserById(ViewModel.UserId)
