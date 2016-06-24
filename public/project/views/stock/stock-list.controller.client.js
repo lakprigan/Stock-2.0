@@ -6,12 +6,12 @@
         .module("StockWatch")
         .controller("StockListController", StockListController);
 
-    function StockListController($routeParams, StockService, QuandlService) {
+    function StockListController($routeParams, StockService, QuandlService, $rootScope) {
         var ViewModel = this;
         Initialize();
 
         function Initialize() {
-            ViewModel.UserId = $routeParams.id;
+            ViewModel.UserId = $rootScope.currentUser._id;;
             ViewModel.PortfolioId = $routeParams.pid;
             ViewModel.DeleteStock = DeleteStock;
             ViewModel.UpdatedStocks = [];
