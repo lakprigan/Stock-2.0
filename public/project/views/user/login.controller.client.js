@@ -20,7 +20,7 @@
                 if(user){
                     if(user._id){
                         $rootScope.currentUser = user;
-                    $location.url("/user/"+ user._id);
+                    $location.url("/user");
 
                     }} else {
                     ViewModel.Error = "User not found!";
