@@ -50,3 +50,8 @@ li{
 overflow-y: auto;
     max-height: 200px; // your preference
 }
+
+.loginPadding{
+    padding-left: 30px;
+    padding-right: 30px;
+}
