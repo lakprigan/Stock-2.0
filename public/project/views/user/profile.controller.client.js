@@ -16,20 +16,26 @@
         ViewModel.UpdateUser = UpdateUser;
         ViewModel.Unregister = Unregister;
 
-
-
         function Initialize() {
-            ViewModel.toUser = $routeParams.id;
             ViewModel.id = $rootScope.currentUser._id;
-            
+            ViewModel.userInCircle = [];
             UserService
                 .FindUserById(ViewModel.id)
                 .then(function (response) {
                     ViewModel.User = response. data;
+                    angular.forEach(ViewModel.User.circle, function (value) {
+                        console.log(value);
+                        UserService
+                            .FindUserByUsername(value)
+                            .then(function (response) {
+                                ViewModel.userInCircle[value] = response.data._id;
+                            },function (err) {
+                                console.log("here");
+                            });
+                    });
                 },function (err) {
                     ViewModel.Error = "unable to retrieve the user"
                 });
-
         }
 
         function Logout() {

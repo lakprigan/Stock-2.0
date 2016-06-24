@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/home">My Profile</a>
+            <a class="navbar-brand" href="#/home">Stock Watch</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -28,72 +28,107 @@
             </ul>
         </div>
     </div>
-</nav><div class="container">
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                <i class="fa fa-user" aria-hidden="true"></i> {{model.User.username}}
+            </h1>
+        </div>
+    </div>
     <div ng-if="model.Success" class="alert alert-success" role="alert">
         <a class="alert-link">{{model.Success}}</a>
     </div>
     <div ng-if="model.Error" class="alert alert-danger" role="alert">
         <a class="alert-link">{{model.Error}}</a>
     </div>
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input ng-model="model.User.username"
-                   type="text"
-                   class="form-control"
-                   id="username"
-                   placeholder="Alice"
-            disabled>
-        </div>
-        <div class="form-group">
-            <label for="emailaddress">Email address</label>
-            <input type="email"
-                   class="form-control"
-                   id="emailaddress"
-                   placeholder="alice@gmail.com"
-                   >
-        </div>
-        <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input ng-model="model.User.firstName"
-                    type="text"
-                   class="form-control"
-                   id="firstName"
-                   placeholder="Alice">
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input ng-model="model.User.lastName"
-                    type="text"
-                   class="form-control"
-                   id="lastName"
-                   placeholder="Wonderland">
-        </div>
-        <div class="form-group">
-            <div class="radio">
-                <label><input type="radio" ng-model="model.User.type" value="expert"
-                              name="optradio">Expert</label>
+        <div class="row">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            Profile Details
+                        </div>
+                        <div class="panel-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input ng-model="model.User.username"
+                                           type="text"
+                                           class="form-control"
+                                           id="username"
+                                           placeholder="Alice"
+                                           disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emailaddress">Email address</label>
+                                    <input type="email"
+                                           class="form-control"
+                                           id="emailaddress"
+                                           placeholder="alice@gmail.com"
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input ng-model="model.User.firstName"
+                                           type="text"
+                                           class="form-control"
+                                           id="firstName"
+                                           placeholder="Alice">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input ng-model="model.User.lastName"
+                                           type="text"
+                                           class="form-control"
+                                           id="lastName"
+                                           placeholder="Wonderland">
+                                </div>
+                                <div class="form-group">
+                                    <div class="radio">
+                                        <label><input type="radio" ng-model="model.User.type" value="expert"
+                                                      name="optradio">Expert</label>
+                                    </div>
+                                    <div class="radio">
+                                        <label><input type="radio" ng-model="model.User.type"
+                                                      value="investor" name="optradio">
+                                            Investor</label>
+                                    </div>
+                                </div>
+                            </form>
+                            <a class="btn btn-primary btn-block"
+                               ng-click="model.UpdateUser(model.User)"
+                            >
+                                Save
+                            </a>
+                            <a class="btn btn-danger btn-block"
+                               ng-click = "model.Logout()">
+                                Logout
+                            </a>
+                            <a class="btn btn-danger btn-block"
+                               ng-click="Profile.Unregister()">
+                                Unregister
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                            Experts in Circle
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-lg-6" ng-repeat="u in model.User.circle">
+                                <a href="#/user/{{model.userInCircle[u]}}"><h4>{{u}}</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="radio">
-                <label><input type="radio" ng-model="model.User.type"
-                              value="investor" name="optradio">
-                    Investor</label>
-            </div>
         </div>
-    </form>
-    <a class="btn btn-primary btn-block"
-       ng-click="model.UpdateUser(model.User)"
-       >
-        Save
-    </a>
-    <a class="btn btn-danger btn-block"
-       ng-click = "model.Logout()">
-        Logout
-    </a>
-    <a class="btn btn-danger btn-block"
-       ng-click="Profile.Unregister()">
-        Unregister
-    </a>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
