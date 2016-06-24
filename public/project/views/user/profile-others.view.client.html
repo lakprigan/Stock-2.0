@@ -1,0 +1,95 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/home">My Profile</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" ng-if="!model.currentUser">Login</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/user/{{model.User._id}}/circle" ng-if="model.currentUser">Circle</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/user/{{model.User._id}}/portfolio" ng-if="model.currentUser">Portfolio</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/user/{{model.User._id}}/opinion" ng-if="model.currentUser">Opinion</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/login" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div ng-if="model.Success" class="alert alert-success" role="alert">
+        <a class="alert-link">{{model.Success}}</a>
+    </div>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        <a class="alert-link">{{model.Error}}</a>
+    </div>
+    <div class="row">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-exchange fa-fw"></i> Profile Details
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <td>Username</td>
+                                        <td>{{model.User.username}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>email Address</td>
+                                        <td>{{model.User.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>First Name</td>
+                                        <td>{{model.User.firstName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Name</td>
+                                        <td>{{model.User.lastName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>User Type</td>
+                                        <td>{{model.User.type}}</td>
+                                    </tr>
+                                </table>
+                                <div/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-exchange fa-fw"></i> Experts in Circle
+                    </div>
+                    <div class="panel-body">
+                        <div class="col-lg-6" ng-repeat="u in model.User.circle">
+                            <a href="#/user/{{u._id}}"><h4>{{u}}</h4></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+    </div>
+</nav>
