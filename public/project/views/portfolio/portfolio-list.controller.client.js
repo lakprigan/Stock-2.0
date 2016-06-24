@@ -6,14 +6,14 @@
         .module("StockWatch")
         .controller("PortfolioListController", PortfolioListController);
 
-    function PortfolioListController($routeParams, PortfolioService, StockService) {
+    function PortfolioListController($routeParams, PortfolioService, StockService, $rootScope) {
         var ViewModel = this;
         ViewModel.DeletePortfolio = DeletePortfolio;
         ViewModel.Portfolio_Stocks = [];
         Initialize();
 
         function Initialize() {
-            ViewModel.UserId = $routeParams.id;
+            ViewModel.UserId = $rootScope.currentUser._id;;
             PortfolioService
                 .FindPortfoliosByUserId(ViewModel.UserId)
                 .then(function (response) {

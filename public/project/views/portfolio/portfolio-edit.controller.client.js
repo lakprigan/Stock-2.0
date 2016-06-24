@@ -6,12 +6,12 @@
         .module("StockWatch")
         .controller("PortfolioEditController", PortfolioEditController);
 
-    function PortfolioEditController($location, $routeParams, PortfolioService) {
+    function PortfolioEditController($location, $routeParams, PortfolioService, $rootScope) {
         var ViewModel = this;
         Initialize();
 
         function Initialize() {
-            ViewModel.UserId = $routeParams.id;
+            ViewModel.UserId = $rootScope.currentUser._id;;
             ViewModel.PortfolioId = $routeParams.pid;
             ViewModel.UpdatePortfolioById = UpdatePortfolioById;
             ViewModel.SubmittedClass = "";

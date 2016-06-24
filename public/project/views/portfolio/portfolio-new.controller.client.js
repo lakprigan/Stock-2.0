@@ -6,13 +6,12 @@
         .module("StockWatch")
         .controller("PortfolioNewController", PortfolioNewController);
 
-    function PortfolioNewController($location, $routeParams, PortfolioService) {
+    function PortfolioNewController($location, $routeParams, PortfolioService, $rootScope) {
         var ViewModel = this;
-        ViewModel.DeletePortfolio = DeletePortfolio;
-        
+
         Initialize();
         function Initialize() {
-            ViewModel.UserId = $routeParams.id;
+            ViewModel.UserId = $rootScope.currentUser._id;
             ViewModel.PortfolioId = $routeParams.wid;
             ViewModel.SubmittedClass = "";
             ViewModel.CreateNewPortfolio = CreateNewPortfolio;
