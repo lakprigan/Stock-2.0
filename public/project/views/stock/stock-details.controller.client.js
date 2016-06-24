@@ -6,9 +6,9 @@
         .module("StockWatch")
         .controller("StockDetailsController", StockDetailsController);
 
-    function StockDetailsController($routeParams, QuandlService, StockService) {
+    function StockDetailsController($routeParams, QuandlService, StockService, $rootScope) {
         var vm = this;
-        vm.UserId = $routeParams.id;
+        vm.UserId = $rootScope.currentUser._id;
         vm.PortfolioId = $routeParams.pid;
         vm.StockId= $routeParams.sid;
         StockService.FindStockById(vm.StockId)
