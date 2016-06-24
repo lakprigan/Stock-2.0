@@ -6,13 +6,13 @@
         .module("StockWatch")
         .controller("StockEditController", StockEditController);
 
-    function StockEditController($location, $routeParams, StockService) {
+    function StockEditController($location, $routeParams, StockService, $rootScope) {
         var ViewModel = this;
 
         Initialize();
 
         function Initialize() {
-            ViewModel.UserId = $routeParams.id;
+            ViewModel.UserId = $rootScope.currentUser._id;
             ViewModel.PortfolioId = $routeParams.pid;
             ViewModel.StockId= $routeParams.sid;
 
