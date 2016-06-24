@@ -30,7 +30,7 @@
                     .then(function (response) {
                         var retrievedUser = response.data;
                         if (retrievedUser) {
-                            $location.url("/user/" + retrievedUser._id);
+                            $location.url("/user");
                         }
                     }, function (err) {
                         ViewModel.Error = err.data;
