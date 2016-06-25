@@ -38,6 +38,10 @@ input.form-control{
     color: red;
 }
 
+.white{
+    color: white;
+}
+
 li{
     list-style: none;
 }
@@ -55,3 +59,28 @@ overflow-y: auto;
     padding-left: 30px;
     padding-right: 30px;
 }
+
+.highlight{
+    color: red;
+}
+
+.search{
+    padding-bottom: 5px;
+}
+.panel-heading.indicator{
+    text-align: center;
+}
+.panel-body.indicator{
+text-align: center;
+    font-size: 24px;
+}
+
+.copyright{
+    color: white;
+    padding-top: 5px;
+}
+
+.ng-invalid.submitted{
+    border-color: darkred;
+}
+
