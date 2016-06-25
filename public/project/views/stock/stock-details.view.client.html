@@ -1,58 +1,69 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/home">{{model.Stock.code}}</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-md-12 main">
-            <div class="row placeholders">
-                <div class="col-xs-6 col-sm-3 placeholder grey">
-                    <h4>Low</h4>
-                    <span class="text-muted red">{{model.low}}</span>
+        <div class="col-lg-12">
+            <div class="page-header">
+                <h3><i class="fa fa-usd" aria-hidden="true"></i>
+                    {{model.Stock.code}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-lg-3 col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading indicator">Low</div>
+                <div class="panel-body indicator">
+                    <span class="text-muted red" ng-show="model.low">{{model.low}}</span>
+                    <span class="text-muted red" ng-show="!model.low">N/A</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder grey">
-                    <h4>High</h4>
-                    <span class="text-muted green">{{model.high}}</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="panel panel-primary ">
+                <div class="panel-heading indicator">High</div>
+                <div class="panel-body indicator">
+                    <span class="text-muted green" ng-show="model.high">{{model.high}}</span>
+                    <span class="text-muted green" ng-show="!model.high">N/A</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder grey">
-                    <h4>Index</h4>
-                    <span class="text-muted">{{model.indexValue}}</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading indicator">Index</div>
+                <div class="panel-body indicator">
+                    <span class="text-muted" ng-show="model.indexValue">{{model.indexValue}}</span>
+                    <span class="text-muted red" ng-show="!model.indexValue">N/A</span>
                 </div>
-                <div class="col-xs-6 col-sm-3 placeholder grey">
-                    <h4>TotalMarket</h4>
-                    <span class="text-muted">{{model.totalMarketValue}}</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading indicator">Volume</div>
+                <div class="panel-body indicator">
+                    <span class="text-muted" ng-show="model.totalMarketValue">{{model.totalMarketValue}}</span>
+                    <span class="text-muted red" ng-show="!model.totalMarketValue">N/A</span>
                 </div>
             </div>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading"> {{model.Stock.code}}</div>
-                <div class="panel-body">
-                    <div id="chartContainer"></div>
+            <div class="col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"> Timeline - {{model.companyName}}</div>
+                    <div class="panel-body">
+                        <div id="chartContainer1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"> Candle Stick - {{model.companyName}}</div>
+                    <div class="panel-body">
+                        <div id="chartContainer2"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-    </div>
-</nav>
