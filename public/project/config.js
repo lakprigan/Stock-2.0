@@ -31,6 +31,9 @@
                 controller: "RegisterController",
                 controllerAs: "model"
              })
+            .when("/about",{
+                templateUrl: "views/about/about.view.client.html"
+            })
             .when("/user/:id",{
                 templateUrl: "views/user/profile-others.view.client.html",
                 controller: "ProfileOthersController",
@@ -148,18 +151,18 @@
                         var user = resposnse.data;
                         if(user === '0'){
                             $rootScope.currentUser = null;
+                            $rootScope.$broadcast("userChanged");
                             deferred.reject();
                             $location.url("/login");
                         }else{
                             $rootScope.currentUser = user;
+                            $rootScope.$broadcast("userChanged");
                             deferred.resolve();
-
                         }
                     },
                     function (err) {
                         $location.url("/login");
                     });
-
             return deferred.promise;
         }
     }
