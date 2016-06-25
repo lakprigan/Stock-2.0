@@ -1,34 +1,44 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#/home">Stock Watch</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/login" ng-if="!model.currentUser">Login</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/user/{{model.User._id}}/circle" ng-if="model.currentUser">Circle</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/user/{{model.User._id}}/portfolio" ng-if="model.currentUser">Portfolio</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/user/{{model.User._id}}/opinion" ng-if="model.currentUser">Opinion</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/login" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+    <!--<div class="container-fluid">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"-->
+                    <!--aria-expanded="false" aria-controls="navbar">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+            <!--<a class="navbar-brand" href="#/home"><i class="fa fa-industry" aria-hidden="true"></i>-->
+                <!--&nbsp;Stock Watch</a>-->
+        <!--</div>-->
+        <!--<div id="navbar" class="navbar-collapse collapse">-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="#/login" ng-if="model.currentUser">Logout</a></li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="#/home">Home</a></li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="#/about">About</a></li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="#/login" ng-if="!model.currentUser">Login</a></li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="#/login" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="#/user/{{model.User._id}}/circle" ng-if="model.currentUser">Circle</a></li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="#/user/{{model.User._id}}/portfolio" ng-if="model.currentUser">Portfolio</a></li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li><a href="#/user/{{model.User._id}}/opinion" ng-if="model.currentUser">Opinion</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -45,11 +55,16 @@
     </div>
         <div class="row">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-sm-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             Profile Details
+                            <a class="pull-right"
+                               ng-click="model.UpdateUser(model.User)">
+                            <span class="white glyphicon glyphicon-ok">
+                      </span>
+                            </a>
                         </div>
                         <div class="panel-body">
                             <form>
@@ -98,23 +113,10 @@
                                     </div>
                                 </div>
                             </form>
-                            <a class="btn btn-primary btn-block"
-                               ng-click="model.UpdateUser(model.User)"
-                            >
-                                Save
-                            </a>
-                            <a class="btn btn-danger btn-block"
-                               ng-click = "model.Logout()">
-                                Logout
-                            </a>
-                            <a class="btn btn-danger btn-block"
-                               ng-click="Profile.Unregister()">
-                                Unregister
-                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-sm-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <i class="fa fa-circle-thin" aria-hidden="true"></i>
@@ -130,7 +132,5 @@
             </div>
         </div>
 </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-    </div>
-</nav>
+
+
