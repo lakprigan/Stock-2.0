@@ -19,7 +19,7 @@
                             <table class="table table-hover" ng-repeat="u in model.User.circle">
                                 <tr>
                                     <td width="80%">
-                                        <a href="#/user/{{u._id}}"><h5><i class="fa fa-user" aria-hidden="true"></i> {{u}}</h5></a>
+                                        <a href="#/user/{{model.username_user[u]}}"><h5><i class="fa fa-user" aria-hidden="true"></i> {{u}}</h5></a>
                                     </td>
                                     <td width="20%">
                                         <button class="btn btn-danger" ng-click="model.UnfollowUser($index)">

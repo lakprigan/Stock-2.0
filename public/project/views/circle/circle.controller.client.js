@@ -19,38 +19,52 @@
         Initialize();
 
         function Initialize() {
+            ViewModel.username_user = [];
+
             ViewModel.id = $rootScope.currentUser._id;
             UserService
                 .FindUserById(ViewModel.id)
                 .then(function (response) {
                     ViewModel.User = response.data;
+
+                    ViewModel.AvailableExperts = [];
+                    UserService
+                        .GetExperts()
+                        .then(function (res) {
+                                var temp = res.data;
+                                angular.forEach(temp, function (value, key) {
+                                    var remove = false;
+                                    if(value.username === ViewModel.User.username)
+                                        remove = true;
+
+                                    angular.forEach(ViewModel.User.circle, function (name, index) {
+                                        if(name === value.username)
+                                            remove = true;
+                                    });
+
+                                    if(remove === false){
+                                        ViewModel.AvailableExperts.push(value);
+                                    }
+                                });
+                            },
+                            function (err) {
+                                ViewModel.Error = err.data;
+                            });
+                    
+                    angular.forEach(ViewModel.User.circle, function (value, key) {
+                        UserService
+                            .FindUserByUsername(value)
+                            .then(function (res) {
+                                ViewModel.username_user[res.data.username] = res.data._id;
+                            });
+                    });
                 }, function (err) {
                     ViewModel.Error = "unable to retrieve the user"
                 });
 
-            ViewModel.AvailableExperts = [];
-            UserService
-                .GetExperts()
-                .then(function (res) {
-                         var temp = res.data;
-                           angular.forEach(temp, function (value, key) {
-                              var remove = false;
-                               if(value.username === ViewModel.User.username)
-                                   remove = true;
 
-                               angular.forEach(ViewModel.User.circle, function (name, index) {
-                                   if(name === value.username)
-                                       remove = true;
-                               });
-                               
-                               if(remove === false){
-                                   ViewModel.AvailableExperts.push(value);
-                               }
-                           });
-                    },
-                    function (err) {
-                        ViewModel.Error = err.data;
-                    });
+
+
         }
 
         function FollowUser(index) {
@@ -59,7 +73,7 @@
             ViewModel.AvailableExperts.splice(index, 1);
             UserService.UpdateUser(ViewModel.User._id,ViewModel.User)
             .then(function (res) {
-
+Initialize();
             },function (err) {
                 ViewModel.Error = "Cannot update user"
             });
@@ -71,7 +85,7 @@
             ViewModel.User.circle.splice(index, 1);
             UserService.UpdateUser(ViewModel.User._id,ViewModel.User)
                 .then(function (res) {
-
+Initialize();
                 },function (err) {
                     ViewModel.Error = "Cannot update user"
                 });

@@ -22,7 +22,7 @@
                     ViewModel.Opinions = [];
                     angular.forEach(temp, function (value, key) {
                         var include = false;
-                        if(value.user.username = ViewModel.currentUser.username)
+                        if(value.user.username === ViewModel.currentUser.username)
                             include = true;
                         angular.forEach(ViewModel.currentUser.circle, function (name, index) {
                             if(name === value.user.username)
