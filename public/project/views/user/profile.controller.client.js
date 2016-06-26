@@ -51,7 +51,7 @@
 
         function UpdateUser(updatedUser) {
             ViewModel.SubmittedClass = "submitted";
-            if(updatedUser.firstName && updatedUser.lastName) {
+            if(updatedUser.firstName && updatedUser.lastName && updatedUser.email) {
                 UserService.UpdateUser(ViewModel.id, updatedUser)
                     .then(function (response) {
                             ViewModel.Success = "Profile of " + updatedUser.username + " successfully updated!";
@@ -63,7 +63,8 @@
                         });
             }
             else{
-                ViewModel.Error = "Please enter highlighted fields"
+                ViewModel.Success = null;
+                ViewModel.Error = "Errors in the highlighted fields"
             }
         }
 
