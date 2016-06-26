@@ -8,6 +8,7 @@
 
     function EditOpinionController($location, $routeParams, OpinionService, $rootScope) {
         var ViewModel = this;
+        ViewModel.SubmittedClass = "";
         Initialize();
 
         function Initialize() {
@@ -29,7 +30,7 @@
                 OpinionService
                     .UpdateOpinion(ViewModel.OpinionId, opinion)
                     .then(function (res) {
-                        $location.url("#/user/"+ViewModel.UserId+"/opinion");
+                        $location.url("/user/"+ViewModel.UserId+"/opinion");
                     },function (err) {
                         ViewModel.Error = "Unable to update the Opinion";
                     });

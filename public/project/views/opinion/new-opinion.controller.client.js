@@ -8,6 +8,7 @@
 
     function NewOpinionController($location, $routeParams, OpinionService, UserService, $rootScope) {
         var ViewModel = this;
+        ViewModel.SubmittedClass = "";
         Initialize();
         function Initialize() {
             ViewModel.UserId = $rootScope.currentUser._id;;

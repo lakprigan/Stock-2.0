@@ -18,7 +18,17 @@
             OpinionService
                 .FindAllOpinions()
                 .then(function (response) {
-                    ViewModel.Opinions = response.data;
+                    var temp = response.data;
+                    ViewModel.Opinions = [];
+                    angular.forEach(temp, function (value, key) {
+                        var include = false;
+                        angular.forEach(ViewModel.currentUser.circle, function (name, index) {
+                            if(name === value.user.username)
+                                include = true;
+                        });
+                        if(include)
+                            ViewModel.Opinions.push(value);
+                    })
                 });
         }
 

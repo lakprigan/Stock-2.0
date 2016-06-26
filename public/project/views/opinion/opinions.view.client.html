@@ -16,9 +16,9 @@
     </div>
     <div class="row">
         <div class="col-lg-12" ng-repeat="opinion in model.Opinions">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <a href=""><b>{{opinion.title}}</b></a>
+                    {{opinion.title}}
                     <div class="pull-right" ng-show="opinion.user._id===model.currentUser._id">
                         <div class="btn-group">
                             <button type="button"
@@ -43,7 +43,7 @@
                     <div class="blog-text" ng-bind-html="model.GetSafeHtml(opinion.text)"></div>
                 </div>
                 <div class="panel-footer">
-                    <a href="#/user/{opinion.user._id}}">{{opinion.user.firstName}} {{opinion.user.lastName}}</a>
+                    <a href="#/user/{{opinion.user._id}}">{{opinion.user.username}}</a>
                     <div class="pull-right">
                         <i class="fa fa-calendar" aria-hidden="true"></i> {{opinion.adviceDate | date:'MM-dd-yyyy'}}
                     </div>
