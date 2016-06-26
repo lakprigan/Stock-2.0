@@ -13,11 +13,10 @@
         ViewModel.Logout = Logout;
         init();
 
-
         $rootScope.$on("userChanged", function () {
             init();
         });
-        
+
 
         function init() {
             UserService
