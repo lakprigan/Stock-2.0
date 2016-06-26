@@ -34,7 +34,7 @@
                                         <i class="fa fa-commenting fa-fw"></i> Interactions</a>
                                 </li>
                                 <li>
-                                    <a href ng-click="model.DeleteStock(stock)">
+                                    <a href ng-click="model.DeleteStock(stock._id)">
                                         <i class="fa fa-remove fa-fw"></i> Delete</a>
                                 </li>
                             </ul>
@@ -45,24 +45,20 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <td>Investment Date</td>
-                                <td>{{stock.investmentDate | date:'MM-dd-yyyy'}}</td>
-                            </tr>
-                            <tr>
                                 <td>Quantity</td>
                                 <td>{{stock.investmentQuantity}}</td>
                             </tr>
                             <tr>
                                 <td>Investment Price</td>
-                                <td>{{stock.investmentPrice}}</td>
+                                <td>$ {{stock.investmentPrice}}</td>
                             </tr>
                             <tr ng-if="(stock.presentValue < 0)" class="red">
                                 <td>Loss</td>
-                                <td>{{stock.presentValue}}</td>
+                                <td>$ {{stock.presentValue}}</td>
                             </tr>
                             <tr ng-if="(stock.presentValue > 0)" class="green">
                                 <td>Profit</td>
-                                <td>{{stock.presentValue}}</td>
+                                <td>$ {{stock.presentValue}}</td>
                             </tr>
                         </table>
                         <div/>

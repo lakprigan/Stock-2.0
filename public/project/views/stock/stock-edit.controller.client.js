@@ -8,7 +8,7 @@
 
     function StockEditController($location, $routeParams, StockService, $rootScope) {
         var ViewModel = this;
-
+        ViewModel.SubmittedClass="";
         Initialize();
 
         function Initialize() {
@@ -25,13 +25,19 @@
         }
 
         function UpdateStock() {
-            StockService
-                .UpdateStock(ViewModel.StockId, ViewModel.Stock)
-                .then(function (res) {
-                    $location.url("/user/"+ViewModel.UserId+"/portfolio/"+ViewModel.PortfolioId+"/stock");
-                },function (err) {
-                    ViewModel.error = "Unable to update the Stock";
-                });
+            ViewModel.SubmittedClass="submitted";
+            if(ViewModel.Stock.investmentQuantity!=undefined && ViewModel.Stock.investmentPrice!=undefined){
+                StockService
+                    .UpdateStock(ViewModel.StockId, ViewModel.Stock)
+                    .then(function (res) {
+                        $location.url("/user/"+ViewModel.UserId+"/portfolio/"+ViewModel.PortfolioId+"/stock");
+                    },function (err) {
+                        ViewModel.Error = "Unable to update the Stock";
+                    });
+            }
+            else{
+                ViewModel.Error = "Please fill the highlighted fields"
+            }
         }
     }
 })();

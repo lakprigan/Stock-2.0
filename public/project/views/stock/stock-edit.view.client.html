@@ -1,49 +1,50 @@
 <div class="container">
-    <div class="col-lg-12">
-        <div class="page-header">
-            <h3><i class="fa fa-usd" aria-hidden="true"></i>
-                Edit Stock
-                <a class="pull-right" ng-click="model.UpdateStock()">
+    <div class="page-header">
+        <h3>
+            <a class="pull-left"
+               href="#/user/{{model.UserId}}/portfolio/{{model.PortfolioId}}/stock">
+                            <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+            </a>
+            <i class="fa fa-usd" aria-hidden="true"></i>
+            Edit Stock
+            <a class="pull-right" ng-click="model.UpdateStock()">
                             <span class="glyphicon glyphicon-ok">
                       </span>
-                </a>
-            </h3>
-        </div>
+            </a>
+        </h3>
     </div>
-    <div ng-if="Profile.Success" class="alert alert-success" role="alert">
-        <a class="alert-link">{{Profile.Success}}</a>
+    <div ng-if="model.Error" class="alert alert-danger" role="alert">
+        {{model.Error}}
     </div>
-    <div ng-if="Profile.Error" class="alert alert-danger" role="alert">
-        <a class="alert-link">{{Profile.Error}}</a>
+    <div class="form-group">
+        <div class="form-group">
+            <label>Investment Date: {{model.Stock.investmentDate | date:'MM-dd-yyyy'}}</label>
+        </div>
+        <label for="stock">Stock</label>
+        <input type="text"
+               class="form-control"
+               id="stock"
+               ng-model="model.Stock.code"
+               placeholder="NASDAQ"
+               disabled>
     </div>
-    <form>
-        <div class="form-group">
-            <div class="form-group">
-                <label>Date Created {{model.Stock.investmentDate}}</label>
-            </div>
-            <label for="stock">Stock</label>
-            <input type="text"
-                   class="form-control"
-                   id="stock"
-                   ng-model="model.Stock.code"
-                   placeholder="NASDAQ"
-            disabled>
-        </div>
-        <div class="form-group">
-            <label for="stockPrice">Stock Price</label>
-            <input type="text"
-                   class="form-control"
-                   id="stockPrice"
-                   ng-model="model.Stock.investmentPrice"
-                   placeholder="26.57">
-        </div>
-        <div class="form-group">
-            <label for="quantity">Quantity</label>
-            <input type="text"
-                   class="form-control"
-                   id="quantity"
-                   ng-model="model.Stock.investmentQuantity"
-                   placeholder="50">
-        </div>
-    </form>
+    <div class="form-group">
+        <label for="stockPrice">Investment Price</label>
+        <input type="text"
+               class="form-control {{model.SubmittedClass}}"
+               id="stockPrice"
+               ng-model="model.Stock.investmentPrice"
+               placeholder="26.57"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="text"
+               class="form-control {{model.SubmittedClass}}"
+               id="quantity"
+               ng-model="model.Stock.investmentQuantity"
+               placeholder="50"
+               required>
+    </div>
 </div>

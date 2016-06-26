@@ -19,7 +19,7 @@
                     .then(function (response) {
                         var data = [];
                         var volData = [];
-                        vm.description = response.data.dataset.description;
+                        vm.Stock.companyName = response.data.dataset.name;
                         vm.indexValue = response.data.dataset.data[0][1];
                         vm.high = response.data.dataset.data[0][2];
                         vm.low = response.data.dataset.data[0][3];
@@ -46,6 +46,61 @@
                                 }
                             }]
                         });
+
+                        $('#chartContainer3').highcharts('StockChart', {
+
+                            rangeSelector: {
+                                selected: 1
+                            },
+
+                            title: {
+                                text: vm.code
+                            },
+
+                            series: [{
+                                name: vm.code,
+                                data: data,
+                                step: true,
+                                tooltip: {
+                                    valueDecimals: 2
+                                }
+                            }]
+                        });
+
+                        $('#chartContainer4').highcharts('StockChart', {
+
+
+                            rangeSelector : {
+                                selected : 1
+                            },
+
+                            title : {
+                                text : vm.code
+                            },
+
+                            series : [{
+                                name : vm.code,
+                                data : data,
+                                type : 'areaspline',
+                                threshold : null,
+                                tooltip : {
+                                    valueDecimals : 2
+                                },
+                                fillColor : {
+                                    linearGradient : {
+                                        x1: 0,
+                                        y1: 0,
+                                        x2: 0,
+                                        y2: 1
+                                    },
+                                    stops : [
+                                        [0, Highcharts.getOptions().colors[0]],
+                                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                    ]
+                                }
+                            }]
+                        });
+
                         data = [];
                         _.forEach(response.data.dataset.data, function (day) {
                             data.push([
