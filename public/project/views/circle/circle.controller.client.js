@@ -10,8 +10,12 @@
     function CircleController($location, UserService, $rootScope) {
 
         var ViewModel = this;
+        ViewModel.UpdateUser = UpdateUser;
+        ViewModel.FollowUser = FollowUser;
+        ViewModel.UnfollowUser = UnfollowUser;
 
         ViewModel.currentUser = $rootScope.currentUser;
+
         Initialize();
 
         function Initialize() {
@@ -24,24 +28,25 @@
                     ViewModel.Error = "unable to retrieve the user"
                 });
 
-            ViewModel.UpdateUser = UpdateUser;
-            ViewModel.FollowUser = FollowUser;
-            ViewModel.UnfollowUser = UnfollowUser;
             ViewModel.AvailableExperts = [];
             UserService
                 .GetExperts()
                 .then(function (res) {
-                        ViewModel.AvailableExperts = res.data;
-                        angular.forEach(ViewModel.AvailableExperts, function (value, key) {
-                            if(value.username === ViewModel.currentUser.username){
-                                ViewModel.AvailableExperts.splice(key, 1);
-                            }
-                            angular.forEach(ViewModel.User.circle, function (follow) {
-                                if (value.username == follow) {
-                                    ViewModel.AvailableExperts.splice(key, 1);
-                                }
-                            })
-                        });
+                         var temp = res.data;
+                           angular.forEach(temp, function (value, key) {
+                              var remove = false;
+                               if(value.username === ViewModel.User.username)
+                                   remove = true;
+
+                               angular.forEach(ViewModel.User.circle, function (name, index) {
+                                   if(name === value.username)
+                                       remove = true;
+                               });
+                               
+                               if(remove === false){
+                                   ViewModel.AvailableExperts.push(value);
+                               }
+                           });
                     },
                     function (err) {
                         ViewModel.Error = err.data;

@@ -2,16 +2,15 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-header">
-                <h3><i class="fa fa-circle-thin" aria-hidden="true"></i>
+                <h3><i class="fa fa-circle-o-notch" aria-hidden="true"></i>
                     My Circle
                 </h3>
             </div>
         </div>
     </div>
-    <div class="row">
         <div class="row">
             <div class="col-lg-6">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <i class="fa fa-exchange fa-fw"></i> Experts In Circle
                     </div>
@@ -20,7 +19,7 @@
                             <table class="table table-hover" ng-repeat="u in model.User.circle">
                                 <tr>
                                     <td width="80%">
-                                        <a href="#/user/{{u._id}}"><h4>{{u}}</h4></a>
+                                        <a href="#/user/{{u._id}}"><h5><i class="fa fa-user" aria-hidden="true"></i> {{u}}</h5></a>
                                     </td>
                                     <td width="20%">
                                         <button class="btn btn-danger" ng-click="model.UnfollowUser($index)">
@@ -34,7 +33,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <i class="fa fa-exchange fa-fw"></i> Available Experts
                     </div>
@@ -43,7 +42,7 @@
                             <table class="table table-hover" ng-repeat="u in model.AvailableExperts">
                                 <tr>
                                     <td width="80%">
-                                        <a href="#/user/{{u._id}}"><h4>{{u.username}}</h4></a>
+                                        <a href="#/user/{{u._id}}"><h5><i class="fa fa-user" aria-hidden="true"></i> {{u.username}}</h5></a>
                                     </td>
                                     <td width="20%">
                                         <button class="btn btn-success" ng-click="model.FollowUser($index)">
@@ -57,7 +56,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 </div>
 
