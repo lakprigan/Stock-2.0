@@ -13,25 +13,27 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/login" ng-if="model.currentUser" ng-click="model.Logout()">Logout</a></li>
+                <li><a href="#/login" ng-if="model.currentUser" ng-click="model.Logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                     Logout</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#/about">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/login" ng-if="!model.currentUser">Login</a></li>
+                <li><a href="#/login" ng-if="!model.currentUser"><i class="fa fa-sign-in" aria-hidden="true"></i>
+                     Login</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/user" ng-if="model.currentUser">{{model.currentUser.username}}</a></li>
+                <li><a href="#/user" ng-if="model.currentUser"><i class="fa fa-user" aria-hidden="true"></i> {{model.currentUser.username}}</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/user/{{model.currentUser._id}}/circle" ng-if="model.currentUser">Circle</a></li>
+                <li><a href="#/user/{{model.currentUser._id}}/circle" ng-if="model.currentUser"><i class="fa fa-circle-o-notch" aria-hidden="true"></i> Circle</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/user/{{model.currentUser._id}}/portfolio" ng-if="model.currentUser">Portfolio</a></li>
+                <li><a href="#/user/{{model.currentUser._id}}/portfolio" ng-if="model.currentUser"><i class="fa fa-th-large" aria-hidden="true"></i> Portfolio</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/user/{{model.currentUser._id}}/opinion" ng-if="model.currentUser">Opinion</a></li>
+                <li><a href="#/user/{{model.currentUser._id}}/opinion" ng-if="model.currentUser"><i class="fa fa-quote-left" aria-hidden="true"></i> Opinion</a></li>
             </ul>
         </div>
     </div>

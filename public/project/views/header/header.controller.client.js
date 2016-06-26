@@ -17,8 +17,7 @@
         $rootScope.$on("userChanged", function () {
             init();
         });
-
-
+        
 
         function init() {
             UserService
@@ -27,7 +26,6 @@
                         var user = resposnse.data;
                         if (user === '0') {
                             ViewModel.currentUser = null;
-                            $location.url("/login");
                         } else {
                             ViewModel.currentUser = user;
                         }
