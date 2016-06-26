@@ -20,7 +20,7 @@ module.exports=function () {
             token: String,
             displayName: String
         },
-        type: String,
+        type: {type:String, default:"investor"},
         circle: [String]
     }, {collection: 'sw.user'});
 

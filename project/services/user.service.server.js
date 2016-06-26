@@ -61,8 +61,11 @@ module.exports = function(app, models){
                     return done(null, user);
                 }
                 else{
+
                     var facebookUser = {
                         username: "f_"+profile.displayName.replace(/ /g,''),
+                        firstName: profile.displayName.split(" ")[0],
+                        lastName: profile.displayName.split(" ")[1],
                         facebook:{
                             token: token,
                             id:profile.id,
@@ -87,6 +90,8 @@ module.exports = function(app, models){
                 else{
                     var googleUser = {
                         username: "g_"+profile.name.givenName,
+                        firstName: profile.name.givenName,
+                        lastName: profile.name.familyName,
                         google:{
                             token: token,
                             id:profile.id,

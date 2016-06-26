@@ -12,6 +12,5 @@ module.exports=function () {
         advisedBy: String,
         adviceDate: {type: Date, default: Date.now()}
     }, {collection: 'sw.opinion'});
-
     return OpinionSchema;
 }
