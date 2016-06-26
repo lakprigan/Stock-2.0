@@ -1,19 +1,20 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Priya Iyer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.2/foundation-flex.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css' />
-    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,300' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css"/>
     <link href='https://fonts.googleapis.com/css?family=Raleway:300,400' rel='stylesheet' type='text/css'>
     <link href="css/foundation.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <meta name="description" content="Priya Iyer Personal Homepage.">
-    <meta name="keywords" content="SoftwareDeveloper, Javascript, Angular, Node, MongoDB, Java, Hibernate, C#, ElasticSearch, Express, Priya, Boston, Healthcare">
+    <meta name="keywords"
+          content="SoftwareDeveloper, Javascript, Angular, Node, MongoDB, Java, Hibernate, C#, ElasticSearch, Express, Priya, Boston, Healthcare">
     <meta name="author" content="Priya Iyer">
 </head>
 <body>
@@ -44,16 +45,69 @@
                 <ul class="menu" data-responsive-menu="drilldown medium-dropdown">
                     <li><a href="project/index.html">Project</a></li>
                     <li><a href="assignment/index.html">Assignment</a></li>
-                    <li><a href="test/index.html">Test MongoDB</a></li>
-                    <li><a href="https://github.com/lakprigan/iyer-laxmipriya-web-dev">Code</a></li>
+                    <li><a href="https://github.com/lakprigan/iyer-laxmipriya-web-dev"><i class="fa fa-github-square" aria-hidden="true"></i>
+                    </a></li>
                 </ul>
-            </div></div>
-
+            </div>
+        </div>
         <div data-off-canvas-content>
             <div id="main-container">
-                <div class="parallax-window" data-parallax="scroll" data-ios-fix="true" data-bleed="50" data-image-src="images/me.jpg">
+                <div class="parallax-window"
+                     data-parallax="scroll"
+                     data-ios-fix="true"
+                     data-bleed="50"
+                     data-image-src="images/me.jpg">
                     <div id="intro" class="row column">
 
+                    </div>
+                </div>
+
+                <div id="projects" class="page" data-magellan-target="projects">
+                    <div class="row">
+                        <div class="column small-12 large-6">
+                            <h3>Web Endeavours</h3>
+                            <a href="http://nodejs-whampteam.rhcloud.com/#/"><h4>WHAM App</h4></a>
+                            <h6>December 2015</h6>
+                            “Whats Happening Around Me App” is a new application to provide real time information about
+                            events and activities around the city. It has features like details of events in city,
+                            advance ticket booking facility, payment options, map view for directions, save user
+                            preferences, highlight events based on the user’s likes, ability to share about the event on
+                            social media sites and a way to refer your friends for credits.
+                            <br/><br/>
+                            <a href="http://webdev-priyaarun.rhcloud.com/project/index.html#/home"><h4>Stock Watch</h4></a>
+                            <h6>June 2016</h6>
+                           Stock Watch is a stock portfolio management framework. One can manage multiple portfolios and make analytical decisions for buying or selling stocks based on health of the portfolio as well as performance of the individual stock.
+                            It provides analytics of stock health for all users. Experts cast opinions about stock health which users can subscribe to. Each Stock features interactions forum that can help like minded investors to discuss and interact.
+                        </div>
+                        <div class="column small-12 large-6">
+                            <h3>Technical Profile</h3>
+                            <p>
+                            <blockquote>
+                                In my academic and professional life, I adapted to new technologies, different platforms
+                                or frameworks for each of the pilot project I undertook. I firmly believe that when it
+                                comes to approaching design problems, I can leverage both creativity and detail
+                                orientation. My current aspirations are to gain perspective on challenging, cutting edge
+                                technologies, hone my technical skill sets and contribute to the software stack.
+                            </blockquote>
+                            <h4> Skill Sets </h4>
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Languages</b> </br>Java, J2EE, Servlets, C++, Racket, C#
+                                    Razor, People Code, Spring, Hibernate
+                                </li>
+                                </br>
+                                <li class="list-group-item"><b>User Experience</b></br>JavaScript, Ajax, jQuery, HTML5,
+                                    XML, JSP, JSON, CSS3, Bootstrap, AngularJS
+                                </li>
+                                </br>
+                                <li class="list-group-item"><b>Servers</b></br>Apache Tomcat, JBoss, Elasticsearch 1.5.2
+                                </li>
+                                </br>
+                                <li class="list-group-item"><b>Tools</b> </br>Eclipse, WebStorm, IntelliJ, People Tools,
+                                    Dr. Racket, GitHub, Confluence 5.8.4, Jira 6.3.13
+                                </li>
+                            </ul>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <footer>&copy; Priya Iyer 2016.
@@ -69,7 +123,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.4.2/parallax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/10.0.0/js/smooth-scroll.js"></script>
 <script>
-    (function(){
+    (function () {
         window.sr = ScrollReveal({reset: true});
         sr.reveal('#intro', {duration: 500});
         sr.reveal('#education', {duration: 500});
@@ -81,12 +135,11 @@
         sr.reveal('#image-thumb-4', {duration: 700});
     })();
     $(document).foundation();
-    $('#offCanvasLeft').click(function(){
+    $('#offCanvasLeft').click(function () {
         $('#offCanvasLeft').removeClass('is-open');
-        $('#offCanvasLeft').attr('aria-hidden',true);
+        $('#offCanvasLeft').attr('aria-hidden', true);
         $('#offCanvasWrapper').removeClass('is-off-canvas-open').removeClass('is-open-left');
     });
-
 </script>
 </body>
 </html>

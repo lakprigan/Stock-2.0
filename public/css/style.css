@@ -214,3 +214,10 @@ footer {
 @media (min-width: 640px) {
     #intro {
         margin-top: 0 !important; } }
+
+li{
+    list-style: none;
+}
+ul{
+    list-style-type: none;
+}
