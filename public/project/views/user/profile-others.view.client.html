@@ -12,36 +12,35 @@
     <div ng-if="model.Error" class="alert alert-danger" role="alert">
         <a class="alert-link">{{model.Error}}</a>
     </div>
-    <div class="row">
         <div class="row">
             <div class="col-lg-6">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <i class="fa fa-exchange fa-fw"></i> Profile Details
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Profile Details
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table table-striped">
                                     <tr>
-                                        <td>Username</td>
-                                        <td>{{model.User.username}}</td>
+                                        <td><h4>username</h4></td>
+                                        <td><h4>{{model.User.username}}</h4></td>
                                     </tr>
                                     <tr>
-                                        <td>email Address</td>
-                                        <td>{{model.User.email}}</td>
+                                        <td><h4>email</h4></td>
+                                        <td><h4>{{model.User.email}}</h4></td>
                                     </tr>
                                     <tr>
-                                        <td>First Name</td>
-                                        <td>{{model.User.firstName}}</td>
+                                        <td><h4>First Name</h4></td>
+                                        <td><h4>{{model.User.firstName}}</h4></td>
                                     </tr>
                                     <tr>
-                                        <td>Last Name</td>
-                                        <td>{{model.User.lastName}}</td>
+                                        <td><h4>Last Name</h4></td>
+                                        <td><h4>{{model.User.lastName}}</h4></td>
                                     </tr>
                                     <tr>
-                                        <td>User Type</td>
-                                        <td>{{model.User.type}}</td>
+                                        <td><h4>User Type</h4></td>
+                                        <td><h4>{{model.User.type}}</h4></td>
                                     </tr>
                                 </table>
                                 <div/>
@@ -51,18 +50,18 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <i class="fa fa-exchange fa-fw"></i> Experts in Circle
+                        <i class="fa fa-circle-thin" aria-hidden="true"></i> Experts in Circle
                     </div>
                     <div class="panel-body">
-                        <div class="col-lg-6" ng-repeat="u in model.User.circle">
-                            <a href="#/user/{{u._id}}"><h4>{{u}}</h4></a>
+                        <div class="col-lg-6" ng-repeat="u in model.CircleUsers">
+                            <a href="#/user/{{u._id}}"><h5><i class="fa fa-user" aria-hidden="true"></i> {{u.username}}</h5></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
 </div>
 

@@ -10,7 +10,7 @@
 
         var ViewModel = this;
         ViewModel.currentUser = $rootScope.currentUser;
-
+        ViewModel.SubmittedClass = "";
         Initialize();
         ViewModel.Logout = Logout;
         ViewModel.UpdateUser = UpdateUser;
@@ -50,15 +50,21 @@
         }
 
         function UpdateUser(updatedUser) {
-           UserService.UpdateUser(ViewModel.id, updatedUser)
-               .then(function (response) {
-               ViewModel.Success = "Profile of "+ updatedUser.username + " successfully updated!";
-                   ViewModel.Error = null;
-           },
-               function (error) {
-                   ViewModel.Error = "unable to update user";
-                   ViewModel.Success = null;
-               });
+            ViewModel.SubmittedClass = "submitted";
+            if(updatedUser.firstName && updatedUser.lastName) {
+                UserService.UpdateUser(ViewModel.id, updatedUser)
+                    .then(function (response) {
+                            ViewModel.Success = "Profile of " + updatedUser.username + " successfully updated!";
+                            ViewModel.Error = null;
+                        },
+                        function (error) {
+                            ViewModel.Error = "unable to update user";
+                            ViewModel.Success = null;
+                        });
+            }
+            else{
+                ViewModel.Error = "Please enter highlighted fields"
+            }
         }
 
         function Unregister() {
