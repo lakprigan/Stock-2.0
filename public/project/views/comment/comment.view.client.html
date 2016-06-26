@@ -1,24 +1,32 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                <i class="fa fa-user" aria-hidden="true"></i> Comments
-            </h1>
+            <h3 class="page-header">
+                <a class="pull-left"
+                   href="#/user/{{model.UserId}}/portfolio/{{model.PortfolioId}}/stock">
+                            <span class="glyphicon glyphicon-chevron-left">
+                      </span>
+                </a>
+                <i class="fa fa-users" aria-hidden="true"></i> Interactions - {{model.Stock.code}}
+            </h3>
         </div>
     </div>
     <div class="row">
+        <div ng-if="model.Error" class="alert alert-danger" role="alert">
+            {{model.Error}}
+        </div>
         <div class="col-lg-12">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <i class="fa fa-comments fa-fw"></i>Comments
                 </div>
                 <div class="panel-body">
-                    <ul>
-                        <li ng-repeat="comment in model.Comments">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="comment in model.Comments">
                                 <div class="header">
-                                    <strong class="primary-font"><a href="">{{comment.username}}</a></strong>
+                                    <strong class="primary-font"><a href="#/user/{{model.UserId}}">{{comment.username}}</a></strong>
                                     <small class="pull-right text-muted">
-                                        <i class="fa fa-clock-o fa-fw"></i> {{comment.dateCreated}}
+                                        <i class="fa fa-clock-o fa-fw"></i> {{comment.dateCreated | date : 'medium'}}
                                     </small>
                                 </div>
                                 <p>
@@ -31,10 +39,10 @@
                 <div class="panel-footer">
                     <div class="input-group">
                         <input id="btn-input" type="text"
-                               class="form-control input-sm"
+                               class="form-control input-sm {{model.SubmittedClass}}"
                                placeholder="Type your comment here..."
-                               ng-model="NewComment.post">
-
+                               ng-model="NewComment.post"
+                        required>
                         <span class="input-group-btn">
                             <button class="btn btn-primary btn-sm"
                                     ng-click="model.CreateComment(NewComment)">Send
