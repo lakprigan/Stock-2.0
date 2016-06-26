@@ -33,6 +33,8 @@
                     vm.high = response.data.dataset.data[0][2];
                     vm.low = response.data.dataset.data[0][3];
                     vm.totalMarketValue = "$"+response.data.dataset.data[0][5];
+
+
                     _.forEach(response.data.dataset.data, function (day) {
                         data.push([
                             new Date(day[0]).getTime(),
@@ -40,6 +42,61 @@
                         ]);
                     })
                     _.reverse(data);
+
+                    $('#chartContainer3').highcharts('StockChart', {
+
+                        rangeSelector: {
+                            selected: 1
+                        },
+
+                        title: {
+                            text: vm.code
+                        },
+
+                        series: [{
+                            name: vm.code,
+                            data: data,
+                            step: true,
+                            tooltip: {
+                                valueDecimals: 2
+                            }
+                        }]
+                    });
+
+                    $('#chartContainer4').highcharts('StockChart', {
+
+
+                        rangeSelector : {
+                            selected : 1
+                        },
+
+                        title : {
+                            text : vm.code
+                        },
+
+                        series : [{
+                            name : vm.code,
+                            data : data,
+                            type : 'areaspline',
+                            threshold : null,
+                            tooltip : {
+                                valueDecimals : 2
+                            },
+                            fillColor : {
+                                linearGradient : {
+                                    x1: 0,
+                                    y1: 0,
+                                    x2: 0,
+                                    y2: 1
+                                },
+                                stops : [
+                                    [0, Highcharts.getOptions().colors[0]],
+                                    [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                                ]
+                            }
+                        }]
+                    });
+
                     $('#chartContainer1').highcharts('StockChart', {
                         rangeSelector: {
                             selected: 1
@@ -117,6 +174,7 @@ data = [];
                             yAxis: 1
                         }]
                     });
+                    
 
                 }, function (err) {
                     console.log("error");
