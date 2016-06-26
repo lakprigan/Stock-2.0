@@ -8,7 +8,7 @@
 
     function PortfolioNewController($location, $routeParams, PortfolioService, $rootScope) {
         var ViewModel = this;
-
+        ViewModel.SubmittedClass = "";
         Initialize();
         function Initialize() {
             ViewModel.UserId = $rootScope.currentUser._id;
@@ -19,7 +19,8 @@
 
         function CreateNewPortfolio(portfolio) {
             ViewModel.SubmittedClass = "submitted";
-            if(portfolio.name){
+            if(portfolio){
+            if(portfolio.name && portfolio.dateCreated){
                 PortfolioService
                     .CreateNewPortfolio(ViewModel.UserId, portfolio)
                     .then(function (res) {
@@ -27,7 +28,7 @@
                     },function (err) {
                         ViewModel.Error = "Unable to create a new portfolio";
                     });
-            }
+            }}
             else{
                 ViewModel.Error="Please enter the highlighted fields"
             }}
