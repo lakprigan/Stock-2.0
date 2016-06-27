@@ -17,7 +17,6 @@
             init();
         });
 
-
         function init() {
             UserService
                 .LoggedIn()
@@ -33,8 +32,7 @@
                         $location.url("/login");
                     });
         }
-
-
+        
         function Logout() {
             ViewModel.currentUser = null;
             UserService

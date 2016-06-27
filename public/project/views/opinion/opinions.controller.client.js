@@ -22,13 +22,13 @@
                     ViewModel.Opinions = [];
                     angular.forEach(temp, function (value, key) {
                         var include = false;
-                        if(value.user.username === ViewModel.currentUser.username)
+                        if (value.user.username === ViewModel.currentUser.username)
                             include = true;
                         angular.forEach(ViewModel.currentUser.circle, function (name, index) {
-                            if(name === value.user.username)
+                            if (name === value.user.username)
                                 include = true;
                         });
-                        if(include)
+                        if (include)
                             ViewModel.Opinions.push(value);
                     })
                 });
@@ -39,10 +39,11 @@
                 .DeleteOpinion(opinion._id)
                 .then(function (res) {
                     Initialize();
-                },function (err) {
+                }, function (err) {
                     ViewModel.Error = "could not delete the opinion!"
                 })
         }
+
         function GetSafeHtml(text) {
             return $sce.trustAsHtml(text);
         }

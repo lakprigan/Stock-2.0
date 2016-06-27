@@ -9,10 +9,8 @@
     function ProfileController($location, $routeParams, UserService) {
 
         var ViewModel = this;
-
-
+        
         Initialize();
-
 
         function Initialize() {
             ViewModel.id = $routeParams.id;

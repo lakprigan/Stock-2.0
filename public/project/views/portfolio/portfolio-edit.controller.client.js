@@ -11,7 +11,7 @@
         Initialize();
 
         function Initialize() {
-            ViewModel.UserId = $rootScope.currentUser._id;;
+            ViewModel.UserId = $rootScope.currentUser._id;
             ViewModel.PortfolioId = $routeParams.pid;
             ViewModel.UpdatePortfolioById = UpdatePortfolioById;
             ViewModel.SubmittedClass = "";
@@ -24,12 +24,12 @@
 
         function UpdatePortfolioById(updatedPortfolio) {
             ViewModel.SubmittedClass = "submitted";
-            if(updatedPortfolio.name){
+            if (updatedPortfolio.name) {
                 PortfolioService
                     .UpdatePortfolio(ViewModel.PortfolioId, updatedPortfolio)
                     .then(function (res) {
-                        $location.url("/user/"+ViewModel.UserId+"/portfolio");
-                    },function (err) {
+                        $location.url("/user/" + ViewModel.UserId + "/portfolio");
+                    }, function (err) {
                         ViewModel.Error = "Unable to update the Portfolio";
                     });
             }

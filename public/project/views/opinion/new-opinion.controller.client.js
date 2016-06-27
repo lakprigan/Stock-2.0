@@ -11,13 +11,13 @@
         ViewModel.SubmittedClass = "";
         Initialize();
         function Initialize() {
-            ViewModel.UserId = $rootScope.currentUser._id;;
+            ViewModel.UserId = $rootScope.currentUser._id;
             ViewModel.SubmittedClass = "";
             ViewModel.CreateOpinion = CreateOpinion;
             UserService.FindUserById(ViewModel.UserId)
                 .then(function (res) {
                     ViewModel.User = res.data;
-                },function (err) {
+                }, function (err) {
                     ViewModel.Error = "Could not retrieve the user"
                 });
         }
@@ -26,17 +26,18 @@
             opinion.user = ViewModel.User;
             opinion.adviceDate = Date.now();
             ViewModel.SubmittedClass = "submitted";
-            if(opinion.title){
+            if (opinion.title) {
                 OpinionService
                     .CreateOpinion(ViewModel.UserId, opinion)
                     .then(function (res) {
-                        $location.url("/user/"+ViewModel.UserId+"/opinion");
-                    },function (err) {
+                        $location.url("/user/" + ViewModel.UserId + "/opinion");
+                    }, function (err) {
                         ViewModel.Error = "Unable to create a new opinion";
                     });
             }
-            else{
-                ViewModel.Error="Please enter the highlighted fields"
-            }}
+            else {
+                ViewModel.Error = "Please enter the highlighted fields"
+            }
+        }
     }
 })();

@@ -22,18 +22,18 @@
             UserService
                 .FindUserById(ViewModel.id)
                 .then(function (response) {
-                    ViewModel.User = response. data;
+                    ViewModel.User = response.data;
                     angular.forEach(ViewModel.User.circle, function (value) {
                         console.log(value);
                         UserService
                             .FindUserByUsername(value)
                             .then(function (response) {
                                 ViewModel.userInCircle[value] = response.data._id;
-                            },function (err) {
+                            }, function (err) {
                                 console.log("here");
                             });
                     });
-                },function (err) {
+                }, function (err) {
                     ViewModel.Error = "unable to retrieve the user"
                 });
         }
@@ -51,7 +51,7 @@
 
         function UpdateUser(updatedUser) {
             ViewModel.SubmittedClass = "submitted";
-            if(updatedUser.firstName && updatedUser.lastName && updatedUser.email) {
+            if (updatedUser.firstName && updatedUser.lastName && updatedUser.email) {
                 UserService.UpdateUser(ViewModel.id, updatedUser)
                     .then(function (response) {
                             ViewModel.Success = "Profile of " + updatedUser.username + " successfully updated!";
@@ -62,7 +62,7 @@
                             ViewModel.Success = null;
                         });
             }
-            else{
+            else {
                 ViewModel.Success = null;
                 ViewModel.Error = "Errors in the highlighted fields"
             }
@@ -71,11 +71,11 @@
         function Unregister() {
             UserService.DeleteUser(ViewModel.id)
                 .then(function (response) {
-                    $location.url("/login");
-                },
-                function (error){
-                    ViewModel.Error = "unable to remove user";
-                });
+                        $location.url("/login");
+                    },
+                    function (error) {
+                        ViewModel.Error = "unable to remove user";
+                    });
         }
 
     }

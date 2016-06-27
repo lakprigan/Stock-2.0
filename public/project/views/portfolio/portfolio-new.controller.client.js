@@ -19,18 +19,20 @@
 
         function CreateNewPortfolio(portfolio) {
             ViewModel.SubmittedClass = "submitted";
-            if(portfolio){
-            if(portfolio.name && portfolio.dateCreated){
-                PortfolioService
-                    .CreateNewPortfolio(ViewModel.UserId, portfolio)
-                    .then(function (res) {
-                        $location.url("/user/"+ViewModel.UserId+"/portfolio");
-                    },function (err) {
-                        ViewModel.Error = "Unable to create a new portfolio";
-                    });
-            }}
-            else{
-                ViewModel.Error="Please enter the highlighted fields"
-            }}
+            if (portfolio) {
+                if (portfolio.name && portfolio.dateCreated) {
+                    PortfolioService
+                        .CreateNewPortfolio(ViewModel.UserId, portfolio)
+                        .then(function (res) {
+                            $location.url("/user/" + ViewModel.UserId + "/portfolio");
+                        }, function (err) {
+                            ViewModel.Error = "Unable to create a new portfolio";
+                        });
+                }
+            }
+            else {
+                ViewModel.Error = "Please enter the highlighted fields"
+            }
+        }
     }
 })();

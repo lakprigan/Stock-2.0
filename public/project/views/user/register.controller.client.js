@@ -11,8 +11,7 @@
         var ViewModel = this;
         ViewModel.Register = Register;
         ViewModel.SubmittedClass = "";
-
-
+        
         function Register(user) {
             ViewModel.SubmittedClass = "submitted";
             if (!user) {

@@ -18,7 +18,6 @@
         Initialize();
 
         function Initialize() {
-
             StockService
                 .FindStockById(ViewModel.StockId)
                 .then(function (res) {
@@ -31,8 +30,6 @@
                             ViewModel.Error = "unable to retrieve the user"
                         });
                 });
-
-
         }
 
         function CreateComment(comment) {
@@ -49,12 +46,11 @@
                         ViewModel.Error = "Unable to post the comment"
                     })
             }
-            else{
+            else {
                 ViewModel.Error = "Please enter the comment"
             }
         }
     }
 
-    
 
 })();

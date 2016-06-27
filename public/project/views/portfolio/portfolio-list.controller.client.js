@@ -13,7 +13,7 @@
         Initialize();
 
         function Initialize() {
-            ViewModel.UserId = $rootScope.currentUser._id;;
+            ViewModel.UserId = $rootScope.currentUser._id;
             PortfolioService
                 .FindPortfoliosByUserId(ViewModel.UserId)
                 .then(function (response) {

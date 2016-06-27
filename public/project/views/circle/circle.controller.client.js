@@ -13,14 +13,12 @@
         ViewModel.UpdateUser = UpdateUser;
         ViewModel.FollowUser = FollowUser;
         ViewModel.UnfollowUser = UnfollowUser;
-
         ViewModel.currentUser = $rootScope.currentUser;
 
         Initialize();
 
         function Initialize() {
             ViewModel.username_user = [];
-
             ViewModel.id = $rootScope.currentUser._id;
             UserService
                 .FindUserById(ViewModel.id)
@@ -34,15 +32,15 @@
                                 var temp = res.data;
                                 angular.forEach(temp, function (value, key) {
                                     var remove = false;
-                                    if(value.username === ViewModel.User.username)
+                                    if (value.username === ViewModel.User.username)
                                         remove = true;
 
                                     angular.forEach(ViewModel.User.circle, function (name, index) {
-                                        if(name === value.username)
+                                        if (name === value.username)
                                             remove = true;
                                     });
 
-                                    if(remove === false){
+                                    if (remove === false) {
                                         ViewModel.AvailableExperts.push(value);
                                     }
                                 });
@@ -50,7 +48,7 @@
                             function (err) {
                                 ViewModel.Error = err.data;
                             });
-                    
+
                     angular.forEach(ViewModel.User.circle, function (value, key) {
                         UserService
                             .FindUserByUsername(value)
@@ -61,32 +59,28 @@
                 }, function (err) {
                     ViewModel.Error = "unable to retrieve the user"
                 });
-
-
-
-
         }
 
         function FollowUser(index) {
             var user = ViewModel.AvailableExperts[index];
             ViewModel.User.circle.push(user.username);
             ViewModel.AvailableExperts.splice(index, 1);
-            UserService.UpdateUser(ViewModel.User._id,ViewModel.User)
-            .then(function (res) {
-Initialize();
-            },function (err) {
-                ViewModel.Error = "Cannot update user"
-            });
+            UserService.UpdateUser(ViewModel.User._id, ViewModel.User)
+                .then(function (res) {
+                    Initialize();
+                }, function (err) {
+                    ViewModel.Error = "Cannot update user"
+                });
         }
 
         function UnfollowUser(index) {
-            var user = {username : ViewModel.User.circle[index]};
+            var user = {username: ViewModel.User.circle[index]};
             ViewModel.AvailableExperts.push(user);
             ViewModel.User.circle.splice(index, 1);
-            UserService.UpdateUser(ViewModel.User._id,ViewModel.User)
+            UserService.UpdateUser(ViewModel.User._id, ViewModel.User)
                 .then(function (res) {
-Initialize();
-                },function (err) {
+                    Initialize();
+                }, function (err) {
                     ViewModel.Error = "Cannot update user"
                 });
         }

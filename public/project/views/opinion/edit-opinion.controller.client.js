@@ -22,16 +22,15 @@
                     ViewModel.Opinion = res.data;
                 })
         }
-
-
+        
         function UpdateOpinion(opinion) {
             ViewModel.SubmittedClass = "submitted";
-            if(opinion.title){
+            if (opinion.title) {
                 OpinionService
                     .UpdateOpinion(ViewModel.OpinionId, opinion)
                     .then(function (res) {
-                        $location.url("/user/"+ViewModel.UserId+"/opinion");
-                    },function (err) {
+                        $location.url("/user/" + ViewModel.UserId + "/opinion");
+                    }, function (err) {
                         ViewModel.Error = "Unable to update the Opinion";
                     });
             }
