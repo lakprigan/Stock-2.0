@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
+app.use('/files', express.static(__dirname + '/files'));
 app.use(cookieParser());
 //encrypt the user.  As the cookies are sent back and forth. Encrpts and decrypts environment
 // put a environment variable in mac bash-profile and rhc in openshift
